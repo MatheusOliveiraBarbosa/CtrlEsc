@@ -3,35 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package br.edu.ifpb.monteiro.ads.ctrlesc.model;
-
-
+package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
 /**
  *
  * @author E.Wellington
  */
+public class Address {
 
+    public Address(String street, int number, String district, String cep, String city, String state, String country) {
+        this.street = street;
+        this.number = number;
+        this.district = district;
+        this.cep = cep;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
 
-class Address {
-    
     private String street;
-    
+
     private int number;
-    
+
     private String district;
-    
+
     private String cep;
-    
+
     private String city;
-    
+
     private String state;
-    
+
     private String country;
 
     // methods gettes and setters
-    
     public String getStreet() {
         return street;
     }
@@ -87,9 +91,5 @@ class Address {
     public void setCountry(String country) {
         this.country = country;
     }
-    
-    
-    
-    
-    
+
 }

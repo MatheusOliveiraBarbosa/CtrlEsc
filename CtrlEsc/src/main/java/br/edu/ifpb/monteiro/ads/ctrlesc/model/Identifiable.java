@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author E.Wellington
  */
 @Entity
-public class Idenfiable implements Serializable{
+public class Identifiable implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,10 +34,10 @@ public class Idenfiable implements Serializable{
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Idenfiable)) {
+        if (!(object instanceof Identifiable)) {
             return false;
         }
-        Idenfiable other = (Idenfiable) object;
+        Identifiable other = (Identifiable) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

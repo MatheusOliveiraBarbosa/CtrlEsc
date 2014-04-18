@@ -6,6 +6,8 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,7 +28,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table (name = "TB_person")
-public class Person extends Idenfiable {
+public abstract class Person extends Identifiable {
     
     
     @Column (length = 100, nullable = false)

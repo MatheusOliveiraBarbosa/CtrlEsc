@@ -1,11 +1,18 @@
 
-package br.edu.ifpb.monteiro.ads.ctrlesc.model;
+package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
 /**
  *
  * @author E.Wellington
  */
-class Login {
+public class Login {
+
+    public Login(String user, String password) {
+        this.user = user;
+        this.password = password;
+    }
+    
+    
     
     private String user;
     
