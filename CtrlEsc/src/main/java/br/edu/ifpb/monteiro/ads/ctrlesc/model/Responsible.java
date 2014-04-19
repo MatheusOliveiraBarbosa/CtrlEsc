@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,8 +57,28 @@ public class Responsible extends Identifiable {
     
     @Column
     @OneToMany (mappedBy = "student", targetEntity = Student.class, fetch = FetchType.LAZY)    
-    private ArrayList<Student> listStudenst;
+    private List<Student> listStudenst;
 
+    public Responsible(String name, String levelEducation, String phone, String profession, Address address, double familyIncome, int age, String degreeKinship, Address businessAddress, ArrayList<Student> listStudenst) {
+        this.name = name;
+        this.levelEducation = levelEducation;
+        this.phone = phone;
+        this.profession = profession;
+        this.address = address;
+        this.familyIncome = familyIncome;
+        this.age = age;
+        this.degreeKinship = degreeKinship;
+        this.businessAddress = businessAddress;
+        this.listStudenst = listStudenst;
+    }
+
+    public Responsible() {
+        listStudenst = new ArrayList<Student>();
+    }
+    
+    
+    
+    
     public String getName() {
         return name;
     }
@@ -130,11 +151,11 @@ public class Responsible extends Identifiable {
         this.businessAddress = businessAddress;
     }
 
-    public ArrayList<Student> getListStudenst() {
+    public List<Student> getListStudenst() {
         return listStudenst;
     }
 
-    public void setListStudenst(ArrayList<Student> listStudenst) {
+    public void setListStudenst(List<Student> listStudenst) {
         this.listStudenst = listStudenst;
     }
     
