@@ -22,9 +22,9 @@ public class StudentClass extends Identifiable {
     @Column (length = 50, nullable = false)
     private String name;
 
-    @Column
+    
     @ManyToMany
-    @JoinTable(name = "TB_StudentClassesDisciplines", joinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "TB_StudentClassesDisciplines", joinColumns = @JoinColumn(name = "id_StudentClass"))
     private List<Discipline> listDicipline;
 
     @Column

@@ -17,9 +17,9 @@ import javax.persistence.Table;
 @Table(name = "TB_teacher")
 public class Teacher extends Person {
     
-    @Column
+  
     @ManyToMany
-    @JoinTable(name="TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name="TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id_"))
     private List<Discipline> listDisciplines;
     
     @Column

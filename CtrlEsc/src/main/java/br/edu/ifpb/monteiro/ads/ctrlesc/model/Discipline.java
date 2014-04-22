@@ -17,64 +17,63 @@ import javax.persistence.Table;
 public class Discipline extends Identifiable {
     
     @Column(length = 50, nullable = false)
-    private String name;
+    private String disciplineName;
     
-    @Column
-    private String description;
+    private String disciplineDescription;
     
-    @Column
-    @ManyToMany(mappedBy = "TB_studentClass")
-    private List<StudentClass> listStudentClasses;
+    @ManyToMany(mappedBy = "listDicipline", targetEntity = StudentClass.class)
+    private List<StudentClass> disciplineListStudentClasses;
     
-    @Column
-    @ManyToMany(mappedBy = "TB_teacher")
-    private List<Teacher> listTeachers;
+    @ManyToMany(mappedBy = "listDicipline", targetEntity = Teacher.class)
+    private List<Teacher> disciplineListTeachers;
 
     
     public Discipline(String name, String description, List<StudentClass> listStudentClasses, List<Teacher> listTeachers) {
-        this.name = name;
-        this.description = description;
-        this.listStudentClasses = listStudentClasses;
-        this.listTeachers = listTeachers;
+        this.disciplineName = name;
+        this.disciplineDescription = description;
+        this.disciplineListStudentClasses = listStudentClasses;
+        this.disciplineListTeachers = listTeachers;
     }
 
     public Discipline() {
-        listStudentClasses = new ArrayList<StudentClass>();
-        listTeachers = new ArrayList<Teacher>();
+        disciplineListStudentClasses = new ArrayList<StudentClass>();
+        disciplineListTeachers = new ArrayList<Teacher>();
     }
 
-    public String getName() {
-        return name;
+    public String getDisciplineName() {
+        return disciplineName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDisciplineName(String disciplineName) {
+        this.disciplineName = disciplineName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDisciplineDescription() {
+        return disciplineDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDisciplineDescription(String disciplineDescription) {
+        this.disciplineDescription = disciplineDescription;
     }
 
-    public List<StudentClass> getListStudentClasses() {
-        return listStudentClasses;
+    public List<StudentClass> getDisciplineListStudentClasses() {
+        return disciplineListStudentClasses;
     }
 
-    public void setListStudentClasses(List<StudentClass> listStudentClasses) {
-        this.listStudentClasses = listStudentClasses;
+    public void setDisciplineListStudentClasses(List<StudentClass> disciplineListStudentClasses) {
+        this.disciplineListStudentClasses = disciplineListStudentClasses;
     }
 
-    public List<Teacher> getListTeachers() {
-        return listTeachers;
+    public List<Teacher> getDisciplineListTeachers() {
+        return disciplineListTeachers;
     }
 
-    public void setListTeachers(List<Teacher> listTeachers) {
-        this.listTeachers = listTeachers;
+    public void setDisciplineListTeachers(List<Teacher> disciplineListTeachers) {
+        this.disciplineListTeachers = disciplineListTeachers;
     }
     
+    
+   
     
     
     

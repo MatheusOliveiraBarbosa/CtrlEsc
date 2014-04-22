@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
+
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -18,19 +20,16 @@ import javax.persistence.Table;
 @Table(name = "TB_responsible")
 public class Responsible extends Identifiable {
 
-    @Column(length = 100, nullable = false)
-    private String name;
+    @Column(name = "responsible_name",length = 100, nullable = false)
+    private String responsibleName;
 
-    @Column(length = 50)
-    @Basic(fetch = FetchType.LAZY)
-    private String levelEducation;
+    @Column(name = "responsible_level_education",length = 50)
+    private String responsibleLevelEducation;
 
-    @Column(length = 50)
-    @Basic(fetch = FetchType.LAZY)
+    @Column(name= "responsible_phone", length = 50)
     private String phone;
 
-    @Column(length = 50)
-    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "responsible_profession",length = 50)
     private String profession;
 
     @Column
@@ -41,14 +40,13 @@ public class Responsible extends Identifiable {
     // the value of familyIncome must be greater than 0.
     @Column(length = 50)
     @Basic(fetch = FetchType.LAZY)
+    @Min(value = 0)
     private double familyIncome;
-
-    @Column
-    @Basic(fetch = FetchType.LAZY)
+    
+    @Min(value = 18)
     private int age;
-
+    
     @Column(length = 50)
-    @Basic(fetch = FetchType.LAZY)
     private String degreeKinship;
 
     @Column
@@ -60,8 +58,8 @@ public class Responsible extends Identifiable {
     private List<Student> listStudenst;
 
     public Responsible(String name, String levelEducation, String phone, String profession, Address address, double familyIncome, int age, String degreeKinship, Address businessAddress, ArrayList<Student> listStudenst) {
-        this.name = name;
-        this.levelEducation = levelEducation;
+        this.responsibleName = name;
+        this.responsibleLevelEducation = levelEducation;
         this.phone = phone;
         this.profession = profession;
         this.address = address;
@@ -75,86 +73,6 @@ public class Responsible extends Identifiable {
     public Responsible() {
         listStudenst = new ArrayList<Student>();
     }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLevelEducation() {
-        return levelEducation;
-    }
-
-    public void setLevelEducation(String levelEducation) {
-        this.levelEducation = levelEducation;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public double getFamilyIncome() {
-        return familyIncome;
-    }
-
-    public void setFamilyIncome(double familyIncome) {
-        this.familyIncome = familyIncome;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getDegreeKinship() {
-        return degreeKinship;
-    }
-
-    public void setDegreeKinship(String degreeKinship) {
-        this.degreeKinship = degreeKinship;
-    }
-
-    public Address getBusinessAddress() {
-        return businessAddress;
-    }
-
-    public void setBusinessAddress(Address businessAddress) {
-        this.businessAddress = businessAddress;
-    }
-
-    public List<Student> getListStudenst() {
-        return listStudenst;
-    }
-
-    public void setListStudenst(List<Student> listStudenst) {
-        this.listStudenst = listStudenst;
-    }
-    
-    
+   
     
 }

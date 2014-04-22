@@ -21,18 +21,15 @@ public class Lesson extends Identifiable {
     
     @Column
     @Temporal(TemporalType.DATE)
-    private Date dateLesson;
+    private Date lessonDate;
     
-    @Column
-    private int presence;
+    private int lessonPresence;
     
-    @Column
-    private String observation;
+    private String lessonObservation;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "id")
-    private StudentClass studentClass;
+    private StudentClass lessonStudentClass;
 
     @Column
     @ManyToOne
@@ -43,44 +40,5 @@ public class Lesson extends Identifiable {
         listStudents = new ArrayList<Student>();
     }
 
-    public Date getDateLesson() {
-        return dateLesson;
-    }
-
-    public void setDateLesson(Date dateLesson) {
-        this.dateLesson = dateLesson;
-    }
-
-    public int getPresence() {
-        return presence;
-    }
-
-    public void setPresence(int presence) {
-        this.presence = presence;
-    }
-
-    public String getObservation() {
-        return observation;
-    }
-
-    public void setObservation(String observation) {
-        this.observation = observation;
-    }
-
-    public StudentClass getStudentClass() {
-        return studentClass;
-    }
-
-    public void setStudentClass(StudentClass studentClass) {
-        this.studentClass = studentClass;
-    }
-
-    public List<Student> getListStudents() {
-        return listStudents;
-    }
-
-    public void setListStudents(List<Student> listStudents) {
-        this.listStudents = listStudents;
-    }
-
+  
 }
