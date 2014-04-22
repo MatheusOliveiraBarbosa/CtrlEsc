@@ -3,106 +3,119 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  *
- * @author E.Wellington
+ * @author Ricardo
  */
-
 @Entity
 @Table(name = "TB_twoMonths")
-public class TwoMonths extends Identifiable{
-    
-    @Column
-    private double exerciseFirst;
-    
-    @Column
-    private double exerciseSecond;
-    
-    @Column
-    private double exerciseThird;
-    
-    @Column
-    private double recuperationFirst;
-    
-    @Column
-    private double recuperationSecond;
-    
-    @Column
-    private double recuperationThird;
-    
-    @Column
-    private int numberTwoMonths;
+public class TwoMonths extends Identifiable {
+
+    @Column(name = "twoMonths_exercise_first")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsExerciseFirst;
+
+    @Column(name = "twoMonths_exercise_second")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsExerciseSecond;
+
+    @Column(name = "twoMonths_exercise_third")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsExerciseThird;
+
+    @Column(name = "twoMonths_recuperation_first")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsRecuperationFirst;
+
+    @Column(name = "twoMonths_recuperation_second")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsRecuperationSecond;
+
+    @Column(name = "twoMonths_recuperation_third")
+    @Min(value = 0)
+    @Max(value = 10)
+    private double twoMonthsRecuperationThird;
+
+    @Column(name = "twoMonths_number_twoMonths")
+    @Min(value = 1)
+    @Max(value = 4)
+    private int twoMonthsNumberTwoMonths;
+
+    public TwoMonths(double twoMonthsExerciseFirst, double twoMonthsExerciseSecond, double twoMonthsExerciseThird, double twoMonthsRecuperationFirst, double twoMonthsRecuperationSecond, double twoMonthsRecuperationThird, int twoMonthsNumberTwoMonths) {
+        this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
+        this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
+        this.twoMonthsExerciseThird = twoMonthsExerciseThird;
+        this.twoMonthsRecuperationFirst = twoMonthsRecuperationFirst;
+        this.twoMonthsRecuperationSecond = twoMonthsRecuperationSecond;
+        this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
+        this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
+    }
 
     public TwoMonths() {
     }
 
-    public TwoMonths(double exerciseFirst, double exerciseSecond, double exerciseThird, double recuperationFirst, double recuperationSecond, double recuperationThird, int numberTwoMonths) {
-        this.exerciseFirst = exerciseFirst;
-        this.exerciseSecond = exerciseSecond;
-        this.exerciseThird = exerciseThird;
-        this.recuperationFirst = recuperationFirst;
-        this.recuperationSecond = recuperationSecond;
-        this.recuperationThird = recuperationThird;
-        this.numberTwoMonths = numberTwoMonths;
+    public double getTwoMonthsExerciseFirst() {
+        return twoMonthsExerciseFirst;
     }
 
-    public double getExerciseFirst() {
-        return exerciseFirst;
+    public void setTwoMonthsExerciseFirst(double twoMonthsExerciseFirst) {
+        this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
     }
 
-    public void setExerciseFirst(double exerciseFirst) {
-        this.exerciseFirst = exerciseFirst;
+    public double getTwoMonthsExerciseSecond() {
+        return twoMonthsExerciseSecond;
     }
 
-    public double getExerciseSecond() {
-        return exerciseSecond;
+    public void setTwoMonthsExerciseSecond(double twoMonthsExerciseSecond) {
+        this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
     }
 
-    public void setExerciseSecond(double exerciseSecond) {
-        this.exerciseSecond = exerciseSecond;
+    public double getTwoMonthsExerciseThird() {
+        return twoMonthsExerciseThird;
     }
 
-    public double getExerciseThird() {
-        return exerciseThird;
+    public void setTwoMonthsExerciseThird(double twoMonthsExerciseThird) {
+        this.twoMonthsExerciseThird = twoMonthsExerciseThird;
     }
 
-    public void setExerciseThird(double exerciseThird) {
-        this.exerciseThird = exerciseThird;
+    public double getTwoMonthsRecuperationFirst() {
+        return twoMonthsRecuperationFirst;
     }
 
-    public double getRecuperationFirst() {
-        return recuperationFirst;
+    public void setTwoMonthsRecuperationFirst(double twoMonthsRecuperationFirst) {
+        this.twoMonthsRecuperationFirst = twoMonthsRecuperationFirst;
     }
 
-    public void setRecuperationFirst(double recuperationFirst) {
-        this.recuperationFirst = recuperationFirst;
+    public double getTwoMonthsRecuperationSecond() {
+        return twoMonthsRecuperationSecond;
     }
 
-    public double getRecuperationSecond() {
-        return recuperationSecond;
+    public void setTwoMonthsRecuperationSecond(double twoMonthsRecuperationSecond) {
+        this.twoMonthsRecuperationSecond = twoMonthsRecuperationSecond;
     }
 
-    public void setRecuperationSecond(double recuperationSecond) {
-        this.recuperationSecond = recuperationSecond;
+    public double getTwoMonthsRecuperationThird() {
+        return twoMonthsRecuperationThird;
     }
 
-    public double getRecuperationThird() {
-        return recuperationThird;
+    public void setTwoMonthsRecuperationThird(double twoMonthsRecuperationThird) {
+        this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
     }
 
-    public void setRecuperationThird(double recuperationThird) {
-        this.recuperationThird = recuperationThird;
+    public int getTwoMonthsNumberTwoMonths() {
+        return twoMonthsNumberTwoMonths;
     }
 
-    public int getNumberTwoMonths() {
-        return numberTwoMonths;
+    public void setTwoMonthsNumberTwoMonths(int twoMonthsNumberTwoMonths) {
+        this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
     }
 
-    public void setNumberTwoMonths(int numberTwoMonths) {
-        this.numberTwoMonths = numberTwoMonths;
-    }
-    
-    
-    
 }

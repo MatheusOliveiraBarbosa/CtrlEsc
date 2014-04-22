@@ -2,7 +2,6 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -11,45 +10,46 @@ import javax.persistence.Table;
 
 /**
  *
- * @author E.Wellington
+ * @author Ricardo
  */
 @Entity
 @Table(name = "TB_teacher")
 public class Teacher extends Person {
-    
-  
+
     @ManyToMany
-    @JoinTable(name="TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id_"))
-    private List<Discipline> listDisciplines;
-    
-    @Column
+    @JoinTable(name = "TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id_"))
+    private List<Discipline> teacherListDisciplines;
+
     @ManyToMany
-    @JoinTable(name="TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id"))
-    private List<StudentClass> listStudentClasses;
+    @JoinTable(name = "TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id"))
+    private List<StudentClass> teacherListStudentClasses;
+
+    public Teacher(List<Discipline> teacherListDisciplines, List<StudentClass> teacherListStudentClasses) {
+        this.teacherListDisciplines = teacherListDisciplines;
+        this.teacherListStudentClasses = teacherListStudentClasses;
+    }
 
     public Teacher() {
-
-        listDisciplines = new ArrayList<Discipline>();
-        listStudentClasses = new ArrayList<StudentClass>();
-
+        teacherListDisciplines = new ArrayList<Discipline>();
+        teacherListStudentClasses = new ArrayList<StudentClass>();
     }
 
-    public List<Discipline> getListDisciplines() {
-        return listDisciplines;
+    public List<Discipline> getTeacherListDisciplines() {
+        return teacherListDisciplines;
     }
 
-    public void setListDisciplines(List<Discipline> listDisciplines) {
-        this.listDisciplines = listDisciplines;
+    public void setTeacherListDisciplines(List<Discipline> teacherListDisciplines) {
+        this.teacherListDisciplines = teacherListDisciplines;
     }
 
-    public List<StudentClass> getListStudentClasses() {
-        return listStudentClasses;
+    public List<StudentClass> getTeacherListStudentClasses() {
+        return teacherListStudentClasses;
     }
 
-    public void setListStudentClasses(List<StudentClass> listStudentClasses) {
-        this.listStudentClasses = listStudentClasses;
+    public void setTeacherListStudentClasses(List<StudentClass> teacherListStudentClasses) {
+        this.teacherListStudentClasses = teacherListStudentClasses;
     }
-    
-    
 
 }
+
+

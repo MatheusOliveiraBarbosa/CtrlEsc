@@ -19,70 +19,71 @@ import javax.persistence.Table;
 @Table(name = "TB_studentClass")
 public class StudentClass extends Identifiable {
 
-    @Column (length = 50, nullable = false)
-    private String name;
+    @Column(name = "studentClass_name", length = 50, nullable = false)
+    private String studentClassName;
 
-    
     @ManyToMany
     @JoinTable(name = "TB_StudentClassesDisciplines", joinColumns = @JoinColumn(name = "id_StudentClass"))
-    private List<Discipline> listDicipline;
+    private List<Discipline> studentClassListDicipline;
 
     @Column
     @OneToMany(mappedBy = "schoolPerformance", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)
-    private List<SchoolPerformance> listSchoolPerformance;
+    private List<SchoolPerformance> studentClassListSchoolPerformance;
 
     @Column
     @OneToMany(mappedBy = "lesso", targetEntity = Lesson.class, fetch = FetchType.LAZY)
-    private List<Lesson> listLessons;
+    private List<Lesson> studentClassListLessons;
 
     @ManyToMany(mappedBy = "TB_teacher")
-    private List<Teacher> listTeachers;
+    private List<Teacher> studentClassListTeachers;
 
     public StudentClass() {
-        listDicipline = new ArrayList<Discipline>();
-        listLessons = new ArrayList<Lesson>();
-        listSchoolPerformance = new ArrayList<SchoolPerformance>();
-        listTeachers = new ArrayList<Teacher>();
+        studentClassListDicipline = new ArrayList<Discipline>();
+        studentClassListLessons = new ArrayList<Lesson>();
+        studentClassListSchoolPerformance = new ArrayList<SchoolPerformance>();
+        studentClassListTeachers = new ArrayList<Teacher>();
     }
 
-    public String getName() {
-        return name;
+    public String getStudentClassName() {
+        return studentClassName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentClassName(String studentClassName) {
+        this.studentClassName = studentClassName;
     }
 
-    public List<Discipline> getListDicipline() {
-        return listDicipline;
+    public List<Discipline> getStudentClassListDicipline() {
+        return studentClassListDicipline;
     }
 
-    public void setListDicipline(List<Discipline> listDicipline) {
-        this.listDicipline = listDicipline;
+    public void setStudentClassListDicipline(List<Discipline> studentClassListDicipline) {
+        this.studentClassListDicipline = studentClassListDicipline;
     }
 
-    public List<SchoolPerformance> getListSchoolPerformance() {
-        return listSchoolPerformance;
+    public List<SchoolPerformance> getStudentClassListSchoolPerformance() {
+        return studentClassListSchoolPerformance;
     }
 
-    public void setListSchoolPerformance(List<SchoolPerformance> listSchoolPerformance) {
-        this.listSchoolPerformance = listSchoolPerformance;
+    public void setStudentClassListSchoolPerformance(List<SchoolPerformance> studentClassListSchoolPerformance) {
+        this.studentClassListSchoolPerformance = studentClassListSchoolPerformance;
     }
 
-    public List<Lesson> getListLessons() {
-        return listLessons;
+    public List<Lesson> getStudentClassListLessons() {
+        return studentClassListLessons;
     }
 
-    public void setListLessons(List<Lesson> listLessons) {
-        this.listLessons = listLessons;
+    public void setStudentClassListLessons(List<Lesson> studentClassListLessons) {
+        this.studentClassListLessons = studentClassListLessons;
     }
 
-    public List<Teacher> getListTeachers() {
-        return listTeachers;
+    public List<Teacher> getStudentClassListTeachers() {
+        return studentClassListTeachers;
     }
 
-    public void setListTeachers(List<Teacher> listTeachers) {
-        this.listTeachers = listTeachers;
+    public void setStudentClassListTeachers(List<Teacher> studentClassListTeachers) {
+        this.studentClassListTeachers = studentClassListTeachers;
     }
+    
+    
 
 }
