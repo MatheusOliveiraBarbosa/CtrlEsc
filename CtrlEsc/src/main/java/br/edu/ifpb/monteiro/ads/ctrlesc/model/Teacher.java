@@ -2,7 +2,11 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -12,9 +16,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TB_teacher")
 public class Teacher extends Person {
-
+    
+    @Column
+    @ManyToMany
+    @JoinTable(name="TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id"))
     private List<Discipline> listDisciplines;
-
+    
+    @Column
+    @ManyToMany
+    @JoinTable(name="TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id"))
     private List<StudentClass> listStudentClasses;
 
     public Teacher() {

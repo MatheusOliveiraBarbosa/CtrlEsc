@@ -1,6 +1,10 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -12,22 +16,33 @@ import javax.persistence.Table;
 @Table (name = "TB_schoolPerformance")
 public class SchoolPerformance extends Identifiable{
     
+    @Column
     private double bimonthlySynthesis;
     
+    @Column
     private double finalTeste;
     
+    @Column
     private double finalMedia;
     
+    @Column
+    @ManyToOne
+    @JoinColumn(name = "id")
     private StudentClass studentClass;
     
+    @Column
     private Student student;
     
+    @Column
     private TwoMonths firstTwoMonths;
     
+    @Column
     private TwoMonths fsecondTwoMonths;
     
+    @Column
     private TwoMonths thirdTwoMonths;
     
+    @Column
     private TwoMonths fourthTwoMonths;
 
     public SchoolPerformance() {

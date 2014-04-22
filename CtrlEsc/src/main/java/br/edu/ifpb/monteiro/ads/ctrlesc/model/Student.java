@@ -6,7 +6,10 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.ElectionTitle;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,37 +19,55 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "TB_student")
 class Student extends Person{
-
+    
+    @Column
     private int year;
     
+    @Column
     private int numberBrothersScholarship;
     
+    @Column
     private CertificateReservist certificateReservist;
     
+    @Column
     private ElectionTitle electionTitle;
     
+    @Column
     private BirthRecord birthRecord;
     
+    @Column
     private boolean fatherAlive;
     
+    @Column
     private boolean motherAlive;
     
+    @Column (length = 50)
     private String profession;
     
+    @Column
     private PortfolioWork portfolioWork;
     
+    @Column(length = 100)
     private String pensionOrgan;
     
+    @Column(length = 20)
     private String period;
     
+    @Column(length = 20)
     private String levelEducation;
     
+    @Column
     private int numberBrotherStudent;
     
+    @Column
+    @OneToMany (mappedBy = "schoolPerformance", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)  
     private List<SchoolPerformance> listSchoolPerformances;
     
+    @Column
+    @OneToMany (mappedBy = "lesson", targetEntity = Lesson.class, fetch = FetchType.LAZY) 
     private List<Lesson> listLessons;
     
+    @Column
     private Responsible responsible;
 
     public Student(int year, int numberBrothersScholarship, CertificateReservist certificateReservist, ElectionTitle electionTitle, BirthRecord birthRecord, boolean fatherAlive, boolean motherAlive, String profession, PortfolioWork portfolioWork, String pensionOrgan, String period, String levelEducation, int numberBrotherStudent, List<SchoolPerformance> listSchoolPerformances, List<Lesson> listLessons, Responsible responsible) {

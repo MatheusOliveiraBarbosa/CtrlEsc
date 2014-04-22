@@ -75,10 +75,6 @@ public class Responsible extends Identifiable {
     public Responsible() {
         listStudenst = new ArrayList<Student>();
     }
-    
-    
-    
-    
     public String getName() {
         return name;
     }

@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -12,18 +13,25 @@ import javax.persistence.Table;
 @Table(name = "TB_twoMonths")
 public class TwoMonths extends Identifiable{
     
+    @Column
     private double exerciseFirst;
     
+    @Column
     private double exerciseSecond;
     
+    @Column
     private double exerciseThird;
     
+    @Column
     private double recuperationFirst;
     
+    @Column
     private double recuperationSecond;
     
+    @Column
     private double recuperationThird;
     
+    @Column
     private int numberTwoMonths;
 
     public TwoMonths() {
