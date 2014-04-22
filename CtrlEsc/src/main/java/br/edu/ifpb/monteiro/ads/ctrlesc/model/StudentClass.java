@@ -23,7 +23,7 @@ public class StudentClass extends Identifiable {
     private String studentClassName;
 
     @ManyToMany
-    @JoinTable(name = "TB_StudentClassesDisciplines", joinColumns = @JoinColumn(name = "id_StudentClass"))
+    @JoinTable(name = "TB_StudentClasses_Disciplines", joinColumns = @JoinColumn(name = "id_studentClass"), inverseJoinColumns = @JoinColumn(name = "id_discipline"))
     private List<Discipline> studentClassListDicipline;
 
     @Column
