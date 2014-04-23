@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
+
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.persistence.Basic;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,210 +29,222 @@ import javax.persistence.TemporalType;
 public abstract class Person extends Identifiable {
     
     
-    @Column (length = 100, nullable = false)
-    private String name;
+    @Column (name = "person_name", length = 100, nullable = false)
+    private String personName;
     
-    @Column (name = "cpf", length = 11 )
-    private String cpf;
+    @Column (name = "person_cpf", length = 11, unique = true )
+    private String personCpf;
     
-    @Column
+    @Column(name = "person_date_birth")
     @Temporal (TemporalType.DATE)
-    @Basic(fetch = FetchType.LAZY)
-    private Date dateBirth;
+    private GregorianCalendar personDateBirth;
     
-    @Column
-    @Basic(fetch = FetchType.LAZY)
-    private Address address;
+    @Column (name = "person_address")
+    private Address personAddress;
     
-    @Column
-    @Basic(fetch = FetchType.LAZY)
-    private String breed;
+    @Column (name = "person_breed", length = 30)
+    private String personBreed;
     
-    @Column (length = 50)   
-    private String registration;
+    @Column (name = "person_registration", length = 50)   
+    private String personRegistration;
     
-    @Column
-    @Basic(fetch = FetchType.LAZY)
-    private char sex;
+    @Column (name ="person_sex", nullable = false )
+    private char personSex;
     
-    @Column
+    @Column (name = "person_photo")
     @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] photo;
+    private byte[] personPhoto;
     
-    @Column (length = 50)
-    @Basic(fetch = FetchType.LAZY)
-    private String nationality;
+    @Column (name = "person_nationality",length = 50)
+    private String personNationality;
     
-    @Column
-    @Basic(fetch = FetchType.LAZY)
+    @Column (name = "person_entry_date")
     @Temporal(TemporalType.DATE)
-    private Date entryDate;
+    private GregorianCalendar personEntryDate;
     
-    @Column (length = 25)
-    @Basic(fetch = FetchType.LAZY)
-    private String phoneOne;
+    @Column (name = "person_phone_one" , length = 25)
+    private String personPhoneOne;
     
-    @Column (length = 25)
-    @Basic(fetch = FetchType.LAZY)
-    private String phoneTwo;
+    @Column (name = "person_phone_two" , length = 25)
+    private String perosnPhoneTwo;
     
-    @Column (length = 25)
-    @Basic(fetch = FetchType.LAZY)
-    private String phoneThree;
+    @Column (name = "person_phone_three" , length = 25)
+    private String personPhoneThree;
     
-    @Column (length = 15)
-    @Basic(fetch = FetchType.LAZY)
-    private String civilStatus;
+    @Column (name = "person_civil_status", length = 15)
+    private String personCivilStatus;
     
-    @Column 
-    @Basic(fetch = FetchType.LAZY)
-    private Login login;
+    @Column (name = "person_login")
+    private Login personLogin;
     
-    @Column (length = 100)
-    @Basic(fetch = FetchType.LAZY)
-    private String nameMother;
+    @Column (name="person_name_mother",length = 100)
+    private String personNameMother;
     
-    @Column (length = 100)
-    @Basic(fetch = FetchType.LAZY)
-    private String nameFather;
+    @Column (name="person_name_father",length = 100)
+    private String personNameFather;
 
-    public String getName() {
-        return name;
+    public Person() {
+            
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personPhoneThree, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+        this.personName = personName;
+        this.personCpf = personCpf;
+        this.personDateBirth = personDateBirth;
+        this.personAddress = personAddress;
+        this.personBreed = personBreed;
+        this.personRegistration = personRegistration;
+        this.personSex = personSex;
+        this.personPhoto = personPhoto;
+        this.personNationality = personNationality;
+        this.personEntryDate = personEntryDate;
+        this.personPhoneOne = personPhoneOne;
+        this.perosnPhoneTwo = perosnPhoneTwo;
+        this.personPhoneThree = personPhoneThree;
+        this.personCivilStatus = personCivilStatus;
+        this.personLogin = personLogin;
+        this.personNameMother = personNameMother;
+        this.personNameFather = personNameFather;
     }
     
     
-    public String getCpf() {
-        return cpf;
+
+    public String getPersonName() {
+        return personName;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
-    public Date getDateBirth() {
-        return dateBirth;
+    public String getPersonCpf() {
+        return personCpf;
     }
 
-    public void setDateBirth(Date dateBirth) {
-        this.dateBirth = dateBirth;
+    public void setPersonCpf(String personCpf) {
+        this.personCpf = personCpf;
     }
 
-    public Address getAddress() {
-        return address;
+    public GregorianCalendar getPersonDateBirth() {
+        return personDateBirth;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setPersonDateBirth(GregorianCalendar personDateBirth) {
+        this.personDateBirth = personDateBirth;
     }
 
-    public String getBreed() {
-        return breed;
+    public Address getPersonAddress() {
+        return personAddress;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setPersonAddress(Address personAddress) {
+        this.personAddress = personAddress;
     }
 
-    public String getRegistration() {
-        return registration;
+    public String getPersonBreed() {
+        return personBreed;
     }
 
-    public void setRegistration(String registration) {
-        this.registration = registration;
+    public void setPersonBreed(String personBreed) {
+        this.personBreed = personBreed;
     }
 
-    public char getSex() {
-        return sex;
+    public String getPersonRegistration() {
+        return personRegistration;
     }
 
-    public void setSex(char sex) {
-        this.sex = sex;
+    public void setPersonRegistration(String personRegistration) {
+        this.personRegistration = personRegistration;
     }
 
-    public byte[] getPhoto() {
-        return photo;
+    public char getPersonSex() {
+        return personSex;
     }
 
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
+    public void setPersonSex(char personSex) {
+        this.personSex = personSex;
     }
 
-    public String getNationality() {
-        return nationality;
+    public byte[] getPersonPhoto() {
+        return personPhoto;
     }
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
+    public void setPersonPhoto(byte[] personPhoto) {
+        this.personPhoto = personPhoto;
     }
 
-    public Date getEntryDate() {
-        return entryDate;
+    public String getPersonNationality() {
+        return personNationality;
     }
 
-    public void setEntryDate(Date entryDate) {
-        this.entryDate = entryDate;
+    public void setPersonNationality(String personNationality) {
+        this.personNationality = personNationality;
     }
 
-    public String getPhoneOne() {
-        return phoneOne;
+    public GregorianCalendar getPersonEntryDate() {
+        return personEntryDate;
     }
 
-    public void setPhoneOne(String phoneOne) {
-        this.phoneOne = phoneOne;
+    public void setPersonEntryDate(GregorianCalendar personEntryDate) {
+        this.personEntryDate = personEntryDate;
     }
 
-    public String getPhoneTwo() {
-        return phoneTwo;
+    public String getPersonPhoneOne() {
+        return personPhoneOne;
     }
 
-    public void setPhoneTwo(String phoneTwo) {
-        this.phoneTwo = phoneTwo;
+    public void setPersonPhoneOne(String personPhoneOne) {
+        this.personPhoneOne = personPhoneOne;
     }
 
-    public String getPhoneThree() {
-        return phoneThree;
+    public String getPerosnPhoneTwo() {
+        return perosnPhoneTwo;
     }
 
-    public void setPhoneThree(String phoneThree) {
-        this.phoneThree = phoneThree;
+    public void setPerosnPhoneTwo(String perosnPhoneTwo) {
+        this.perosnPhoneTwo = perosnPhoneTwo;
     }
 
-    public String getCivilStatus() {
-        return civilStatus;
+    public String getPersonPhoneThree() {
+        return personPhoneThree;
     }
 
-    public void setCivilStatus(String civilStatus) {
-        this.civilStatus = civilStatus;
+    public void setPersonPhoneThree(String personPhoneThree) {
+        this.personPhoneThree = personPhoneThree;
     }
 
-    public Login getLogin() {
-        return login;
+    public String getPersonCivilStatus() {
+        return personCivilStatus;
     }
 
-    public void setLogin(Login login) {
-        this.login = login;
+    public void setPersonCivilStatus(String personCivilStatus) {
+        this.personCivilStatus = personCivilStatus;
     }
 
-    public String getNameMother() {
-        return nameMother;
+    public Login getPersonLogin() {
+        return personLogin;
     }
 
-    public void setNameMother(String nameMother) {
-        this.nameMother = nameMother;
+    public void setPersonLogin(Login personLogin) {
+        this.personLogin = personLogin;
     }
 
-    public String getNameFather() {
-        return nameFather;
+    public String getPersonNameMother() {
+        return personNameMother;
     }
 
-    public void setNameFather(String nameFather) {
-        this.nameFather = nameFather;
+    public void setPersonNameMother(String personNameMother) {
+        this.personNameMother = personNameMother;
     }
+
+    public String getPersonNameFather() {
+        return personNameFather;
+    }
+
+    public void setPersonNameFather(String personNameFather) {
+        this.personNameFather = personNameFather;
+    }
+    
     
     
     

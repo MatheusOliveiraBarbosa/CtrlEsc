@@ -16,9 +16,10 @@ import javax.persistence.Table;
 @Table (name = "TB_discipline")
 public class Discipline extends Identifiable {
     
-    @Column(length = 50, nullable = false)
+    @Column(name = "discipline_name", length = 50, nullable = false)
     private String disciplineName;
     
+    @Column (name = "discipline_description")
     private String disciplineDescription;
     
     @ManyToMany(mappedBy = "listDicipline", targetEntity = StudentClass.class)

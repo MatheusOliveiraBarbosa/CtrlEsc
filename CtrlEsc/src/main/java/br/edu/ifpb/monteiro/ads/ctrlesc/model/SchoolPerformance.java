@@ -3,9 +3,10 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -16,48 +17,48 @@ import javax.persistence.Table;
 @Table (name = "TB_schoolPerformance")
 public class SchoolPerformance extends Identifiable{
     
-    @Column
+    @Column (name = "schoolPerformance_bimonthly_synthesis")
+    @Min(value =0)
+    @Max(value = 10)
     private double bimonthlySynthesis;
     
-    @Column
+    @Column (name = "schoolPerformance_final_teste")
+    @Min(value = 0)
+    @Max (value = 10)
     private double finalTeste;
     
-    @Column
+    @Column (name = "schoolPerformance_final_media")
+    @Min(value = 0)
+    @Max (value = 10)
     private double finalMedia;
     
-    @Column
     @ManyToOne
     @JoinColumn(name = "id")
-    private StudentClass studentClass;
+    private StudentClass schoolPerformanceStudentClass;
     
-    @Column
-    private Student student;
+    private Student schoolPerformanceStudent;
     
-    @Column
-    private TwoMonths firstTwoMonths;
+    private TwoMonths schoolPerformanceFirstTwoMonths;
     
-    @Column
-    private TwoMonths fsecondTwoMonths;
+    private TwoMonths schoolPerformanceSecondTwoMonths;
     
-    @Column
-    private TwoMonths thirdTwoMonths;
+    private TwoMonths schoolPerformanceThirdTwoMonths;
     
-    @Column
-    private TwoMonths fourthTwoMonths;
+    private TwoMonths schoolPerformanceFourthTwoMonths;
 
     public SchoolPerformance() {
     }
 
-    public SchoolPerformance(double bimonthlySynthesis, double finalTeste, double finalMedia, StudentClass studentClass, Student student, TwoMonths firstTwoMonths, TwoMonths fsecondTwoMonths, TwoMonths thirdTwoMonths, TwoMonths fourthTwoMonths) {
+    public SchoolPerformance(double bimonthlySynthesis, double finalTeste, double finalMedia, StudentClass schoolPerformanceStudentClass, Student schoolPerformanceStudent, TwoMonths schoolPerformanceFirstTwoMonths, TwoMonths schoolPerformanceSecondTwoMonths, TwoMonths schoolPerformanceThirdTwoMonths, TwoMonths schoolPerformanceFourthTwoMonths) {
         this.bimonthlySynthesis = bimonthlySynthesis;
         this.finalTeste = finalTeste;
         this.finalMedia = finalMedia;
-        this.studentClass = studentClass;
-        this.student = student;
-        this.firstTwoMonths = firstTwoMonths;
-        this.fsecondTwoMonths = fsecondTwoMonths;
-        this.thirdTwoMonths = thirdTwoMonths;
-        this.fourthTwoMonths = fourthTwoMonths;
+        this.schoolPerformanceStudentClass = schoolPerformanceStudentClass;
+        this.schoolPerformanceStudent = schoolPerformanceStudent;
+        this.schoolPerformanceFirstTwoMonths = schoolPerformanceFirstTwoMonths;
+        this.schoolPerformanceSecondTwoMonths = schoolPerformanceSecondTwoMonths;
+        this.schoolPerformanceThirdTwoMonths = schoolPerformanceThirdTwoMonths;
+        this.schoolPerformanceFourthTwoMonths = schoolPerformanceFourthTwoMonths;
     }
 
     public double getBimonthlySynthesis() {
@@ -84,52 +85,52 @@ public class SchoolPerformance extends Identifiable{
         this.finalMedia = finalMedia;
     }
 
-    public StudentClass getStudentClass() {
-        return studentClass;
+    public StudentClass getSchoolPerformanceStudentClass() {
+        return schoolPerformanceStudentClass;
     }
 
-    public void setStudentClass(StudentClass studentClass) {
-        this.studentClass = studentClass;
+    public void setSchoolPerformanceStudentClass(StudentClass schoolPerformanceStudentClass) {
+        this.schoolPerformanceStudentClass = schoolPerformanceStudentClass;
     }
 
-    public Student getStudent() {
-        return student;
+    public Student getSchoolPerformanceStudent() {
+        return schoolPerformanceStudent;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setSchoolPerformanceStudent(Student schoolPerformanceStudent) {
+        this.schoolPerformanceStudent = schoolPerformanceStudent;
     }
 
-    public TwoMonths getFirstTwoMonths() {
-        return firstTwoMonths;
+    public TwoMonths getSchoolPerformanceFirstTwoMonths() {
+        return schoolPerformanceFirstTwoMonths;
     }
 
-    public void setFirstTwoMonths(TwoMonths firstTwoMonths) {
-        this.firstTwoMonths = firstTwoMonths;
+    public void setSchoolPerformanceFirstTwoMonths(TwoMonths schoolPerformanceFirstTwoMonths) {
+        this.schoolPerformanceFirstTwoMonths = schoolPerformanceFirstTwoMonths;
     }
 
-    public TwoMonths getFsecondTwoMonths() {
-        return fsecondTwoMonths;
+    public TwoMonths getSchoolPerformanceSecondTwoMonths() {
+        return schoolPerformanceSecondTwoMonths;
     }
 
-    public void setFsecondTwoMonths(TwoMonths fsecondTwoMonths) {
-        this.fsecondTwoMonths = fsecondTwoMonths;
+    public void setSchoolPerformanceSecondTwoMonths(TwoMonths schoolPerformanceSecondTwoMonths) {
+        this.schoolPerformanceSecondTwoMonths = schoolPerformanceSecondTwoMonths;
     }
 
-    public TwoMonths getThirdTwoMonths() {
-        return thirdTwoMonths;
+    public TwoMonths getSchoolPerformanceThirdTwoMonths() {
+        return schoolPerformanceThirdTwoMonths;
     }
 
-    public void setThirdTwoMonths(TwoMonths thirdTwoMonths) {
-        this.thirdTwoMonths = thirdTwoMonths;
+    public void setSchoolPerformanceThirdTwoMonths(TwoMonths schoolPerformanceThirdTwoMonths) {
+        this.schoolPerformanceThirdTwoMonths = schoolPerformanceThirdTwoMonths;
     }
 
-    public TwoMonths getFourthTwoMonths() {
-        return fourthTwoMonths;
+    public TwoMonths getSchoolPerformanceFourthTwoMonths() {
+        return schoolPerformanceFourthTwoMonths;
     }
 
-    public void setFourthTwoMonths(TwoMonths fourthTwoMonths) {
-        this.fourthTwoMonths = fourthTwoMonths;
+    public void setSchoolPerformanceFourthTwoMonths(TwoMonths schoolPerformanceFourthTwoMonths) {
+        this.schoolPerformanceFourthTwoMonths = schoolPerformanceFourthTwoMonths;
     }
     
     
