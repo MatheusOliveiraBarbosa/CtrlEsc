@@ -22,10 +22,10 @@ public class Discipline extends Identifiable {
     @Column (name = "discipline_description")
     private String disciplineDescription;
     
-    @ManyToMany(mappedBy = "listDicipline", targetEntity = StudentClass.class)
+    @ManyToMany(mappedBy = "studentClassListDicipline", targetEntity = StudentClass.class)
     private List<StudentClass> disciplineListStudentClasses;
     
-    @ManyToMany(mappedBy = "listDicipline", targetEntity = Teacher.class)
+    @ManyToMany(mappedBy = "teacherListDisciplines", targetEntity = Teacher.class)
     private List<Teacher> disciplineListTeachers;
 
     
