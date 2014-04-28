@@ -4,10 +4,9 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -32,7 +31,7 @@ public class Responsible extends Identifiable {
     @Column(name = "responsible_profession",length = 50)
     private String responsibleProfession;
 
-    @Column (name = "responsible_address") 
+    @Embedded
     private Address responsibleAddress;
 
     @Column (name = "responsible_family_income")
@@ -46,10 +45,10 @@ public class Responsible extends Identifiable {
     @Column(name = "responsible_degree_kiniship", length = 50)
     private String responsibleDegreeKinship;
 
-    @Column (name = "responsible_business_address")
+    @Embedded
     private Address responsibleBusinessAddress;
     
-    @OneToMany (mappedBy = "student", targetEntity = Student.class, fetch = FetchType.LAZY)    
+    @OneToMany (mappedBy = "studentResponsible", targetEntity = Student.class)
     private List<Student> responsibleListStudenst;
 
     public Responsible() {

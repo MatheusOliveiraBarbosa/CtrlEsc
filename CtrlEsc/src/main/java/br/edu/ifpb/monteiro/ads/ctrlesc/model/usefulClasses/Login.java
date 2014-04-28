@@ -1,10 +1,13 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import javax.persistence.Embeddable;
+
 /**
  *
  * @author E.Wellington
  */
+@Embeddable
 public class Login {
 
     public Login(String user, String password) {

@@ -1,10 +1,13 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import javax.persistence.Embeddable;
+
 /**
  *
  * @author E.Wellington
  */
+@Embeddable
 public class CertificateReservist {
 
     public CertificateReservist(int number, String category, String stateEmitter) {

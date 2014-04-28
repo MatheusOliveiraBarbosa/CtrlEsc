@@ -4,13 +4,11 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
-import javax.persistence.Basic;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
@@ -39,7 +37,7 @@ public abstract class Person extends Identifiable {
     @Temporal (TemporalType.DATE)
     private GregorianCalendar personDateBirth;
     
-    @Column (name = "person_address")
+    @Embedded
     private Address personAddress;
     
     @Column (name = "person_breed", length = 30)
@@ -74,7 +72,7 @@ public abstract class Person extends Identifiable {
     @Column (name = "person_civil_status", length = 15)
     private String personCivilStatus;
     
-    @Column (name = "person_login")
+    @Embedded
     private Login personLogin;
     
     @Column (name="person_name_mother",length = 100)
@@ -84,9 +82,9 @@ public abstract class Person extends Identifiable {
     private String personNameFather;
 
     public Person() {
-            
+    
     }
-
+    
     public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personPhoneThree, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         this.personName = personName;
         this.personCpf = personCpf;
@@ -105,6 +103,8 @@ public abstract class Person extends Identifiable {
         this.personLogin = personLogin;
         this.personNameMother = personNameMother;
         this.personNameFather = personNameFather;
+        
+        
     }
     
     

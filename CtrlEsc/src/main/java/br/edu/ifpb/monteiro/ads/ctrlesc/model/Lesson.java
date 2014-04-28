@@ -1,12 +1,12 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,12 +33,10 @@ public class Lesson extends Identifiable {
     private String lessonObservation;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn (name = "id_studentClass", referencedColumnName = "id")
     private StudentClass lessonStudentClass;
 
-    @Column
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @ManyToMany (mappedBy = "studentListLessons", targetEntity = Student.class)
     private List<Student> lessonListStudents;
 
     public Lesson() {
@@ -92,8 +90,5 @@ public class Lesson extends Identifiable {
     public void setLessonListStudents(List<Student> lessonListStudents) {
         this.lessonListStudents = lessonListStudents;
     }
-    
-    
-    
   
 }

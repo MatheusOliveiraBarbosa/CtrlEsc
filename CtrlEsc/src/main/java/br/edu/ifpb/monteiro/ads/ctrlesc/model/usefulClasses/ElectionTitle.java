@@ -6,10 +6,14 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import javax.persistence.Embeddable;
+
 /**
  *
  * @author E.Wellington
  */
+
+@Embeddable
 public class ElectionTitle {
 
     public ElectionTitle(int number, int section, int zone, String stateEmitter) {

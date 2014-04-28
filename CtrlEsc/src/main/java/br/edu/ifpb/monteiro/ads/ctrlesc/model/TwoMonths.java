@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -48,8 +49,11 @@ public class TwoMonths extends Identifiable {
     @Min(value = 1)
     @Max(value = 4)
     private int twoMonthsNumberTwoMonths;
+    
+    @OneToOne (mappedBy = "schoolPerformanceFirstTwoMonths", targetEntity = SchoolPerformance.class)
+    private SchoolPerformance twoMonthsSchoolPerformance;
 
-    public TwoMonths(double twoMonthsExerciseFirst, double twoMonthsExerciseSecond, double twoMonthsExerciseThird, double twoMonthsRecuperationFirst, double twoMonthsRecuperationSecond, double twoMonthsRecuperationThird, int twoMonthsNumberTwoMonths) {
+    public TwoMonths(double twoMonthsExerciseFirst, double twoMonthsExerciseSecond, double twoMonthsExerciseThird, double twoMonthsRecuperationFirst, double twoMonthsRecuperationSecond, double twoMonthsRecuperationThird, int twoMonthsNumberTwoMonths, SchoolPerformance twoMonthsSchoolPerformance) {
         this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
         this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
         this.twoMonthsExerciseThird = twoMonthsExerciseThird;
@@ -57,6 +61,7 @@ public class TwoMonths extends Identifiable {
         this.twoMonthsRecuperationSecond = twoMonthsRecuperationSecond;
         this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
         this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
+        this.twoMonthsSchoolPerformance = twoMonthsSchoolPerformance;
     }
 
     public TwoMonths() {
@@ -118,4 +123,13 @@ public class TwoMonths extends Identifiable {
         this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
     }
 
+    public SchoolPerformance getTwoMonthsSchoolPerformance() {
+        return twoMonthsSchoolPerformance;
+    }
+
+    public void setTwoMonthsSchoolPerformance(SchoolPerformance twoMonthsSchoolPerformance) {
+        this.twoMonthsSchoolPerformance = twoMonthsSchoolPerformance;
+    }
+    
+    
 }

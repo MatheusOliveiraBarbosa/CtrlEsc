@@ -21,7 +21,7 @@ public class Teacher extends Person {
     private List<Discipline> teacherListDisciplines;
 
     @ManyToMany
-    @JoinTable(name = "TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id_teacher"), inverseJoinColumns = @JoinColumn(name = "id_studentClass"))
     private List<StudentClass> teacherListStudentClasses;
 
     public Teacher(List<Discipline> teacherListDisciplines, List<StudentClass> teacherListStudentClasses) {
