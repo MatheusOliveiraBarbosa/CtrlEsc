@@ -9,8 +9,6 @@ import java.util.GregorianCalendar;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,7 +20,6 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table (name = "TB_person")
 public abstract class Person extends Identifiable {
     
