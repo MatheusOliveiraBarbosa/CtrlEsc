@@ -15,6 +15,9 @@ public class CertificateReservist {
         this.category = category;
         this.stateEmitter = stateEmitter;
     }
+    public CertificateReservist(){
+        
+    }
     
     
     private int number;

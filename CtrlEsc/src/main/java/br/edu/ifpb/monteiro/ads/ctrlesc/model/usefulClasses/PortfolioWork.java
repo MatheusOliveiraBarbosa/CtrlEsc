@@ -14,7 +14,9 @@ public class PortfolioWork {
         this.series = series;
     }
     
-    
+    public PortfolioWork(){
+        
+    }
     
     
     private int number;

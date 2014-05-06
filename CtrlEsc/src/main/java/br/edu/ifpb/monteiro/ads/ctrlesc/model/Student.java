@@ -69,7 +69,7 @@ class Student extends Person{
     @JoinColumn(name = "id_student")
     private Responsible studentResponsible;
     
-    @OneToMany (mappedBy = "schoolPerformance", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)  
+    @OneToMany (mappedBy = "schoolPerformanceStudent", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)  
     private List<SchoolPerformance> studentListSchoolPerformances;
 
     @ManyToMany

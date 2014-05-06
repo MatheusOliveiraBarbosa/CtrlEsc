@@ -23,6 +23,10 @@ public class ElectionTitle {
         this.stateEmitter = stateEmitter;
     }
     
+    public ElectionTitle(){
+        
+    }
+    
     
     
     private int number;

@@ -26,7 +26,7 @@ public class StudentClass extends Identifiable {
     @JoinTable(name = "TB_StudentClasses_Disciplines", joinColumns = @JoinColumn(name = "id_studentClass"), inverseJoinColumns = @JoinColumn(name = "id_discipline"))
     private List<Discipline> studentClassListDicipline;
 
-    @OneToMany(mappedBy = "schoolPerformance", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "schoolPerformanceStudentClass",targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)
     private List<SchoolPerformance> studentClassListSchoolPerformance;
 
     @OneToMany(mappedBy = "lessonStudentClass", targetEntity = Lesson.class)
@@ -35,6 +35,7 @@ public class StudentClass extends Identifiable {
     @ManyToMany(mappedBy = "teacherListStudentClasses", targetEntity = Teacher.class)
     private List<Teacher> studentClassListTeachers;
 
+    
     public StudentClass() {
         studentClassListDicipline = new ArrayList<Discipline>();
         studentClassListLessons = new ArrayList<Lesson>();

@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -43,20 +42,16 @@ public class SchoolPerformance extends Identifiable{
     @JoinColumn(name = "id")
     private Student schoolPerformanceStudent;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn (name = "firstTwoMonths_fk")
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     private TwoMonths schoolPerformanceFirstTwoMonths;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn (name = "secondTwoMonths_fk")
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     private TwoMonths schoolPerformanceSecondTwoMonths;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn (name = "thirdTwoMonths_fk")
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     private TwoMonths schoolPerformanceThirdTwoMonths;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn (name = "fourthTwoMonths_fk")
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     private TwoMonths schoolPerformanceFourthTwoMonths;
 
     public SchoolPerformance() {

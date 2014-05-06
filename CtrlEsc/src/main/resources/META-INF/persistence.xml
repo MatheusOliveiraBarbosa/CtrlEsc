@@ -3,9 +3,7 @@
     <persistence-unit name="CtrlEsc" transaction-type="JTA">      
         <jta-data-source>jdbc/ctrl_esc_database</jta-data-source>
         <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Discipline</class>
-        <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable</class>
         <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Lesson</class>
-        <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Person</class>
         <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible</class>
         <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.SchoolPerformance</class>
         <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Student</class>

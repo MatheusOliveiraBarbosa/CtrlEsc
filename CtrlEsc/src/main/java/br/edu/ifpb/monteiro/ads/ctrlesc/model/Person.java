@@ -19,8 +19,6 @@ import javax.persistence.TemporalType;
  * @author E.Wellington
  */
 
-@Entity
-@Table (name = "TB_person")
 public abstract class Person extends Identifiable {
     
     

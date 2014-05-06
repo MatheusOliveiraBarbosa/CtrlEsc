@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,10 +9,9 @@ import javax.persistence.Id;
  *
  * @author E.Wellington
  */
-@Entity
 public class Identifiable implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     public Long getId() {

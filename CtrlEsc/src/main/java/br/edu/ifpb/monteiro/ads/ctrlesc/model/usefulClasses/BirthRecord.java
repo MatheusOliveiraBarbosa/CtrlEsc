@@ -20,6 +20,9 @@ public class BirthRecord {
         this.livro = livro;
         this.registry = registry;
     }
+    public BirthRecord(){
+        
+    }
     
     
     

@@ -18,6 +18,10 @@ public class Address {
         this.state = state;
         this.country = country;
     }
+    
+    public Address(){
+        
+    }
 
     private String street;
 
