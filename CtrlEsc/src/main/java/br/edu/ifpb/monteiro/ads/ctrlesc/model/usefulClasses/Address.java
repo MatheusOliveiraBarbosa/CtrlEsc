@@ -3,7 +3,6 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 import javax.persistence.Embeddable;
 
 /**
- *
  * @author E.Wellington
  */
 @Embeddable

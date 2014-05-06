@@ -7,6 +7,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -17,7 +20,11 @@ import javax.validation.constraints.Min;
  */
 @Entity
 @Table(name = "TB_responsible")
-public class Responsible extends Identifiable {
+public class Responsible implements Identifiable<Responsible> {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "responsible_name",length = 100, nullable = false)
     private String responsibleName;
@@ -148,8 +155,14 @@ public class Responsible extends Identifiable {
     public void setResponsibleListStudenst(List<Student> responsibleListStudenst) {
         this.responsibleListStudenst = responsibleListStudenst;
     }
+     @Override
+    public Long getId(){
+        return id;
+    }
     
-    
-      
+    @Override
+    public void setId(Long id){
+        this.id = id;
+    }
     
 }

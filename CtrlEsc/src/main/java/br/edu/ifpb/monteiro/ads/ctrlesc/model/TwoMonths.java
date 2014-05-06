@@ -2,6 +2,9 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,7 +15,11 @@ import javax.validation.constraints.Min;
  */
 @Entity
 @Table(name = "TB_twoMonths")
-public class TwoMonths extends Identifiable {
+public class TwoMonths implements Identifiable<TwoMonths> {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     
     @Column(name = "twoMonths_exercise_first")
     @Min(value = 0)
@@ -119,5 +126,15 @@ public class TwoMonths extends Identifiable {
 
     public void setTwoMonthsNumberTwoMonths(int twoMonthsNumberTwoMonths) {
         this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
+    }
+
+     @Override
+    public Long getId(){
+        return id;
+    }
+    
+    @Override
+    public void setId(Long id){
+        this.id = id;
     }
 }

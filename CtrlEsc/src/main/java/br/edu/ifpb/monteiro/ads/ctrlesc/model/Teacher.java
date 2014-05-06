@@ -17,11 +17,11 @@ import javax.persistence.Table;
 public class Teacher extends Person {
 
     @ManyToMany
-    @JoinTable(name = "TB_teachersDisciplines", joinColumns = @JoinColumn(name = "id_teacher"), inverseJoinColumns = @JoinColumn(name = "id_discipline"))
+    @JoinTable(name = "TB_teachers_Disciplines", joinColumns = @JoinColumn(name = "id_teacher"), inverseJoinColumns = @JoinColumn(name = "id_discipline"))
     private List<Discipline> teacherListDisciplines;
 
     @ManyToMany
-    @JoinTable(name = "TB_teachersStudentClasses", joinColumns = @JoinColumn(name = "id_teacher"), inverseJoinColumns = @JoinColumn(name = "id_studentClass"))
+    @JoinTable(name = "TB_teachers_StudentClasses", joinColumns = @JoinColumn(name = "id_teacher"), inverseJoinColumns = @JoinColumn(name = "id_studentClass"))
     private List<StudentClass> teacherListStudentClasses;
 
     public Teacher(List<Discipline> teacherListDisciplines, List<StudentClass> teacherListStudentClasses) {

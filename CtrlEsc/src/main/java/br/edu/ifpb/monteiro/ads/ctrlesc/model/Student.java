@@ -23,7 +23,7 @@ import javax.validation.constraints.Min;
  */
 @Entity
 @Table (name = "TB_student")
-class Student extends Person{
+public class Student extends Person{
     
     @Column (name = "student_year")
     @Min( value = 0 )
@@ -225,8 +225,5 @@ class Student extends Person{
     public void setStudentListLessons(List<Lesson> studentListLessons) {
         this.studentListLessons = studentListLessons;
     }
-    
-    
-    
        
 }

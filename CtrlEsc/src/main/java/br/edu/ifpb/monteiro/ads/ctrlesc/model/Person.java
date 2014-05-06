@@ -9,8 +9,12 @@ import java.util.GregorianCalendar;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,9 +22,13 @@ import javax.persistence.TemporalType;
  *
  * @author E.Wellington
  */
-
-public abstract class Person extends Identifiable {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Person implements Identifiable<Person> {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     
     @Column (name = "person_name", length = 100, nullable = false)
     private String personName;
@@ -240,7 +248,14 @@ public abstract class Person extends Identifiable {
         this.personNameFather = personNameFather;
     }
     
+    @Override
+    public Long getId(){
+        return id;
+    }
     
-    
+    @Override
+    public void setId(Long id){
+        this.id = id;
+    }
     
 }

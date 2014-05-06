@@ -5,6 +5,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -19,7 +22,11 @@ import javax.validation.constraints.Min;
  */
 @Entity
 @Table(name = "TB_lesson")
-public class Lesson extends Identifiable {
+public class Lesson implements Identifiable<Lesson> {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     
     @Column (name = "lesson_date", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -89,6 +96,16 @@ public class Lesson extends Identifiable {
 
     public void setLessonListStudents(List<Student> lessonListStudents) {
         this.lessonListStudents = lessonListStudents;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
   
 }

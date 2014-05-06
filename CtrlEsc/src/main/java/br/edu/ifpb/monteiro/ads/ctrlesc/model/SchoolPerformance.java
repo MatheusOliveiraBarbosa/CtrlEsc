@@ -3,6 +3,9 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -17,7 +20,11 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Table (name = "TB_schoolPerformance")
-public class SchoolPerformance extends Identifiable{
+public class SchoolPerformance implements Identifiable<SchoolPerformance>{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     
     @Column (name = "schoolPerformance_bimonthly_synthesis")
     @Min(value =0)
@@ -35,11 +42,11 @@ public class SchoolPerformance extends Identifiable{
     private double finalMedia;
     
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "schoolPerfomanceStudentClass")
     private StudentClass schoolPerformanceStudentClass;
     
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "schoolPerformanceStudent")
     private Student schoolPerformanceStudent;
     
     @OneToOne(cascade = CascadeType.ALL, optional = true)
@@ -139,6 +146,16 @@ public class SchoolPerformance extends Identifiable{
 
     public void setSchoolPerformanceFourthTwoMonths(TwoMonths schoolPerformanceFourthTwoMonths) {
         this.schoolPerformanceFourthTwoMonths = schoolPerformanceFourthTwoMonths;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id= id;
     }
     
     

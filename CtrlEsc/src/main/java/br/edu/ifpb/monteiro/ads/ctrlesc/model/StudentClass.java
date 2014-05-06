@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,7 +20,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_studentClass")
-public class StudentClass extends Identifiable {
+public class StudentClass implements Identifiable<StudentClass> {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "studentClass_name", length = 50, nullable = false)
     private String studentClassName;
@@ -81,6 +88,16 @@ public class StudentClass extends Identifiable {
 
     public void setStudentClassListTeachers(List<Teacher> studentClassListTeachers) {
         this.studentClassListTeachers = studentClassListTeachers;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id=id;
     }
     
     
