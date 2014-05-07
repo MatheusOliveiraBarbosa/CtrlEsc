@@ -6,7 +6,6 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.util;
 
-import org.apache.log4j.Logger;
 
 /**
  *
