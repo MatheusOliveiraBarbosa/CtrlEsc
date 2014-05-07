@@ -6,16 +6,17 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.util;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author Matheus
  */
 public class Main {
-    
     public static void main(String[] args) {
-        //Testar o logger 
-        
+        Logger log = LogManager.getRootLogger();
+        log.info("Iniciando a aplicação");
     }
     
 }
