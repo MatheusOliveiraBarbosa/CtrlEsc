@@ -6,10 +6,21 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.beans;
 
+
 /**
  *
  * @author Matheus
  */
-public class StudentController {
+public class UserController {
+
+    /**
+     * Creates a new instance of UserController
+     */
+    public UserController() {
+    }
+    
+    public void getMsg(){
+        System.out.println("aqui");
+    }
     
 }
