@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 
-package br.edu.ifpb.monteiro.ads.ctrlesc.dao;
+package br.edu.ifpb.monteiro.ads.ctrlesc.util;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.util.JPAUtil;
+import org.apache.log4j.Logger;
 
 /**
  *
- * @author E.Wellington
+ * @author Matheus
  */
-public class DaoIf {
-    
+public class Main {
     
     public static void main(String[] args) {
-        JPAUtil.getEntityManager();
+        //Testar o logger 
         
     }
+    
 }
