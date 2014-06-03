@@ -1,23 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  
-      xmlns:h="http://java.sun.com/jsf/html"  
-      xmlns:f="http://java.sun.com/jsf/core" 
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>  
-        <title>Controle Escolar</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Bem Vindo ao Ctrl+Esc</title>
+    </h:head>
+    
+    <h:body>
+        <p:dialog header="Escolha o Módulo que Deseja Acessar" visible="true" closable="false" draggable="false" 
+                  resizable="false" width="550">
+            <center>
+                <h:outputText value=""/>
+            </center>
+            <h:form>
+                <h:panelGrid columns="1" cellpadding="5">
+                    <h:commandLink value="Professor" action="LoginTeacher.xhtml" immediate="true" />
+                    <h:commandLink value="Aluno" action="LoginStudent.xhtml" immediate="true" />
+                    <h:commandLink value="Pais de Aluno" action="LoginResponsable.xhtml" immediate="true" />
+                    <h:commandLink value="Téc. Administração" action="LoginAdministrator.xhtml" immediate="true" />
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
 
-    </h:head>  
-
-    <h:body> 
-        Seja Bem-Vindo ao novo Sistema Revolucionário de Diários Escolares!
-        <h:form>
-
-            <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
-                          update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
-
-            <p:growl id="messages" showDetail="true"/>
-
-        </h:form>
-    </h:body>  
-</html>  
