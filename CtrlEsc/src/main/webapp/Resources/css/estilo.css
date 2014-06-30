@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+#topo{
+    width: auto;
+    height: 118px;
+    margin: 0;
+    padding: 0;
+    background-image: url(Icones/headerCtrlEsc.png);
+}
+
+body {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    font-weight: normal
+}
+header {
+    padding: 5px;
+    margin-bottom: 20px;
+    height: 30px;
+    background-color: #545454;
+    color: #fff;
+    box-shadow: 0px 2px 2px #ccc
+}
+
+#conteudo {
+    width: 1260px;
+    min-height: 642px;
+    margin: 3px;
+    padding: 2px;
+    font: normal 13px Arial;
+    background-image: url(Icones/background.png);
+    margin: 0 auto;
+    clear: both;
+}
+footer {
+    border-top: 1px solid #ccc;
+    padding: 5px 8px;
+    margin-top: 20px;
+    margin-bottom: 10px
+}
