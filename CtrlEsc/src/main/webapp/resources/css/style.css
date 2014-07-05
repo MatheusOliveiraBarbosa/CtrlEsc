@@ -1,18 +1,28 @@
 @charset "utf-8";
 
-#topo{
+#login{
+   font-size: 14px;
+   font-weight: bold;
+}
+
+#Topo{
     width: auto;
-    height: 118px;
+    height: 130px;
     margin: 0;
     padding: 0;
-    background-image: url(Icones/headerCtrlEsc.png);
+    background-image: url(icones/headerCtrlEsc.png);
+}
+
+#Menu {
+   font-size: 14px;
+   font-weight: bold;
 }
 
 body {
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-    font-weight: normal
+    font-weight: bold;
 }
 header {
     padding: 5px;
@@ -23,13 +33,13 @@ header {
     box-shadow: 0px 2px 2px #ccc
 }
 
-#conteudo {
+#Conteudo {
     width: 1260px;
     min-height: 642px;
     margin: 3px;
     padding: 2px;
     font: normal 13px Arial;
-    background-image: url(Icones/background.png);
+    background-image: url(icones/background.png);
     margin: 0 auto;
     clear: both;
 }

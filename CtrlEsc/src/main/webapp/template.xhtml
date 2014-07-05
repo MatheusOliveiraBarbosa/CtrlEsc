@@ -5,20 +5,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
+     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <!--<h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>-->
         <title>Ctrl Esc - Controle Escolar</title>
-        <link href="./../Resources/css/estilo.css" rel="stylesheet" type="estilo/css" />
-        <link href="./../Icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="./../resources/css/style.css" rel="stylesheet" type="style/css" />
+        <link href="./../icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </h:head>
 
     <h:body>
         
         <div id="Topo">
             <head>
-                <img src="./../Icones/headerCtrlEsc.png" />
+                <img src="./../icones/headerCtrlEsc.png" />
             </head>
         </div>
 
@@ -26,32 +24,31 @@
             <h:form>
                 <p:menubar styleClass="labelMenu">
                     
-                    <p:submenu label="Cadastros">
-                        <p:menuitem value="Responsável" url="./../Restrict_Admin/CadResponsible.xhtml"/>
-                        <p:menuitem value="Aluno" url="./../Restrict_Admin/CadStudent.xhtml"/>
-                        <p:menuitem value="Professor" url="./../Restrict_Admin/CadTeacher.xhtml"/> 
+                    <p:submenu label="Cadastros" icon="ui-icon ui-icon-person">
+                        <p:menuitem value="Responsável" url="../pages/cadResponsible.xhtml"/>
+                        <p:menuitem value="Aluno" url="../pages/cadStudent.xhtml"/>
+                        <p:menuitem value="Professor" url="../pages/cadTeacher.xhtml"/> 
                     </p:submenu>
                     
-                    <p:submenu label="Consultas">
+                    <p:submenu label="Consultas" icon="ui-icon ui-icon-search">
                         <p:menuitem value="Responsáveis" />
                         <p:menuitem value="Alunos" />
                         <p:menuitem value="Professores" />
                     </p:submenu>
                     
-                    <p:submenu label="Sistema">
-                        <p:menuitem value="Sair" />
-                    </p:submenu>
+                    <p:menuitem value="Sair" url="./../index.xhtml" update="@form" icon="ui-icon ui-icon-power" />
+                    
                 </p:menubar>
             </h:form>
         </div>
         
-        <div id="conteudo">
+        <div id="Conteudo">
             <ui:insert name="corpo"></ui:insert>
         </div>
         
-        <div id="Rodapé">
+        <div id="footer">
             <footer>
-                Sistema de Controle Escolar - Ctrl Esc
+                Sistema de Controle Escolar - Ctrl Esc      
             </footer>
         </div>
 

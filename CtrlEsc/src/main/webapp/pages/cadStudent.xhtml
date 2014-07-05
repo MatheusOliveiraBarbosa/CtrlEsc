@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../template.xhtml">
+               
+
+    <ui:define name="corpo">
+        <p:fieldset legend="Cadastrar Aluno">
+            <br/>
+            <p:tabView id="tabAluno">
+                <p:tab title="Informações Pessoais">
+                    <h:form prependId="false" id="formInfoPessoais">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
+                            <p:outputLabel/>
+                            <h:inputHidden id="idStudent"/>
+                            
+                            <p:outputLabel value="Nome: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Foto:"/>
+                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000" 
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                            
+                            <p:outputLabel value="Sexo: " />
+                            <p:selectOneMenu id="sex" label="Sexo: " effect="slide" editable="true" required="true">
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="M" />
+                                <f:selectItem itemLabel="F" />
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="Nível Escolar: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Data de Nascimento: " />
+                            <p:inputMask mask="99/99/9999" />
+                            
+                            <p:outputLabel value="Matrícula: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Ano: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Periodo: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Nome Pai: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Nome Mãe: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Número de irmãos na escola: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Pension Organ: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Data de Entrada: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="usuário: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Senha: " />
+                            <p:inputText value="" />
+
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+                
+                <p:tab title="Documentos">
+                    <h:form prependId="false" id="formDocumentos">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDoc">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="CPF: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Estado Civil: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Nacionalidade: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Número de reservista: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Categoria: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Orgão Emissor: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Título Eleitoral:  " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Seção: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Zona: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Orgão Emissor: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Registro de Nascimento: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Folha: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Livro: " />
+                            <p:inputText value="" />
+
+                            <p:outputLabel value="Profissão: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Nº Carteira de Trabalho: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Série: " />
+                            <p:inputText value="" />
+                            
+                        </h:panelGrid>
+                    </h:form>    
+                </p:tab>
+                
+                <p:tab title="Endereço">
+                    <h:form prependId="false" id="formEndereco">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Número: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Distrito: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="CEP: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Cidade: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Estado: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="País: " />
+                            <p:inputText value="" />
+                        </h:panelGrid>    
+                    </h:form>
+                </p:tab>
+                
+                <p:tab title="Contato">
+                    <h:form prependId="false" id="formContato">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Telefone 1: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Telefone 2: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Telefone 3: " />
+                            <p:inputText value="" />
+                            
+                            <p:commandButton value="Cadastrar" action="#{daoImpl.save}" update="@form" 
+                                             icon="ui-icon ui-icon-disk" />
+
+                            <p:commandButton value="Cancelar" update="@form"
+                                             icon="ui-icon ui-icon-cancel" />
+                            
+                        </h:panelGrid>
+                    </h:form>
+                    
+                </p:tab>
+            </p:tabView>
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>

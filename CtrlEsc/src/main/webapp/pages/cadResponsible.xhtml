@@ -4,7 +4,7 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                template="./../Resources/TemplateAdmin.xhtml">
+                template="./../template.xhtml">
 
     <ui:define name="corpo">
         <p:fieldset legend="Cadastrar Responsável">
@@ -13,11 +13,14 @@
                 <p:tab title="Responsável">
                     <h:form prependId="false" id="formResponsavel">             
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
+                            <p:outputLabel/>
+                            <h:inputHidden id="idResponsible"/>
+                            
                             <p:outputLabel value="Nome: *" />
                             <p:inputText size="35" value="" />
-
-                            <p:outputLabel value="Data de Nascimento: "/>
-                            <p:inputMask id="date" value="" mask="99/99/9999"/>
+                            
+                            <p:outputLabel value="Idade " />
+                            <p:inputText value="" />
 
                             <p:outputLabel value="Profissão: "/>
                             <p:inputText value=""/>
@@ -34,28 +37,44 @@
                             <p:outputLabel value="Telefone: " />
                             <p:inputMask id="phone" value="" mask="(99)9999-9999"/>
 
-                            <p:outputLabel value="Rua: " />
-                            <p:inputText value=""/>
-
-                            <p:outputLabel value="Número: " />
-                            <p:inputText value=""/>
-
-                            <p:outputLabel value="Cidade: " />
-                            <p:inputText value=""/>
-
-                            <p:outputLabel value="Distrito " />
-                            <p:inputText value=""/>
-
-                            <p:outputLabel value="Estado: " />
-                            <p:inputText value=""/>
-
-                            <p:outputLabel value="País: " />
-                            <p:inputText value=""/>
-
-                            <p:commandButton value="Salvar" action="#{daoImpl.save}" update="@form"/>
                         </h:panelGrid>
                     </h:form>
-                </p:tab>    
+                </p:tab>  
+                
+                <p:tab title="Endereço">
+                    <h:form prependId="false" id="formEndereco">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Número: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Distrito: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="CEP: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Cidade: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="Estado: " />
+                            <p:inputText value="" />
+                            
+                            <p:outputLabel value="País: " />
+                            <p:inputText value="" />
+                            
+                            <p:commandButton value="Cadastrar" action="#{daoImpl.save}" update="@form" 
+                                icon="ui-icon ui-icon-disk" />
+
+                            <p:commandButton value="Cancelar" update="@form"
+                                icon="ui-icon ui-icon-cancel" />
+                        </h:panelGrid> 
+                    </h:form>
+                </p:tab>
             </p:tabView>
         </p:fieldset>
     </ui:define>

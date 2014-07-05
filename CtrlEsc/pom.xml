@@ -54,6 +54,13 @@
             <artifactId>primefaces</artifactId>  
             <version>5.0</version>  
         </dependency>
+        
+        <!--######## PrimeFaces Themes #########-->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.8</version>
+        </dependency> 
             
             
     </dependencies>
