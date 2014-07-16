@@ -8,8 +8,8 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Login</title>
-        <link href="./../resources/css/style.css" rel="stylesheet" type="style/css" />
-        <link href="../icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <h:outputStylesheet library="css" name="style.css"/>
+        <link href="././icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </h:head>
     
     <h:body>
@@ -21,11 +21,11 @@
                     </center>
                     <h:form>
                         <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputLabel for="username" value="Usuario: *" /> 
-                            <h:inputText id="username" required="true"/>
-                            <h:outputLabel for="password" value="Senha: * " />
-                            <h:inputSecret id="password" required="true"/>
-                            <h:commandButton value="Entrar"/>
+                            <p:outputLabel for="username" value="Usuario: " /> 
+                            <p:inputText id="username" required="true"/>
+                            <p:outputLabel for="password" value="Senha: " />
+                            <p:password id="password" required="true"/>
+                            <p:button value="Entrar" outcome="home" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>

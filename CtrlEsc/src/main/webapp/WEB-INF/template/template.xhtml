@@ -8,15 +8,15 @@
      <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Ctrl Esc - Controle Escolar</title>
-        <link href="./../resources/css/style.css" rel="stylesheet" type="style/css" />
-        <link href="./../icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <h:outputStylesheet library="css" name="style.css"/>
+        <link href="././icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </h:head>
 
     <h:body>
         
         <div id="Topo">
             <head>
-                <img src="./../icones/headerCtrlEsc.png" />
+                 <p:graphicImage library="./restrict/icones" name="headerCtrlEsc.png"/>
             </head>
         </div>
 
@@ -25,9 +25,9 @@
                 <p:menubar styleClass="labelMenu">
                     
                     <p:submenu label="Cadastros" icon="ui-icon ui-icon-person">
-                        <p:menuitem value="Responsável" url="../pages/cadResponsible.xhtml"/>
-                        <p:menuitem value="Aluno" url="../pages/cadStudent.xhtml"/>
-                        <p:menuitem value="Professor" url="../pages/cadTeacher.xhtml"/> 
+                        <p:menuitem value="Responsável" url="/pages/cadResponsible.xhtml" />
+                        <p:menuitem value="Aluno" url="/pages/cadStudent.xhtml" />
+                        <p:menuitem value="Professor" url="/pages/cadTeacher.xhtml" /> 
                     </p:submenu>
                     
                     <p:submenu label="Consultas" icon="ui-icon ui-icon-search">
@@ -36,7 +36,7 @@
                         <p:menuitem value="Professores" />
                     </p:submenu>
                     
-                    <p:menuitem value="Sair" url="./../index.xhtml" update="@form" icon="ui-icon ui-icon-power" />
+                    <p:menuitem value="Sair" url="../index.xhtml" update="@form" icon="ui-icon ui-icon-power" />
                     
                 </p:menubar>
             </h:form>
