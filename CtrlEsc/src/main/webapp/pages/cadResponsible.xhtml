@@ -17,25 +17,25 @@
                             <h:inputHidden id="idResponsible"/>
                             
                             <p:outputLabel value="Nome: *" />
-                            <p:inputText size="35" value="" />
+                            <p:inputText size="35" placeholder="Nome do responsável" value="" />
                             
                             <p:outputLabel value="Idade " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Idade" value="" />
 
                             <p:outputLabel value="Profissão: "/>
-                            <p:inputText value=""/>
+                            <p:inputText placeholder="Profissão" value=""/>
 
-                            <p:outputLabel value="Grau de Parentesco: "/>
-                            <p:inputText value=""/>
+                            <p:outputLabel value="Parentesco responsável: "/>
+                            <p:inputText placeholder="Parentesco responsável" value=""/>
 
                             <p:outputLabel value="Nível Escolar: "/>
-                            <p:inputText value=""/>
+                            <p:inputText placeholder="Nível escolar responsável" value=""/>
 
                             <p:outputLabel value="Renda Familiar: "/>
-                            <p:inputText value=""/>
+                            <p:inputText placeholder="Renda familiar aluno" styleClass="money" value=""/>
 
                             <p:outputLabel value="Telefone: " />
-                            <p:inputMask id="phone" value="" mask="(99)9999-9999"/>
+                            <p:inputText placeholder="Telefone contato" styleClass="phone" value="" />
 
                         </h:panelGrid>
                     </h:form>
@@ -47,25 +47,25 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel value="Rua: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome da rua" value="" />
                             
                             <p:outputLabel value="Número: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Número da residência" value="" />
                             
                             <p:outputLabel value="Distrito: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Distrito pertencente" value="" />
                             
                             <p:outputLabel value="CEP: " />
-                            <p:inputText value="" />
+                            <p:inputMask mask="99999-999" value="" />
                             
                             <p:outputLabel value="Cidade: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Cidade onde mora" value="" />
                             
                             <p:outputLabel value="Estado: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Unidade da federação" value="" />
                             
                             <p:outputLabel value="País: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="País" value="" />
                             
                             <p:commandButton value="Cadastrar" action="#{daoImpl.save}" update="@form" 
                                 icon="ui-icon ui-icon-disk" />

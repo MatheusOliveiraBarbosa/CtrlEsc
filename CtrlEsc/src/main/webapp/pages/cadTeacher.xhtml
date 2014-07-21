@@ -4,18 +4,115 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="/WEB-INF/template/template.xhtml">
 
     <ui:define name="corpo">
         <p:fieldset legend="Cadastro de Professores">
         <br/>
-        <p:tabView id="tabAluno">
-            <p:tab title="Professor">
+        <p:tabView id="tabProfessor">
+            <p:tab title="Informações Pessoais">
                 <h:form prependId="false" id="formProfessor">
                     <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
-                        
+                         <p:outputLabel/>
+                            <h:inputHidden id="idTeacher"/>
+                            
+                            <p:outputLabel value="Nome: *" />
+                            <p:inputText size="35" placeholder="Nome do professor" value="" />
+                            
+                            <p:outputLabel value="Foto:"/>
+                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000"
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                            
+                            <p:outputLabel value="Idade " />
+                            <p:inputText placeholder="Idade" value="" />
+
+                            <p:outputLabel value="Data de Nascimento: " />
+                            <p:inputMask mask="99/99/9999" />
+                            
+                            <p:outputLabel value="Cor: " />
+                            <p:inputText placeholder="Cor" value="" />
+                            
+                            <p:outputLabel value="Sexo: " />
+                            <p:selectOneMenu id="sex" label="Sexo: " effect="slide" editable="true" required="true">
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="M" />
+                                <f:selectItem itemLabel="F" />
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="Data de Entrada: " />
+                            <p:inputMask  mask="99/99/9999" value="" />
+
                     </h:panelGrid>
                 </h:form>
+            </p:tab>
+            
+            <p:tab title="Documentos">
+                    <h:form prependId="false" id="formDocumentos">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="CPF: " />
+                            <p:inputMask  mask="999.999.999-99" value="" />
+                            
+                            <p:outputLabel value="RG: " />
+                            <p:inputMask  mask="9.999.999" value="" />
+                            
+                            <p:outputLabel value="Registro de Nascimento: " />
+                            <p:inputText placeholder="Nº registro de nascimento" value="" />
+                            
+                             <p:outputLabel value="Nacionalidade: " />
+                            <p:inputText placeholder="Nacionalidade do professor" value="" />
+                            
+                        </h:panelGrid>
+                    </h:form>
+            </p:tab>
+            
+            <p:tab title="Endereço">
+                    <h:form prependId="false" id="formEndereco">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText placeholder="Nome da rua" value="" />
+                            
+                            <p:outputLabel value="Número: " />
+                            <p:inputText placeholder="Número da residência" value="" />
+                            
+                            <p:outputLabel value="Distrito: " />
+                            <p:inputText placeholder="Distrito pertencente" value="" />
+                            
+                            <p:outputLabel value="CEP: " />
+                            <p:inputMask mask="99999-999" value="" />
+                            
+                            <p:outputLabel value="Cidade: " />
+                            <p:inputText placeholder="Cidade onde mora" value="" />
+                            
+                            <p:outputLabel value="Estado: " />
+                            <p:inputText placeholder="Unidade da federação" value="" />
+                            
+                            <p:outputLabel value="País: " />
+                            <p:inputText placeholder="País" value="" />
+                            
+                        </h:panelGrid>
+                    </h:form>
+            </p:tab>
+            
+            <p:tab title="Contato">
+                    <h:form prependId="false" id="formContato">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Telefone 1: " />
+                            <p:inputText placeholder="Telefone 1 contato" styleClass="phone" value="" />
+                            
+                            <p:outputLabel value="Telefone 2: " />
+                            <p:inputText placeholder="Telefone 2 contato" styleClass="phone" value="" />
+                            
+                            
+                            
+                        </h:panelGrid>
+                    </h:form>
             </p:tab>
         </p:tabView>
         </p:fieldset>

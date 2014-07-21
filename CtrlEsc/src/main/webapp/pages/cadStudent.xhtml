@@ -19,10 +19,10 @@
                             <h:inputHidden id="idStudent"/>
                             
                             <p:outputLabel value="Nome: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome do Aluno" value="" />
                             
                             <p:outputLabel value="Foto:"/>
-                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000" 
+                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000"
                                 allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                             
                             <p:outputLabel value="Sexo: " />
@@ -32,41 +32,44 @@
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
                             
+                            <p:outputLabel value="Profissão: " />
+                            <p:inputText placeholder="Profissão do estudante" value="" />
+                            
                             <p:outputLabel value="Nível Escolar: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nível escolar do aluno" value="" />
                             
                             <p:outputLabel value="Data de Nascimento: " />
                             <p:inputMask mask="99/99/9999" />
                             
                             <p:outputLabel value="Matrícula: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº de matrícula" value="" />
                             
                             <p:outputLabel value="Ano: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Ano letivo" value="" />
                             
                             <p:outputLabel value="Periodo: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Periodo letivo" value="" />
                             
                             <p:outputLabel value="Nome Pai: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome do pai" value="" />
                             
                             <p:outputLabel value="Nome Mãe: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome da mãe" value="" />
                             
                             <p:outputLabel value="Número de irmãos na escola: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº irmãos estudando" value="" />
                             
-                            <p:outputLabel value="Pension Organ: " />
-                            <p:inputText value="" />
+                            <p:outputLabel value="Orgão Previdênciario: " />
+                            <p:inputText placeholder="Orgão previdênciario" value="" />
                             
                             <p:outputLabel value="Data de Entrada: " />
-                            <p:inputText value="" />
+                            <p:inputMask  mask="99/99/9999" value="" />
                             
                             <p:outputLabel value="usuário: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome de usuário" value="" />
                             
                             <p:outputLabel value="Senha: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Senha de usuário" value="" />
 
                         </h:panelGrid>
                     </h:form>
@@ -78,52 +81,52 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel value="CPF: " />
-                            <p:inputText value="" />
+                            <p:inputMask  mask="999.999.999-99" value="" />
+                            
+                            <p:outputLabel value="RG: " />
+                            <p:inputMask  mask="9.999.999" value="" />
                             
                             <p:outputLabel value="Estado Civil: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Estado civil estudante" value="" />
                             
                             <p:outputLabel value="Nacionalidade: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nacionalidade do estudante" value="" />
                             
                             <p:outputLabel value="Número de reservista: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº reservista" value="" />
                             
                             <p:outputLabel value="Categoria: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Categoria" value="" />
                             
                             <p:outputLabel value="Orgão Emissor: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Orgão emissor" value="" />
                             
                             <p:outputLabel value="Título Eleitoral:  " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº título eleitoral" value="" />
                             
                             <p:outputLabel value="Seção: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº da seção" value="" />
                             
                             <p:outputLabel value="Zona: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº zona eleitoral" value="" />
                             
                             <p:outputLabel value="Orgão Emissor: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Orgão emissor" value="" />
                             
                             <p:outputLabel value="Registro de Nascimento: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº registro de nascimento" value="" />
                             
                             <p:outputLabel value="Folha: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Folha" value="" />
                             
                             <p:outputLabel value="Livro: " />
-                            <p:inputText value="" />
-
-                            <p:outputLabel value="Profissão: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Livro" value="" />
                             
                             <p:outputLabel value="Nº Carteira de Trabalho: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº carteira de trabalho" value="" />
                             
                             <p:outputLabel value="Série: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Série" value="" />
                             
                         </h:panelGrid>
                     </h:form>    
@@ -135,25 +138,25 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel value="Rua: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome da rua" value="" />
                             
                             <p:outputLabel value="Número: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nº da rua" value="" />
                             
                             <p:outputLabel value="Distrito: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Distrito" value="" />
                             
                             <p:outputLabel value="CEP: " />
-                            <p:inputText value="" />
+                            <p:inputMask mask="99999-999" value="" />
                             
                             <p:outputLabel value="Cidade: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Nome da cidade" value="" />
                             
                             <p:outputLabel value="Estado: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Unidade da federação" value="" />
                             
                             <p:outputLabel value="País: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="País" value="" />
                         </h:panelGrid>    
                     </h:form>
                 </p:tab>
@@ -164,13 +167,13 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel value="Telefone 1: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Telefone 1 contato" styleClass="phone" value="" />
                             
                             <p:outputLabel value="Telefone 2: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Telefone 2 contato" styleClass="phone" value="" />
                             
                             <p:outputLabel value="Telefone 3: " />
-                            <p:inputText value="" />
+                            <p:inputText placeholder="Telefone 3 contato" styleClass="phone" value="" />
                             
                             <p:commandButton value="Cadastrar" action="#{daoImpl.save}" update="@form" 
                                              icon="ui-icon ui-icon-disk" />

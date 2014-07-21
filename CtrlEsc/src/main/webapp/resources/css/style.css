@@ -5,17 +5,17 @@
    font-weight: bold;
 }
 
-#Topo{
+#top{
+    position: relative;
     width: auto;
-    height: 130px;
     margin: 0;
     padding: 0;
-
 }
 
-#Menu {
+#menu {
    font-size: 14px;
    font-weight: bold;
+   
 }
 
 body {
@@ -33,19 +33,31 @@ header {
     box-shadow: 0px 2px 2px #ccc
 }
 
-#Conteudo {
+#content {
     width: 1260px;
     min-height: 642px;
     margin: 3px;
     padding: 2px;
+    padding-bottom: 30px;
     font: normal 13px Arial;
     background-image: url(icones/background.png);
     margin: 0 auto;
     clear: both;
 }
+
 footer {
     border-top: 1px solid #ccc;
+    position:fixed; 
     padding: 5px 8px;
-    margin-top: 20px;
-    margin-bottom: 10px
+    width: 100%;
+    bottom:0;
+    margin: 0px 0px 0px 0px;
+    background-color: #0066FF; 
+}
+
+fieldset {
+    margin-top:6px;
+    border:1px dashed #CCC;
+    padding:0;
+    width:1190px;
 }
