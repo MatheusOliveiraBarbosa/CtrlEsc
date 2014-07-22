@@ -4,6 +4,7 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="/WEB-INF/template/template.xhtml">
 
     <ui:define name="corpo">
@@ -19,27 +20,66 @@
                             <p:outputLabel value="Nome: *" />
                             <p:inputText size="35" placeholder="Nome do responsável" value="" />
                             
+                            <p:outputLabel value="Foto:"/>
+                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000"
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                            
                             <p:outputLabel value="Idade " />
                             <p:inputText placeholder="Idade" value="" />
+                            
+                            <p:outputLabel value="Sexo: " />
+                            <p:selectOneMenu id="sex" label="Sexo: " effect="slide" editable="true" required="true">
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="M" />
+                                <f:selectItem itemLabel="F" />
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="Estado Civil: " />
+                            <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
+                                             editable="true" required="true" >
+                                <f:selectItem itemLabel="" itemDisabled="true" />
+                                <f:selectItem itemLabel="Solteiro" />
+                                <f:selectItem itemLabel="Casado(a)" />
+                                <f:selectItem itemLabel="Viúvo(a)" />
+                                <f:selectItem itemLabel="Outros" />
+                            </p:selectOneMenu>    
 
                             <p:outputLabel value="Profissão: "/>
                             <p:inputText placeholder="Profissão" value=""/>
 
-                            <p:outputLabel value="Parentesco responsável: "/>
+                            <p:outputLabel value="Parentesco Responsável: "/>
                             <p:inputText placeholder="Parentesco responsável" value=""/>
 
                             <p:outputLabel value="Nível Escolar: "/>
                             <p:inputText placeholder="Nível escolar responsável" value=""/>
 
                             <p:outputLabel value="Renda Familiar: "/>
-                            <p:inputText placeholder="Renda familiar aluno" styleClass="money" value=""/>
-
-                            <p:outputLabel value="Telefone: " />
-                            <p:inputText placeholder="Telefone contato" styleClass="phone" value="" />
+                            <p:inputText placeholder="Renda familiar responsável" styleClass="money" value=""/>
 
                         </h:panelGrid>
                     </h:form>
-                </p:tab>  
+                </p:tab>
+                
+                <p:tab title="Documentos">
+                    <h:form prependId="false" id="formDocumentos">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="CPF: " />
+                            <p:inputMask  mask="999.999.999-99" value="" />
+                            
+                            <p:outputLabel value="RG: " />
+                            <p:inputMask  mask="9.999.999" value="" />
+                            
+                            <p:outputLabel value="Certidão de Nascimento: " />
+                            <p:inputText placeholder="Nº registro de nascimento" value="" />
+                            
+                             <p:outputLabel value="Nacionalidade: " />
+                            <p:inputText placeholder="Nacionalidade do responsável" value="" />
+                            
+                        </h:panelGrid>
+                    </h:form>
+            </p:tab>
                 
                 <p:tab title="Endereço">
                     <h:form prependId="false" id="formEndereco">
@@ -75,6 +115,24 @@
                         </h:panelGrid> 
                     </h:form>
                 </p:tab>
+                
+                <p:tab title="Contato">
+                    <h:form prependId="false" id="formContato">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel value="Telefone 1: " />
+                            <p:inputText placeholder="Telefone 1 contato" styleClass="phone" value="" />
+                            
+                            <p:outputLabel value="Telefone 2: " />
+                            <p:inputText placeholder="Telefone 2 contato" styleClass="phone" value="" />
+                            
+                            
+                            
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+                
             </p:tabView>
         </p:fieldset>
     </ui:define>

@@ -32,6 +32,15 @@
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
                             
+                            <p:outputLabel value="Estado Civil: " />
+                            <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
+                                             editable="true" required="true" >
+                                <f:selectItem itemLabel="" itemDisabled="true" />
+                                <f:selectItem itemLabel="Solteiro" />
+                                <f:selectItem itemLabel="Casado(a)" />
+                                <f:selectItem itemLabel="Viúvo(a)" />
+                                <f:selectItem itemLabel="Outros" />
+                            
                             <p:outputLabel value="Profissão: " />
                             <p:inputText placeholder="Profissão do estudante" value="" />
                             
@@ -65,7 +74,7 @@
                             <p:outputLabel value="Data de Entrada: " />
                             <p:inputMask  mask="99/99/9999" value="" />
                             
-                            <p:outputLabel value="usuário: " />
+                            <p:outputLabel value="Usuário: " />
                             <p:inputText placeholder="Nome de usuário" value="" />
                             
                             <p:outputLabel value="Senha: " />
@@ -85,9 +94,6 @@
                             
                             <p:outputLabel value="RG: " />
                             <p:inputMask  mask="9.999.999" value="" />
-                            
-                            <p:outputLabel value="Estado Civil: " />
-                            <p:inputText placeholder="Estado civil estudante" value="" />
                             
                             <p:outputLabel value="Nacionalidade: " />
                             <p:inputText placeholder="Nacionalidade do estudante" value="" />
@@ -113,7 +119,7 @@
                             <p:outputLabel value="Orgão Emissor: " />
                             <p:inputText placeholder="Orgão emissor" value="" />
                             
-                            <p:outputLabel value="Registro de Nascimento: " />
+                            <p:outputLabel value="Certidão de Nascimento: " />
                             <p:inputText placeholder="Nº registro de nascimento" value="" />
                             
                             <p:outputLabel value="Folha: " />
@@ -171,10 +177,7 @@
                             
                             <p:outputLabel value="Telefone 2: " />
                             <p:inputText placeholder="Telefone 2 contato" styleClass="phone" value="" />
-                            
-                            <p:outputLabel value="Telefone 3: " />
-                            <p:inputText placeholder="Telefone 3 contato" styleClass="phone" value="" />
-                            
+
                             <p:commandButton value="Cadastrar" action="#{daoImpl.save}" update="@form" 
                                              icon="ui-icon ui-icon-disk" />
 
