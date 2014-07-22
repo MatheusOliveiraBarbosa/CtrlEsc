@@ -10,6 +10,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
+ * Entity TwoMonths contains atribudos and methods of creating a 
+ * two months.
  *
  * @author Ricardo
  */
@@ -72,6 +74,7 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     public TwoMonths() {
     }
 
+    //Get's and Set's 
     public double getTwoMonthsExerciseFirst() {
         return twoMonthsExerciseFirst;
     }

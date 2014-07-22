@@ -17,7 +17,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
 /**
- *
+ * Entity Lesson contains atribudos and methods of creating a 
+ * lesson.
+ * 
  * @author E.Wellington
  */
 @Entity
@@ -58,6 +60,7 @@ public class Lesson implements Identifiable<Lesson> {
         this.lessonListStudents = lessonListStudents;
     }
 
+    //Get's and Set's 
     public GregorianCalendar getLessonDate() {
         return lessonDate;
     }

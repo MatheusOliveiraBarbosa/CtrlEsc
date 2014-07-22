@@ -18,7 +18,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 /**
- *
+ * Entity Student contains atribudos and methods of creating a 
+ * student.
  * @author E.Wellington
  */
 @Entity
@@ -98,6 +99,7 @@ public class Student extends Person{
         this.studentListLessons = studentListLessons;
     }
 
+    //Get's and Set's
     public int getStudentYear() {
         return studentYear;
     }

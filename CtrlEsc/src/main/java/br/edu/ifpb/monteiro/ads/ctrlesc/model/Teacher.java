@@ -9,7 +9,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity Teacher contains atribudos and methods of creating a 
+ * teacher.
+ * 
  * @author Ricardo
  */
 @Entity
@@ -34,6 +36,7 @@ public class Teacher extends Person {
         teacherListStudentClasses = new ArrayList<StudentClass>();
     }
 
+    //Get's and Set's
     public List<Discipline> getTeacherListDisciplines() {
         return teacherListDisciplines;
     }

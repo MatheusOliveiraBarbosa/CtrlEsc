@@ -15,7 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity StudentClass contains atribudos and methods of creating a 
+ * student class.
+ * 
  * @author E.Wellington
  */
 @Entity
@@ -54,6 +56,7 @@ public class StudentClass implements Identifiable<StudentClass> {
         return studentClassName;
     }
 
+    //Get's and Set's
     public void setStudentClassName(String studentClassName) {
         this.studentClassName = studentClassName;
     }
@@ -100,6 +103,4 @@ public class StudentClass implements Identifiable<StudentClass> {
         this.id=id;
     }
     
-    
-
 }

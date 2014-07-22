@@ -12,7 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Entity Discipline contains atribudos and methods of creating a 
+ * discipline.
  * @author E.Wellington
  */
 @Entity
@@ -48,6 +49,7 @@ public class Discipline implements Identifiable<Discipline> {
         disciplineListTeachers = new ArrayList<Teacher>();
     }
 
+    // Get's and Set's
     public String getDisciplineName() {
         return disciplineName;
     }

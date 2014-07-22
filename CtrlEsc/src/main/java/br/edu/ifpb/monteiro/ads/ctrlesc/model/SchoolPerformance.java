@@ -14,7 +14,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
- *
+ * Entity SchoolPerformance contains atribudos and methods of creating a 
+ * school performance.
  * @author E.Wellington
  */
 
@@ -84,6 +85,7 @@ public class SchoolPerformance implements Identifiable<SchoolPerformance>{
         this.bimonthlySynthesis = bimonthlySynthesis;
     }
 
+    //Get's and Set's 
     public double getFinalTeste() {
         return finalTeste;
     }

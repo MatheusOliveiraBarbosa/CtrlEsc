@@ -19,7 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * Entity Person contains atribudos and methods of creating a 
+ * person.
  * @author E.Wellington
  */
 @Entity
@@ -69,8 +70,8 @@ public abstract class Person implements Identifiable<Person> {
     @Column (name = "person_phone_two" , length = 25)
     private String perosnPhoneTwo;
     
-    @Column (name = "person_phone_three" , length = 25)
-    private String personPhoneThree;
+//    @Column (name = "person_phone_three" , length = 25)
+//    private String personPhoneThree;
     
     @Column (name = "person_civil_status", length = 15)
     private String personCivilStatus;
@@ -88,7 +89,7 @@ public abstract class Person implements Identifiable<Person> {
     
     }
     
-    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personPhoneThree, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         this.personName = personName;
         this.personCpf = personCpf;
         this.personDateBirth = personDateBirth;
@@ -101,7 +102,7 @@ public abstract class Person implements Identifiable<Person> {
         this.personEntryDate = personEntryDate;
         this.personPhoneOne = personPhoneOne;
         this.perosnPhoneTwo = perosnPhoneTwo;
-        this.personPhoneThree = personPhoneThree;
+        //this.personPhoneThree = personPhoneThree;
         this.personCivilStatus = personCivilStatus;
         this.personLogin = personLogin;
         this.personNameMother = personNameMother;
@@ -110,8 +111,7 @@ public abstract class Person implements Identifiable<Person> {
         
     }
     
-    
-
+    //Get's and Set's 
     public String getPersonName() {
         return personName;
     }
@@ -208,13 +208,13 @@ public abstract class Person implements Identifiable<Person> {
         this.perosnPhoneTwo = perosnPhoneTwo;
     }
 
-    public String getPersonPhoneThree() {
-        return personPhoneThree;
-    }
-
-    public void setPersonPhoneThree(String personPhoneThree) {
-        this.personPhoneThree = personPhoneThree;
-    }
+//    public String getPersonPhoneThree() {
+//        return personPhoneThree;
+//    }
+//
+//    public void setPersonPhoneThree(String personPhoneThree) {
+//        this.personPhoneThree = personPhoneThree;
+//    }
 
     public String getPersonCivilStatus() {
         return personCivilStatus;

@@ -5,7 +5,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ * Class for persisting data with the database, which contains methods to persist,
+ * delete, update, Search by id, search all, multiple search and counting
  * @author Matheus
  * @param <T>
  */
@@ -14,6 +15,11 @@ public class DaoImpl<T> implements GenericDAO<Identifiable> {
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager entityManager;
 
+    /**
+     * Persistence method of an entity in the database, return a persisted entity.
+     * 
+     * @param entity 
+     */
     @Override
     public void save(Identifiable entity) {
         try {
@@ -30,6 +36,13 @@ public class DaoImpl<T> implements GenericDAO<Identifiable> {
         return entityManager.find(classe, id);
     }
 
+    /**
+     * Update method of the data of an entity in the database, return a 
+     * persisted entity updated.
+     * 
+     * @param entity
+     * @return 
+     */
     @Override
     public Identifiable<Identifiable> update(Identifiable entity) {
         try {
@@ -42,7 +55,11 @@ public class DaoImpl<T> implements GenericDAO<Identifiable> {
 
         return entity;
     }
-
+    /**
+     * Method of removing a database entity receives as parameter the entity 
+     * to be removed.
+     * @param entity 
+     */
     @Override
     public void delete(Identifiable entity) {
         try {

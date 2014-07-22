@@ -15,9 +15,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 /**
- *
+ * Entity Responsible contains atribudos and methods of creating a 
+ * responsible.
+ * 
  * @author E.Wellington
  */
+
 @Entity
 @Table(name = "TB_responsible")
 public class Responsible implements Identifiable<Responsible> {
@@ -26,14 +29,14 @@ public class Responsible implements Identifiable<Responsible> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "responsible_name",length = 100, nullable = false)
-    private String responsibleName;
+//    @Column(name = "responsible_name",length = 100, nullable = false)
+//    private String responsibleName;
 
     @Column(name = "responsible_level_education",length = 50)
     private String responsibleLevelEducation;
 
-    @Column(name= "responsible_phone", length = 50)
-    private String responsiblePhone;
+//    @Column(name= "responsible_phone", length = 50)
+//    private String responsiblePhone;
 
     @Column(name = "responsible_profession",length = 50)
     private String responsibleProfession;
@@ -45,15 +48,15 @@ public class Responsible implements Identifiable<Responsible> {
     @Min(value = 0)
     private double responsibleFamilyIncome;
     
-    @Column (name = "responsible_age") 
-    @Min(value = 18)
-    private int responsibleAge;
+//    @Column (name = "responsible_age") 
+//    @Min(value = 18)
+//    private int responsibleAge;
     
     @Column(name = "responsible_degree_kiniship", length = 50)
     private String responsibleDegreeKinship;
 
-    @Embedded
-    private Address responsibleBusinessAddress;
+//    @Embedded
+//    private Address responsibleBusinessAddress;
     
     @OneToMany (mappedBy = "studentResponsible", targetEntity = Student.class)
     private List<Student> responsibleListStudenst;
@@ -63,26 +66,26 @@ public class Responsible implements Identifiable<Responsible> {
     
     }
 
-    public Responsible(String responsibleName, String responsibleLevelEducation, String responsiblePhone, String responsibleProfession, Address responsibleAddress, double responsibleFamilyIncome, int responsibleAge, String responsibleDegreeKinship, Address responsibleBusinessAddress, List<Student> responsibleListStudenst) {
-        this.responsibleName = responsibleName;
+    
+    public Responsible(Long id, String responsibleLevelEducation, String responsibleProfession, Address responsibleAddress, double responsibleFamilyIncome, String responsibleDegreeKinship, List<Student> responsibleListStudenst) {
+        this.id = id;
         this.responsibleLevelEducation = responsibleLevelEducation;
-        this.responsiblePhone = responsiblePhone;
         this.responsibleProfession = responsibleProfession;
         this.responsibleAddress = responsibleAddress;
         this.responsibleFamilyIncome = responsibleFamilyIncome;
-        this.responsibleAge = responsibleAge;
         this.responsibleDegreeKinship = responsibleDegreeKinship;
-        this.responsibleBusinessAddress = responsibleBusinessAddress;
         this.responsibleListStudenst = responsibleListStudenst;
     }
 
-    public String getResponsibleName() {
-        return responsibleName;
-    }
-
-    public void setResponsibleName(String responsibleName) {
-        this.responsibleName = responsibleName;
-    }
+    //Get's and Set's 
+    
+//    public String getResponsibleName() {
+//        return responsibleName;
+//    }
+//
+//    public void setResponsibleName(String responsibleName) {
+//        this.responsibleName = responsibleName;
+//    }
 
     public String getResponsibleLevelEducation() {
         return responsibleLevelEducation;
@@ -92,13 +95,13 @@ public class Responsible implements Identifiable<Responsible> {
         this.responsibleLevelEducation = responsibleLevelEducation;
     }
 
-    public String getResponsiblePhone() {
-        return responsiblePhone;
-    }
-
-    public void setResponsiblePhone(String responsiblePhone) {
-        this.responsiblePhone = responsiblePhone;
-    }
+//    public String getResponsiblePhone() {
+//        return responsiblePhone;
+//    }
+//
+//    public void setResponsiblePhone(String responsiblePhone) {
+//        this.responsiblePhone = responsiblePhone;
+//    }
 
     public String getResponsibleProfession() {
         return responsibleProfession;
@@ -124,13 +127,13 @@ public class Responsible implements Identifiable<Responsible> {
         this.responsibleFamilyIncome = responsibleFamilyIncome;
     }
 
-    public int getResponsibleAge() {
-        return responsibleAge;
-    }
-
-    public void setResponsibleAge(int responsibleAge) {
-        this.responsibleAge = responsibleAge;
-    }
+//    public int getResponsibleAge() {
+//        return responsibleAge;
+//    }
+//
+//    public void setResponsibleAge(int responsibleAge) {
+//        this.responsibleAge = responsibleAge;
+//    }
 
     public String getResponsibleDegreeKinship() {
         return responsibleDegreeKinship;
@@ -140,13 +143,13 @@ public class Responsible implements Identifiable<Responsible> {
         this.responsibleDegreeKinship = responsibleDegreeKinship;
     }
 
-    public Address getResponsibleBusinessAddress() {
-        return responsibleBusinessAddress;
-    }
-
-    public void setResponsibleBusinessAddress(Address responsibleBusinessAddress) {
-        this.responsibleBusinessAddress = responsibleBusinessAddress;
-    }
+//    public Address getResponsibleBusinessAddress() {
+//        return responsibleBusinessAddress;
+//    }
+//
+//    public void setResponsibleBusinessAddress(Address responsibleBusinessAddress) {
+//        this.responsibleBusinessAddress = responsibleBusinessAddress;
+//    }
 
     public List<Student> getResponsibleListStudenst() {
         return responsibleListStudenst;
