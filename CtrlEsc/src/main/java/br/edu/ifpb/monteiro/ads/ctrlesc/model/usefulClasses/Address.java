@@ -3,25 +3,12 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 import javax.persistence.Embeddable;
 
 /**
+ * Helper class containing attributes for creating an address.
  * @author E.Wellington
  */
 @Embeddable
 public class Address {
-
-    public Address(String street, int number, String district, String cep, String city, String state, String country) {
-        this.street = street;
-        this.number = number;
-        this.district = district;
-        this.cep = cep;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-    }
     
-    public Address(){
-        
-    }
-
     private String street;
 
     private int number;
@@ -35,6 +22,20 @@ public class Address {
     private String state;
 
     private String country;
+
+    public Address(String street, int number, String district, String cep, String city, String state, String country) {
+        this.street = street;
+        this.number = number;
+        this.district = district;
+        this.cep = cep;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
+    
+    public Address(){
+        
+    } 
 
     // methods gettes and setters
     public String getStreet() {

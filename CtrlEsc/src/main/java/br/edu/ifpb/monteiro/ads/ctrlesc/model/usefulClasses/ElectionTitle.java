@@ -1,21 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
 import javax.persistence.Embeddable;
 
 /**
- *
+ * Helper class containing attributes for creating an election title.
+ * 
  * @author E.Wellington
  */
 
 @Embeddable
 public class ElectionTitle {
 
+    private int number;
+    
+    private int section;
+    
+    private int zone;
+    
+    private String stateEmitter;
+    
     public ElectionTitle(int number, int section, int zone, String stateEmitter) {
         this.number = number;
         this.section = section;
@@ -27,16 +30,6 @@ public class ElectionTitle {
         
     }
     
-    
-    
-    private int number;
-    
-    private int section;
-    
-    private int zone;
-    
-    private String stateEmitter;
-
     public int getNumber() {
         return number;
     }
@@ -68,6 +61,5 @@ public class ElectionTitle {
     public void setStateEmitter(String stateEmitter) {
         this.stateEmitter = stateEmitter;
     }
-    
-    
+     
 }

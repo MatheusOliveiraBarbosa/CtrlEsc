@@ -4,12 +4,18 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 import javax.persistence.Embeddable;
 
 /**
- *
+ * Helper class containing attributes for creating an certificate reservist.
  * @author E.Wellington
  */
 @Embeddable
 public class CertificateReservist {
 
+    private int number;
+    
+    private String category;
+    
+    private String stateEmitter;
+    
     public CertificateReservist(int number, String category, String stateEmitter) {
         this.number = number;
         this.category = category;
@@ -19,13 +25,6 @@ public class CertificateReservist {
         
     }
     
-    
-    private int number;
-    
-    private String category;
-    
-    private String stateEmitter;
-
     public int getNumber() {
         return number;
     }
@@ -49,7 +48,5 @@ public class CertificateReservist {
     public void setStateEmitter(String stateEmitter) {
         this.stateEmitter = stateEmitter;
     }
-    
-    
     
 }

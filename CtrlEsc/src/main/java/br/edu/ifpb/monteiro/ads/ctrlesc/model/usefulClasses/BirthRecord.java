@@ -1,37 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
 import javax.persistence.Embeddable;
 
 /**
- *
+ * Helper class containing attributes for creating an birth record.
+ * 
  * @author E.Wellington
  */
 @Embeddable
 public class BirthRecord {
 
-    public BirthRecord(String folha, String livro, String registry) {
-        this.folha = folha;
-        this.livro = livro;
-        this.registry = registry;
-    }
-    public BirthRecord(){
-        
-    }
-    
-    
-    
+      
     private String folha;
     
     private String livro;
     
     private String registry;
-
+    
+    public BirthRecord(String folha, String livro, String registry) {
+        this.folha = folha;
+        this.livro = livro;
+        this.registry = registry;
+    }
+    
+    public BirthRecord(){
+        
+    }
+    
     public String getFolha() {
         return folha;
     }
@@ -56,5 +51,4 @@ public class BirthRecord {
         this.registry = registry;
     }
     
-     
 }
