@@ -208,14 +208,6 @@ public class Person implements Identifiable<Person> {
         this.perosnPhoneTwo = perosnPhoneTwo;
     }
 
-//    public String getPersonPhoneThree() {
-//        return personPhoneThree;
-//    }
-//
-//    public void setPersonPhoneThree(String personPhoneThree) {
-//        this.personPhoneThree = personPhoneThree;
-//    }
-
     public String getPersonCivilStatus() {
         return personCivilStatus;
     }
