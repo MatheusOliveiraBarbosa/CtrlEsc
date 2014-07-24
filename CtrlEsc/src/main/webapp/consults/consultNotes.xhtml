@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template/template.xhtml">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    
+    <ui:define name="corpo">
+        <p:fieldset legend="CONSULTAR NOTAS" >
+            <h:form id="formSearchNotes">
+                
+                <h:panelGrid columns="2" cellpadding="2">
+                    <p:outputLabel/>
+                    <h:inputHidden id="idNotes"/>
+
+                    <p:outputLabel id="matricula" value="Matrícula: "/>
+                    <p:inputText placeholder="Matrícula do aluno" />
+                    
+                    <p:outputLabel />
+                    <p:outputLabel />
+
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" />
+                    
+                </h:panelGrid>
+
+            </h:form>
+            
+            <h:form id="formTableConsultNotes">
+                
+                <p:dataTable id="tableNotes" var="consultNotes" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
+                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
+                    <f:facet name="header">Lista de Notas</f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbAluno" value="Aluno"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbMatricula" value="Matrícula"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbNota" value="Nota"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>

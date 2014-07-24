@@ -14,16 +14,22 @@
             <p:tabView id="tabAluno">
                 <p:tab title="Informações Pessoais">
                     <h:form prependId="false" id="formInfoPessoais">
-                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
+                        <h:panelGrid columns="6" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel/>
                             <h:inputHidden id="idStudent"/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
                             
-                            <p:outputLabel value="Nome: " />
+                            <p:outputLabel id="name" value="Nome: " />
                             <p:inputText placeholder="Nome do Aluno" value="" />
+                            
                             
                             <p:outputLabel value="Foto:"/>
                             <p:fileUpload mode="advanced" auto="true" sizeLimit="100000"
                                 allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                            
                             
                             <p:outputLabel value="Sexo: " />
                             <p:selectOneMenu id="sex" label="Sexo: " effect="slide" editable="true" required="true">
@@ -40,6 +46,7 @@
                                 <f:selectItem itemLabel="Casado(a)" />
                                 <f:selectItem itemLabel="Viúvo(a)" />
                                 <f:selectItem itemLabel="Outros" />
+                            </p:selectOneMenu>
                             
                             <p:outputLabel value="Profissão: " />
                             <p:inputText placeholder="Profissão do estudante" value="" />

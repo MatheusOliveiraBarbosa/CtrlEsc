@@ -1,21 +1,22 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
 import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.FlowEvent;
 
 /**
  * @author Elisângela
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class ResponsibleBean implements Serializable {
 
     @EJB
@@ -24,6 +25,8 @@ public class ResponsibleBean implements Serializable {
     private ResponsibleDao responsibleFacade;
     private Responsible responsible;
     private List<Responsible> listResponsibles;
+    
+    private boolean skip;
 
     public ResponsibleBean() {
         responsible = new Responsible();
@@ -45,6 +48,14 @@ public class ResponsibleBean implements Serializable {
         this.responsible = responsible;
     }
 
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+    
     public List<Responsible> getListResponsibles() {
         listResponsibles = responsibleFacade.findAll();
         return listResponsibles;
@@ -85,4 +96,14 @@ public class ResponsibleBean implements Serializable {
         responsibleFacade.remove(responsible);
     }
  
+    public String onFlowProcess(FlowEvent event) {     
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }   
+    }  
+    
 }
