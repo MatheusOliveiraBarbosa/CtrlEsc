@@ -42,61 +42,21 @@
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Notas</f:facet>
                     
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbMatricula" value="Matrícula"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbAluno" value="Aluno"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Matrícula" width="100" />
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbNota1" value="Nota 1"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbNota2" value="Nota 2"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Nome" width="200" />    
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbNota3" value="Nota 3"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Nota 1" width="80" />
+                        
+                    <p:column headerText="Nota 2" width="80" />
+
+                    <p:column headerText="Nota 3" width="80" />
+                       
+                    <p:column headerText="Nota 4" width="80" />
+
+                    <p:column headerText="Média" width="80" />
                     
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbNota4" value="Nota 4"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="media" value="Média"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="notaFinal" value="Nota Final"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Nota Final" width="80" />
                     
                 </p:dataTable>
             </h:form>

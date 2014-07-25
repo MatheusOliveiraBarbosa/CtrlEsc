@@ -37,33 +37,13 @@
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Estudantes</f:facet>
                     
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbMatricula" value="Matrícula"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbAluno" value="Aluno"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbCurso" value="Curso"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Matrícula" width="100" />    
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbTurma" value="Turma"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
+                    <p:column headerText="Aluno" width="200" />  
+                    
+                    <p:column headerText="Curso" width="200" />  
+                    
+                    <p:column headerText="Turma" width="80" />  
                     
                 </p:dataTable>
             </h:form>
