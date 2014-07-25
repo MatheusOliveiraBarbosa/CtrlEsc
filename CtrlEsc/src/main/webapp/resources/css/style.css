@@ -5,32 +5,18 @@
    font-weight: bold;
 }
 
-#top{
-    position: relative;
-    width: auto;
-    margin: 0;
-    padding: 0;
-}
-
 #menu {
+   
    font-size: 14px;
    font-weight: bold;
    
 }
 
 body {
-    font-size: 12px;
+    font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     font-weight: bold;
-}
-header {
-    padding: 5px;
-    margin-bottom: 20px;
-    height: 30px;
-    background-color: #545454;
-    color: #fff;
-    box-shadow: 0px 2px 2px #ccc
 }
 
 #content {

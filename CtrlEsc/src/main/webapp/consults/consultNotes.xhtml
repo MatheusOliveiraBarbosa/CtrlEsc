@@ -12,21 +12,25 @@
     
     <ui:define name="corpo">
         <p:fieldset legend="CONSULTAR NOTAS" >
-            <h:form id="formSearchNotes">
+            <h:form id="formConsultNotes">
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="idNotes"/>
+                    <h:inputHidden id="id"/>
+                    
+                    <p:outputLabel for="nome" value="Nome: "/>
+                    <p:inputText id="nome" placeholder="Nome do aluno" />
 
-                    <p:outputLabel id="matricula" value="Matrícula: "/>
-                    <p:inputText placeholder="Matrícula do aluno" />
+                    <p:outputLabel for="matricula" value="Matrícula: "/>
+                    <p:inputText id="matricula" placeholder="Matrícula do aluno" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
 
                     <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" />
-                    
+
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" />   
+
                 </h:panelGrid>
 
             </h:form>
@@ -37,12 +41,6 @@
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Notas</f:facet>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText id="tbAluno" value="Aluno"/>
-                        </f:facet>
-                        <h:outputText/>
-                    </p:column>
                     
                     <p:column>
                         <f:facet name="header">
@@ -50,16 +48,60 @@
                         </f:facet>
                         <h:outputText/>
                     </p:column>
-
+                    
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText id="tbNota" value="Nota"/>
+                            <h:outputText id="tbAluno" value="Aluno"/>
                         </f:facet>
                         <h:outputText/>
                     </p:column>
 
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbNota1" value="Nota 1"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbNota2" value="Nota 2"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbNota3" value="Nota 3"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="tbNota4" value="Nota 4"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="media" value="Média"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText id="notaFinal" value="Nota Final"/>
+                        </f:facet>
+                        <h:outputText/>
+                    </p:column>
+                    
                 </p:dataTable>
             </h:form>
+            
+            
         </p:fieldset>
     </ui:define>
 

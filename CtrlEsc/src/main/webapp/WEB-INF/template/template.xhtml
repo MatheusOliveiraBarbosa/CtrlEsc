@@ -16,13 +16,13 @@
 
     <h:body>
         
-        <div id="top">
-            <head>
-                 <p:graphicImage library="icones" name="headerCtrlEsc.png"/>
-            </head>
-        </div>
+        <header>
+            <div id="top">
+                <p:graphicImage library="icones" name="headerCtrlEsc.png"/>
+            </div>
+        </header>
 
-        <div id="menu"> <!-- #######  Menu  ####### -->
+        <div id="menu">  <!--#######  Menu  ####### -->
             <h:form>
                 <p:menubar styleClass="labelMenu">
                     
@@ -34,7 +34,7 @@
                     
                     <p:submenu label="Consultas" icon="ui-icon ui-icon-search">
                         <p:menuitem value="Responsáveis" />
-                        <p:menuitem value="Alunos" />
+                        <p:menuitem value="Alunos" url="./../consults/consultStudent.xhtml"/>
                         <p:menuitem value="Professores" />
                         <p:menuitem value="Notas" url="./../consults/consultNotes.xhtml" />
                     </p:submenu>
@@ -49,11 +49,13 @@
             <ui:insert name="corpo"></ui:insert>
         </div>
         
-        <div id="footer">
+        
             <footer>
-                Sistema de Controle Escolar - Ctrl Esc      
+                <div id="footer">
+                Sistema de Controle Escolar - Ctrl Esc  
+                </div>
             </footer>
-        </div>
+        
 
         <!--This script changes the mask of money format-->
        <script>

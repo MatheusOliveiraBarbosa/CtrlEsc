@@ -9,44 +9,58 @@
 
     <ui:define name="corpo">
         <p:fieldset legend="Cadastro de Professores">
-        <br/>
-        <p:tabView id="tabProfessor">
-            <p:tab title="Informações Pessoais">
-                <h:form prependId="false" id="formProfessor">
-                    <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
-                         <p:outputLabel/>
-                            <h:inputHidden id="idTeacher"/>
-                            
-                            <p:outputLabel value="Nome: *" />
-                            <p:inputText size="35" placeholder="Nome do professor" value="" />
-                            
-                            <p:outputLabel value="Foto:"/>
-                            <p:fileUpload mode="advanced" auto="true" sizeLimit="100000"
-                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                            
-                            <p:outputLabel value="Idade " />
-                            <p:inputText placeholder="Idade" value="" />
+            <p:tabView id="tabProfessor">
+                <p:tab title="Informações Pessoais">
+                    <h:form >
+                        <p:growl/>
+                        <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
+                            <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
+                                           value="Navegue por todas as abas." />
+                            <h:inputHidden id="id"/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
 
-                            <p:outputLabel value="Data de Nascimento: " />
-                            <p:inputMask mask="99/99/9999" />
+                            <p:outputLabel for="nome" value="Nome: " />
+                            <p:inputText id="nome" size="35" placeholder="Nome do professor" required="true" value="" />
                             
-                            <p:outputLabel value="Cor: " />
-                            <p:inputText placeholder="Cor" value="" />
+                            <p:outputLabel for="nascimento" value="Data de Nascimento: " />
+                            <p:inputMask id="nascimento" mask="99/99/9999" placeholder="Data de Nascimento"/>
+
+                            <p:outputLabel for="foto" value="Foto:"/>
+                            <p:fileUpload id="foto" mode="simple" auto="true" sizeLimit="100000"
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                             
-                            <p:outputLabel value="Sexo: " />
-                            <p:selectOneMenu id="sex" label="Sexo: " effect="slide" editable="true" required="true">
+                            <p:outputLabel for="matricula" value="Matrícula: " />
+                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="" />
+
+                           
+
+                            <p:outputLabel for="cor" value="Cor: " />
+                            <p:selectOneMenu id="cor" label="Cor: " effect="slide" editable="true" required="true">
+                                <f:selectItem itemLabel="" itemDisabled="true" />
+                                <f:selectItem itemLabel="Banca" />
+                                <f:selectItem itemLabel="Parda" />
+                                <f:selectItem itemLabel="Amarela" />
+                                <f:selectItem itemLabel="Negra" />
+                                <f:selectItem itemLabel="Morena" />
+                                <f:selectItem itemLabel="Indígena" />
+                                <f:selectItem itemLabel="Não Informada" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="sexo" value="Sexo: " />
+                            <p:selectOneMenu id="sexo" label="Sexo: " effect="slide" editable="true" required="true">
                                 <f:selectItem itemLabel="" itemDisabled="true"/>
                                 <f:selectItem itemLabel="M" />
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
+
+                            <p:outputLabel for="mae" value="Nome Mãe: " />
+                            <p:inputText id="mae" placeholder="Nome da mãe" value="" />
                             
-                            <p:outputLabel value="Nome Pai: " />
-                            <p:inputText placeholder="Nome do pai" value="" />
+                            <p:outputLabel for="pai" value="Nome Pai: " />
+                            <p:inputText id="pai" placeholder="Nome do pai" value="" />
                             
-                            <p:outputLabel value="Nome Mãe: " />
-                            <p:inputText placeholder="Nome da mãe" value="" />
-                            
-                            <p:outputLabel value="Estado Civil: " />
+                            <p:outputLabel for="estadoCivil" value="Estado Civil: " />
                             <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
                                              editable="true" required="true" >
                                 <f:selectItem itemLabel="" itemDisabled="true" />
@@ -54,90 +68,98 @@
                                 <f:selectItem itemLabel="Casado(a)" />
                                 <f:selectItem itemLabel="Viúvo(a)" />
                                 <f:selectItem itemLabel="Outros" />
-                            
+
                             </p:selectOneMenu>        
-                            <p:outputLabel value="Data de Entrada: " />
-                            <p:inputMask  mask="99/99/9999" value="" />
-                            
-                            <p:outputLabel value="Usuário: " />
-                            <p:inputText placeholder="Nome de usuário" value="" />
-                            
-                            <p:outputLabel value="Senha: " />
-                            <p:inputText placeholder="Senha de usuário" value="" />
+                            <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
+                            <p:inputMask  id="dataEntrada" mask="99/99/9999" placeholder="Data de Entrada" value="" />
 
+                            <p:outputLabel for="usuario" value="Usuário: " />
+                            <p:inputText id="usuario" placeholder="Nome de usuário" value="" />
 
-                    </h:panelGrid>
-                </h:form>
-            </p:tab>
-            
-            <p:tab title="Documentos">
-                    <h:form prependId="false" id="formDocumentos">
+                            <p:outputLabel for="senha" value="Senha: " />
+                            <p:inputText id="senha" placeholder="Senha de usuário" value="" />
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+
+                <p:tab title="Documentos">
+                    <h:form >
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
                             <p:outputLabel/>
                             <p:outputLabel/>
-                            <p:outputLabel value="CPF: " />
-                            <p:inputMask  mask="999.999.999-99" value="" />
-                            
-                            <p:outputLabel value="RG: " />
-                            <p:inputMask  mask="9.999.999" value="" />
-                            
-                            <p:outputLabel value="Certidão de Nascimento: " />
-                            <p:inputText placeholder="Nº registro de nascimento" value="" />
-                            
-                             <p:outputLabel value="Nacionalidade: " />
-                            <p:inputText placeholder="Nacionalidade do professor" value="" />
-                            
+                            <p:outputLabel for="cpf" value="CPF: " />
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="" />
+
+                            <p:outputLabel for="rg" value="RG: " />
+                            <p:inputMask  id="rg" mask="9.999.999" placeholder="Nº RG" value="" />
+
+                            <p:outputLabel for="certidao" value="Certidão de Nascimento: " />
+                            <p:inputText id="certidao" placeholder="Nº registro de nascimento" value="" />
+
+                            <p:outputLabel for="nascionalidade" value="Nacionalidade: " />
+                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do professor" value="" />
+
                         </h:panelGrid>
                     </h:form>
-            </p:tab>
-            
-            <p:tab title="Endereço">
-                    <h:form prependId="false" id="formEndereco">
+                </p:tab>
+
+                <p:tab title="Endereço">
+                    <h:form >
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
                             <p:outputLabel/>
                             <p:outputLabel/>
-                            <p:outputLabel value="Rua: " />
-                            <p:inputText placeholder="Nome da rua" value="" />
-                            
-                            <p:outputLabel value="Número: " />
-                            <p:inputText placeholder="Número da residência" value="" />
-                            
-                            <p:outputLabel value="Distrito: " />
-                            <p:inputText placeholder="Distrito pertencente" value="" />
-                            
-                            <p:outputLabel value="CEP: " />
-                            <p:inputMask mask="99999-999" value="" />
-                            
-                            <p:outputLabel value="Cidade: " />
-                            <p:inputText placeholder="Cidade onde mora" value="" />
-                            
-                            <p:outputLabel value="Estado: " />
-                            <p:inputText placeholder="Unidade da federação" value="" />
-                            
-                            <p:outputLabel value="País: " />
-                            <p:inputText placeholder="País" value="" />
-                            
+                            <p:outputLabel for="rua" value="Rua: " />
+                            <p:inputText id="rua" placeholder="Nome da rua" value="" />
+
+                            <p:outputLabel for="numero" value="Número: " />
+                            <p:inputText id="numero" placeholder="Número da residência" value="" />
+
+                            <p:outputLabel for="distrito" value="Distrito: " />
+                            <p:inputText id="distrito" placeholder="Distrito pertencente" value="" />
+
+                            <p:outputLabel for="cep" value="CEP: " />
+                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="" />
+
+                            <p:outputLabel for="cidade" value="Cidade: " />
+                            <p:inputText id="cidade" placeholder="Cidade onde mora" value="" />
+
+                            <p:outputLabel for="estado" value="Estado: " />
+                            <p:inputText id="estado" placeholder="Unidade da federação" value="" />
+
+                            <p:outputLabel for="pais" value="País: " />
+                            <p:inputText id="pais" placeholder="País" value="" />
+
                         </h:panelGrid>
                     </h:form>
-            </p:tab>
-            
-            <p:tab title="Contato">
-                    <h:form prependId="false" id="formContato">
+                </p:tab>
+
+                <p:tab title="Contato">
+                    <h:form >
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
                             <p:outputLabel/>
                             <p:outputLabel/>
-                            <p:outputLabel value="Telefone 1: " />
-                            <p:inputText placeholder="Telefone 1 contato" styleClass="phone" value="" />
-                            
-                            <p:outputLabel value="Telefone 2: " />
-                            <p:inputText placeholder="Telefone 2 contato" styleClass="phone" value="" />
-                            
-                            
-                            
+                            <p:outputLabel for="fone1" value="Telefone 1: " />
+                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="" />
+
+                            <p:outputLabel for="fone2" value="Telefone 2: " />
+                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="" />
+
                         </h:panelGrid>
                     </h:form>
-            </p:tab>
-        </p:tabView>
+                </p:tab>
+            </p:tabView>
+
+            <h:form>
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>    
         </p:fieldset>
     </ui:define>
 
