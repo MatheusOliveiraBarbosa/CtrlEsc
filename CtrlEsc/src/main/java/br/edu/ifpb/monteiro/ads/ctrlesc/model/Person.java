@@ -47,8 +47,8 @@ public class Person implements Identifiable<Person> {
     @Column (name = "person_breed", length = 30)
     private String personBreed;
     
-    @Column (name = "person_registration", length = 50)   
-    private String personRegistration;
+    @Column (name = "person_rg", length = 12)   
+    private String personRg;
     
     @Column (name ="person_sex", nullable = false )
     private char personSex;
@@ -68,7 +68,7 @@ public class Person implements Identifiable<Person> {
     private String personPhoneOne;
     
     @Column (name = "person_phone_two" , length = 25)
-    private String perosnPhoneTwo;
+    private String personPhoneTwo;
     
 //    @Column (name = "person_phone_three" , length = 25)
 //    private String personPhoneThree;
@@ -89,19 +89,19 @@ public class Person implements Identifiable<Person> {
     
     }
     
-    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         this.personName = personName;
         this.personCpf = personCpf;
         this.personDateBirth = personDateBirth;
         this.personAddress = personAddress;
         this.personBreed = personBreed;
-        this.personRegistration = personRegistration;
+        this.personRg = personRg;
         this.personSex = personSex;
         this.personPhoto = personPhoto;
         this.personNationality = personNationality;
         this.personEntryDate = personEntryDate;
         this.personPhoneOne = personPhoneOne;
-        this.perosnPhoneTwo = perosnPhoneTwo;
+        this.personPhoneTwo = personPhoneTwo;
         //this.personPhoneThree = personPhoneThree;
         this.personCivilStatus = personCivilStatus;
         this.personLogin = personLogin;
@@ -152,12 +152,12 @@ public class Person implements Identifiable<Person> {
         this.personBreed = personBreed;
     }
 
-    public String getPersonRegistration() {
-        return personRegistration;
+    public String getPersonRg() {
+        return personRg;
     }
 
-    public void setPersonRegistration(String personRegistration) {
-        this.personRegistration = personRegistration;
+    public void setPersonRg(String personRg) {
+        this.personRg = personRg;
     }
 
     public char getPersonSex() {
@@ -200,12 +200,12 @@ public class Person implements Identifiable<Person> {
         this.personPhoneOne = personPhoneOne;
     }
 
-    public String getPerosnPhoneTwo() {
-        return perosnPhoneTwo;
+    public String getPersonPhoneTwo() {
+        return personPhoneTwo;
     }
 
-    public void setPerosnPhoneTwo(String perosnPhoneTwo) {
-        this.perosnPhoneTwo = perosnPhoneTwo;
+    public void setPersonPhoneTwo(String personPhoneTwo) {
+        this.personPhoneTwo = personPhoneTwo;
     }
 
     public String getPersonCivilStatus() {

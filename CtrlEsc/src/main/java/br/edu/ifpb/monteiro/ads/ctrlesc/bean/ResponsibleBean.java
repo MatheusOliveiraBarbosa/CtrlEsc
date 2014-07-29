@@ -2,10 +2,15 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDao;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -16,11 +21,10 @@ import org.primefaces.event.FlowEvent;
  * @author Elisângela
  */
 @Named
-@ViewScoped
+@SessionScoped
 public class ResponsibleBean implements Serializable {
 
     @EJB
-    
     @Inject
     private ResponsibleDao responsibleFacade;
     private Responsible responsible;
@@ -70,14 +74,9 @@ public class ResponsibleBean implements Serializable {
         return "/cadastre/cadResponsible.xhtml";
     }
     
-    public String addResponsible() {
-        if (responsible.getId() == null || responsible.getId() == 0) {
-            insertResponsible();
-        } else {
-            updateResponsible();
-        }
-        limpResponsible();
-        return null;
+    public void addResponsible(ActionEvent actionEvent) {
+       
+        
     }
     
     private void insertResponsible() {

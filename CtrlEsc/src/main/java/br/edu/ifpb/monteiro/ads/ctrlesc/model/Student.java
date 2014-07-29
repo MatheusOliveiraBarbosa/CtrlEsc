@@ -1,9 +1,12 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.BirthRecord;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.CertificateReservist;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.ElectionTitle;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -32,6 +35,9 @@ public class Student extends Person{
     
     @Column (name = "student_number_brothers_scholarship")
     private int studentNumberBrothersScholarship;
+    
+    @Column (name = "student_registration", length = 50)   
+    private String studentRegistration;
     
     @Embedded
     private CertificateReservist studentCertificateReservist;
@@ -80,9 +86,11 @@ public class Student extends Person{
     public Student() {
     }
 
-    public Student(int studentYear, int studentNumberBrothersScholarship, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, boolean studentFatherAlive, boolean studentMotherAlive, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons) {
+    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, boolean studentFatherAlive, boolean studentMotherAlive, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+        super(personName, personCpf, personDateBirth, personAddress, personBreed, personRegistration, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, perosnPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.studentYear = studentYear;
         this.studentNumberBrothersScholarship = studentNumberBrothersScholarship;
+        this.studentRegistration = studentRegistration;
         this.studentCertificateReservist = studentCertificateReservist;
         this.studentElectionTitle = studentElectionTitle;
         this.studentBirthRecord = studentBirthRecord;
@@ -108,6 +116,14 @@ public class Student extends Person{
         this.studentYear = studentYear;
     }
 
+    public String getStudentRegistration() {
+        return studentRegistration;
+    }
+
+    public void setStudentRegistration(String studentRegistration) {
+        this.studentRegistration = studentRegistration;
+    }
+    
     public int getStudentNumberBrothersScholarship() {
         return studentNumberBrothersScholarship;
     }

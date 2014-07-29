@@ -28,12 +28,12 @@ public class PersonBean implements Serializable {
 
    public String limpPerson() {
         person= new Person();
-        return editPerson();
+        return person.getPersonName();
     }
     
-    public String editPerson() {
-        return "/cadastre/cadTeacher.xhtml";
-    }
+//    public String editPerson() {
+//        return "/cadastre/cadTeacher.xhtml";
+//    }
     
     public String addPerson() {
         if (person.getId() == null || person.getId() == 0) {
