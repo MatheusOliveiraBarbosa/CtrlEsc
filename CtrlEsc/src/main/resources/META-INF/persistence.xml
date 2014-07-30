@@ -11,7 +11,8 @@
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.StudentClass</class>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Teacher</class>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.TwoMonths</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.target-database" value="PostgreSQL"/>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>

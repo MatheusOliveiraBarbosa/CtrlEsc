@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -16,6 +17,7 @@ import javax.inject.Named;
 public class DisciplineBean implements Serializable {
 
     @EJB
+    @Inject
     private DisciplineDao disciplineFacade;
     private List<Discipline> listDiscipline;
     private Discipline discipline;

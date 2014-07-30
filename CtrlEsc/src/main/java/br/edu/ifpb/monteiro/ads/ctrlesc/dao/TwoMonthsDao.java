@@ -18,6 +18,10 @@ public class TwoMonthsDao extends AbstractDao<TwoMonths> {
         return em;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+    
     public TwoMonthsDao() {
         super(TwoMonths.class);
     }

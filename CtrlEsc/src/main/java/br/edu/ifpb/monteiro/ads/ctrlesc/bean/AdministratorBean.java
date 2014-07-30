@@ -34,7 +34,7 @@ public class AdministratorBean implements Serializable {
         return "/cadastre/cadAdministrator.xhtml";
     }
     
-    public String addLesson() {
+    public String addAdministrator() {
         if (administrator.getId() == null || administrator.getId() == 0) {
             insertAdministrator();
         } else {

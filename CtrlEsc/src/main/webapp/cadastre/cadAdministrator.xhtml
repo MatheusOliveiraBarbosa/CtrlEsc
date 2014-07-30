@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template/template.xhtml">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    
+    <ui:define name="corpo">
+        <p:fieldset legend="Cadastrar Administrador">
+            
+            <p:tabView id="tabAdministrator">
+                <p:tab title="Informações Pessoais">
+                    <h:form id="infoPessoaisAdministrator">   
+                        <p:growl/>
+                        <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
+                            <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
+                                           value="Navegue por todas as abas." />
+                            <h:inputHidden id="id"/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+
+                            <p:outputLabel for="nome" value="Nome: " />
+                            <p:inputText id="nome" size="50" placeholder="Nome do administrador" required="true" 
+                                         value="#{administratorBean.administrator.personName}" />
+
+                            <p:outputLabel for="nascimento" value="Data de Nascimento: "/>
+                            <p:calendar id="nascimento" navigator="true" effect="fold" 
+                                pattern="dd/MM/yyyy" yearRange="c-50:c+50" placeholder="Data de nascimento" 
+                                readonly="true" locale="pt" value="#{administratorBean.administrator.personDateBirth}"/>
+                            
+                            <p:outputLabel for="foto" value="Foto:"/>
+                            <p:fileUpload id="foto" mode="simple" auto="true" sizeLimit="100000"
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                            
+                            <p:outputLabel for="profissao" value="Profissão: "/>
+                            <p:inputText id="profissao" placeholder="Profissão" value=""/>
+
+                            <p:outputLabel for="sexo" value="Sexo: " />
+                            <p:selectOneMenu id="sexo" label="Sexo: " effect="slide" editable="true" >
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="M" />
+                                <f:selectItem itemLabel="F" />
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel for="cor" value="Cor: " />
+                            <p:selectOneMenu id="cor" label="Cor: " effect="slide" editable="true" >
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="Banca" />
+                                <f:selectItem itemLabel="Parda" />
+                                <f:selectItem itemLabel="Amarela" />
+                                <f:selectItem itemLabel="Negra" />
+                                <f:selectItem itemLabel="Morena" />
+                                <f:selectItem itemLabel="Indígena" />
+                                <f:selectItem itemLabel="Não Informada" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="estadoCivil" value="Estado Civil: " />
+                            <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
+                                             editable="true">
+                                <f:selectItem itemLabel="" itemDisabled="true" />
+                                <f:selectItem itemLabel="Solteiro" />
+                                <f:selectItem itemLabel="Casado(a)" />
+                                <f:selectItem itemLabel="Viúvo(a)" />
+                                <f:selectItem itemLabel="Outros" />
+                            </p:selectOneMenu>    
+                            
+                            <p:outputLabel for="renda" value="Renda Familiar: "/>
+                            <p:inputText id="renda" placeholder="Renda familiar administrador" styleClass="money" value=""/>
+                            
+                            <p:outputLabel for="mae" value="Nome Mãe: " />
+                            <p:inputText id="mae" placeholder="Nome da mãe" value="#{administratorBean.administrator.personNameMother}" />
+                            
+                            <p:outputLabel for="dataEntrada" value="Data de Entrada: "/>
+                            <p:calendar id="dataEntrada" navigator="true" effect="fold" 
+                                pattern="dd/MM/yyyy" yearRange="c-50:c+50" placeholder="Data de entrada" 
+                                readonly="true" locale="pt" value="#{administratorBean.administrator.personEntryDate}"/>
+                            
+                            <p:outputLabel for="pai" value="Nome Pai: " />
+                            <p:inputText id="pai" placeholder="Nome do pai" value="#{administratorBean.administrator.personNameFather}" />
+  
+                            <p:outputLabel for="usuario" value="Usuário: " />
+                            <p:inputText id="usuario" placeholder="Nome de usuário" value="#{administratorBean.administrator.personLogin.login}" />
+                            
+                            <p:outputLabel for="senha" value="Senha: " />
+                            <p:inputText id="senha" placeholder="Senha de usuário" value="#{administratorBean.administrator.personLogin.password}" />
+                            
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+
+                <p:tab title="Documentos">
+                    <h:form id="documentosAdministrator">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel for="cpf" value="CPF: " />
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="#{administratorBean.administrator.personCpf}" />
+
+                            <p:outputLabel for="rg" value="RG: " />
+                            <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{administratorBean.administrator.personRg}" />
+
+                            <p:outputLabel for="certidao" value="Certidão de Nascimento: " />
+                            <p:inputText id="certidao" placeholder="Nº registro de nascimento" value="#{administratorBean.administrator.personDateBirth}" />
+
+                            <p:outputLabel for="nascimento" value="Nacionalidade: " />
+                            <p:inputText id="nascimento" placeholder="Nacionalidade do administrator" value="#{administratorBean.administrator.personNationality}" />
+
+                        </h:panelGrid>
+                    </h:form>
+            </p:tab>
+
+                <p:tab title="Endereço">
+                    <h:form id="enderecoAdministrator">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel for="rua" value="Rua: " />
+                            <p:inputText id="rua" placeholder="Nome da rua" value="#{administratorBean.administrator.personAddress.street}" />
+
+                            <p:outputLabel for="numero" value="Número: " />
+                            <p:inputText id="numero" placeholder="Número da residência" value="#{administratorBean.administrator.personAddress.number}" />
+
+                            <p:outputLabel for="distrito" value="Distrito: " />
+                            <p:inputText id="distrito" placeholder="Distrito pertencente" value="#{administratorBean.administrator.personAddress.district}" />
+
+                            <p:outputLabel for="cep" value="CEP: " />
+                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="#{administratorBean.administrator.personAddress.cep}" />
+
+                            <p:outputLabel for="cidade" value="Cidade: " />
+                            <p:inputText id="cidade" placeholder="Cidade onde mora" value="#{administratorBean.administrator.personAddress.city}" />
+
+                            <p:outputLabel for="estado" value="Estado: " />
+                            <p:inputText id="estado" placeholder="Unidade da federação" value="#{administratorBean.administrator.personAddress.state}" />
+
+                            <p:outputLabel for="pais" value="País: " />
+                            <p:inputText id="pais" placeholder="País" value="#{administratorBean.administrator.personAddress.country}" />
+
+                        </h:panelGrid> 
+                    </h:form>
+                </p:tab>
+
+                <p:tab title="Contato">
+                    <h:form id="contatoAdministrator">
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel for="fone1" value="Telefone 1: " />
+                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="#{administratorBean.administrator.personPhoneOne}" />
+
+                            <p:outputLabel for="fone2" value="Telefone 2: " />
+                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="#{administratorBean.administrator.personPhoneTwo}" />
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+            
+            <h:form>
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" update="@form" action="#{administratorBean.addAdministrator}"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>    
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>

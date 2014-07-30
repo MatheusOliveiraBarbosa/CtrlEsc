@@ -12,7 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-@Named("twoMonthsController")
+@Named
 @RequestScoped
 public class TwoMonthsBean implements Serializable {
 
@@ -35,7 +35,7 @@ public class TwoMonthsBean implements Serializable {
         return "/cadastre/cadTwoMonths.xhtml";
     }
     
-    public String addStudentClass() {
+    public String addTwoMonths() {
         if (twoMonths.getId() == null || twoMonths.getId() == 0) {
             insertTwoMonths();
         } else {
@@ -46,9 +46,17 @@ public class TwoMonthsBean implements Serializable {
     }
     
     private void insertTwoMonths() {
+        try {
         twoMonthsFacade.create(twoMonths);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
+        } catch (Throwable e) {
+            e.printStackTrace();
+            while (e.getCause() != null) {
+                e = e.getCause();
+                e.printStackTrace();
+            }
+        }
     }
     
     private void updateTwoMonths() {

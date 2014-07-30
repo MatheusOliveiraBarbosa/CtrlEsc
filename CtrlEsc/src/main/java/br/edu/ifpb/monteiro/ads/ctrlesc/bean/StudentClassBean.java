@@ -12,7 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-@Named("studentClassController")
+@Named
 @RequestScoped
 public class StudentClassBean implements Serializable {
 

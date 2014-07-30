@@ -26,12 +26,21 @@
                     
                     <p:outputLabel />
                     <p:outputLabel />
-
-                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-
-                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" />   
-
+                    
                 </h:panelGrid>
+                
+                <h:form>
+                    <p:toolbar>
+                        <p:toolbarGroup>
+                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                        </p:toolbarGroup>
+                        
+                        <p:toolbarGroup align="right">
+                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                                      outcome="/cadastre/cadNotes.xhtml"/>  
+                        </p:toolbarGroup>
+                    </p:toolbar>    
+                </h:form>
 
             </h:form>
             
@@ -46,15 +55,15 @@
 
                     <p:column headerText="Nome" width="200" />    
 
-                    <p:column headerText="Nota 1" width="80" />
+                    <p:column headerText="Unidade I" width="80" />
                         
-                    <p:column headerText="Nota 2" width="80" />
+                    <p:column headerText="Unidade II" width="80" />
 
-                    <p:column headerText="Nota 3" width="80" />
+                    <p:column headerText="Unidade III" width="80" />
                        
-                    <p:column headerText="Nota 4" width="80" />
+                    <p:column headerText="Unidade IV" width="80" />
 
-                    <p:column headerText="Média" width="80" />
+                    <p:column headerText="Média Final" width="80" />
                     
                     <p:column headerText="Nota Final" width="80" />
                     
