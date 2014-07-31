@@ -90,7 +90,18 @@
                             
                             <p:outputLabel for="senha" value="Senha: " />
                             <p:inputText id="senha" placeholder="Senha de usuário" value="#{responsibleBean.responsible.personLogin.password}" />
-
+                            <p:toolbar>
+                                <p:toolbarGroup align="left">
+                                    <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                                                     actionListener="#{responsibleBean.addResponsible}"
+                                    process="@this" update="@form"/>
+                                             
+                                </p:toolbarGroup>
+                        
+                                <p:toolbarGroup align="right">
+                                    <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
+                                </p:toolbarGroup>
+                            </p:toolbar>
                         </h:panelGrid>
                     </h:form>
                 </p:tab>
@@ -125,7 +136,7 @@
                             <p:inputText id="rua" placeholder="Nome da rua" value="#{responsibleBean.responsible.personAddress.street}" />
 
                             <p:outputLabel for="numero" value="Número: " />
-                            <p:inputText id="numero" placeholder="Número da residência" value="#{responsibleBean.responsible.personAddress.number}" />
+                            <p:inputText id="numero" placeholder="Número da residência" value="#{responsibleBean.responsible.personAddress.houseNumber}" />
 
                             <p:outputLabel for="distrito" value="Distrito: " />
                             <p:inputText id="distrito" placeholder="Distrito pertencente" value="#{responsibleBean.responsible.personAddress.district}" />
@@ -137,7 +148,7 @@
                             <p:inputText id="cidade" placeholder="Cidade onde mora" value="#{responsibleBean.responsible.personAddress.city}" />
 
                             <p:outputLabel for="estado" value="Estado: " />
-                            <p:inputText id="estado" placeholder="Unidade da federação" value="#{responsibleBean.responsible.personAddress.state}" />
+                            <p:inputText id="estado" placeholder="Unidade da federação" value="#{responsibleBean.responsible.personAddress.uf}" />
 
                             <p:outputLabel for="pais" value="País: " />
                             <p:inputText id="pais" placeholder="País" value="#{responsibleBean.responsible.personAddress.country}" />
@@ -165,7 +176,7 @@
                 <p:toolbar>
                     <p:toolbarGroup align="left">
                         <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                         action="#{responsibleBean.addResponsible}"
+                                         actionListener="#{responsibleBean.addResponsible}"
                                          process="@this" update="@form"/>
                                                             
                     </p:toolbarGroup>

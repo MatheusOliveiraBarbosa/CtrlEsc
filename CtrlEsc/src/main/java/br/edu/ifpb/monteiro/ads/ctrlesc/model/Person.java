@@ -17,6 +17,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * Entity Person contains atribudos and methods of creating a 
@@ -25,7 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Person implements Identifiable<Person> {
+public abstract class Person implements Identifiable<Person> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,8 +54,9 @@ public class Person implements Identifiable<Person> {
     @Column (name ="person_sex", nullable = false )
     private char personSex;
     
-    @Column (name = "person_photo")
-    @Lob
+//    @Column (name = "person_photo")
+//    @Lob
+    @Transient
     private byte[] personPhoto;
     
     @Column (name = "person_nationality",length = 50)

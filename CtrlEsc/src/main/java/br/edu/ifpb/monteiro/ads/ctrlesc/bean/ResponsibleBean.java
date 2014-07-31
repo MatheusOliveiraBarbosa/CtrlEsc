@@ -1,37 +1,33 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.exception.CtrlEscException;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.primefaces.event.FlowEvent;
 
 /**
  * @author Elisângela
  */
-@Named
-@SessionScoped
+@ManagedBean
+@RequestScoped
 public class ResponsibleBean implements Serializable {
 
     @EJB
-    @Inject
+    //@Inject
     private ResponsibleDao responsibleFacade;
     private Responsible responsible;
     private List<Responsible> listResponsibles;
     
-    private boolean skip;
-
     public ResponsibleBean() {
         responsible = new Responsible();
     }
@@ -51,14 +47,6 @@ public class ResponsibleBean implements Serializable {
     public void setResponsible(Responsible responsible) {
         this.responsible = responsible;
     }
-
-    public boolean isSkip() {
-        return skip;
-    }
-
-    public void setSkip(boolean skip) {
-        this.skip = skip;
-    }
     
     public List<Responsible> getListResponsibles() {
         listResponsibles = responsibleFacade.findAll();
@@ -74,9 +62,14 @@ public class ResponsibleBean implements Serializable {
         return "/cadastre/cadResponsible.xhtml";
     }
     
-    public void addResponsible(ActionEvent actionEvent) {
-       
+    public String addResponsible() throws CtrlEscException{
         
+       if (responsible.getId() == null || responsible.getId() == 0) {
+            insertResponsible();
+        } else {
+            updateResponsible();
+        }        
+        return "";
     }
     
     private void insertResponsible() {
@@ -95,14 +88,4 @@ public class ResponsibleBean implements Serializable {
         responsibleFacade.remove(responsible);
     }
  
-    public String onFlowProcess(FlowEvent event) {     
-        if(skip) {
-            skip = false;   //reset in case user goes back
-            return "confirm";
-        }
-        else {
-            return event.getNewStep();
-        }   
-    }  
-    
 }

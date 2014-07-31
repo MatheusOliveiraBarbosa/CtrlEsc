@@ -11,7 +11,7 @@ public class Address {
     
     private String street;
 
-    private int number;
+    private int houseNumber;
 
     private String district;
 
@@ -19,17 +19,17 @@ public class Address {
 
     private String city;
 
-    private String state;
+    private String uf;
 
     private String country;
 
     public Address(String street, int number, String district, String cep, String city, String state, String country) {
         this.street = street;
-        this.number = number;
+        this.houseNumber = number;
         this.district = district;
         this.cep = cep;
         this.city = city;
-        this.state = state;
+        this.uf = state;
         this.country = country;
     }
     
@@ -46,12 +46,12 @@ public class Address {
         this.street = street;
     }
 
-    public int getNumber() {
-        return number;
+    public int getHouseNumber() {
+        return houseNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setHouseNumber(int houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     public String getDistrict() {
@@ -78,12 +78,12 @@ public class Address {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getUf() {
+        return uf;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public String getCountry() {
