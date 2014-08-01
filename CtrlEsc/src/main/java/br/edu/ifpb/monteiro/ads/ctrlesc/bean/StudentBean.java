@@ -16,7 +16,6 @@ import javax.inject.Inject;
 @RequestScoped
 public class StudentBean implements Serializable {
 
-    @EJB
     @Inject
     private StudentDao studentFacade;
     private List<Student> listStudents;

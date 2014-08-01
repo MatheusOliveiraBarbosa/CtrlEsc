@@ -25,7 +25,7 @@
                             <p:outputLabel/>
                             
                             <p:outputLabel for="name" value="Aluno: " />
-                            <p:inputText id="name" size="50" placeholder="Nome do aluno" required="true" value="#{personBean.person.personName}" />
+                            <p:inputText id="name" size="50" placeholder="Nome do aluno" required="true" value="#{studentBean.student.personName}" />
                             
                             <p:outputLabel for="discipline" value="Disciplina " />
                             <p:inputText id="discipline" size="40" placeholder="Nome da disciplina" required="true" value="#{disciplineBean.discipline.disciplineName}" />
@@ -43,22 +43,16 @@
                             <p:inputText id="recuperationTwoMonths" value="#{twoMonthsBean.twoMonths.twoMonthsNumberTwoMonths}" />
                             
                         </h:panelGrid>
+                        
+                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                            action="#{twoMonthsBean.addTwoMonths}" update="@form"/>
+                
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
+                
                     </h:form>
                 </p:tab>
             </p:tabView>
             
-            <h:form>
-                <p:toolbar>
-                    <p:toolbarGroup>
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                            action="#{twoMonthsBean.addTwoMonths}" update="@form"/>
-                    </p:toolbarGroup>
-
-                    <p:toolbarGroup align="right">
-                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
-                    </p:toolbarGroup>
-                </p:toolbar>
-            </h:form>    
         </p:fieldset>
     </ui:define>
 

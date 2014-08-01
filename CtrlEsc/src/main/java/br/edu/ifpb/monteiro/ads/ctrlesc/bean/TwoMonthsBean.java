@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -16,7 +17,6 @@ import javax.inject.Inject;
 @RequestScoped
 public class TwoMonthsBean implements Serializable {
 
-    @EJB
     @Inject
     private TwoMonthsDao twoMonthsFacade;
     private List<TwoMonths> listTwoMonths;
