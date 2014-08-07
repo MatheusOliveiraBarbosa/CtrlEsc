@@ -35,7 +35,7 @@ public abstract class Person implements Identifiable<Person> {
     @Column (name = "person_name", length = 100, nullable = false)
     private String personName;
     
-    @Column (name = "person_cpf", length = 11, unique = true )
+    @Column (name = "person_cpf", length = 15, unique = true )
     private String personCpf;
     
     @Column(name = "person_date_birth")
@@ -88,7 +88,9 @@ public abstract class Person implements Identifiable<Person> {
     private String personNameFather;
 
     public Person() {
-    
+        personAddress= new Address();
+        personLogin=new Login();
+        
     }
     
     public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
