@@ -4,7 +4,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.AdministratorDao;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
@@ -15,7 +14,6 @@ import javax.inject.Inject;
 @RequestScoped
 public class AdministratorBean implements Serializable {
 
-    @EJB
     @Inject 
     private AdministratorDao administratorFacade;
     private List<Administrator> listAdministrator;

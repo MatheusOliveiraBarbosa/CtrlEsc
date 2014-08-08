@@ -13,125 +13,52 @@
 
     <ui:define name="corpo">
         <p:fieldset legend="Cadastrar Responsável">
-            
-            <p:tabView id="tabResponsavel">
-                <p:tab title="Informações Pessoais">
-                    <h:form id="infoPessoaisResponsible">   
+
+            <p:tabView>
+                <p:tab title="Informações Pessoais"> 
+                    <h:form id="infoResponsible">
+
                         <p:growl/>
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
                                            value="Navegue por todas as abas." />
-                            <h:inputHidden id="id"/>
+                            <h:inputHidden id="id" value="#{responsibleBean.responsible.id}"/>
                             <p:outputLabel/>
                             <p:outputLabel/>
 
                             <p:outputLabel for="nome" value="Nome: " />
                             <p:inputText id="nome" size="50" placeholder="Nome do responsável" required="true" value="#{responsibleBean.responsible.personName}"/>
-
-                            <p:outputLabel for="nascimento" value="Data de Nascimento " />
-                            <p:inputMask id="nascimento" placeholder="Data Nascimento" mask="99/99/9999" value="#{responsibleBean.responsible.personDateBirth}" />
-                            
-                            <p:outputLabel for="foto" value="Foto:"/>
-                            <p:fileUpload id="foto" mode="simple" auto="true" sizeLimit="100000"
-                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                            
+                        
                             <p:outputLabel for="profissao" value="Profissão: "/>
                             <p:inputText id="profissao" placeholder="Profissão" value="#{responsibleBean.responsible.responsibleProfession}"/>
 
-                            <p:outputLabel for="sexo" value="Sexo: " />
-                            <p:selectOneMenu id="sexo" label="Sexo: " effect="slide" editable="true" value="#{responsibleBean.responsible.personCpf}" >
-                                <f:selectItem itemLabel="" itemDisabled="true"/>
-                                <f:selectItem itemLabel="M" />
-                                <f:selectItem itemLabel="F" />
-                            </p:selectOneMenu>
+                                                      
+                            <p:outputLabel for="sexo" value="Sexo: "/>
+                            <p:inputText id="sexo" placeholder="Sexo" required="true" value="#{responsibleBean.responsible.personSex}"/>
                             
-                            <p:outputLabel for="cor" value="Cor: " />
-                            <p:selectOneMenu id="cor" label="Cor: " effect="slide" editable="true" required="true" value="#{responsibleBean.responsible.personBreed}">
-                                <f:selectItem itemLabel="" itemDisabled="true"/>
-                                <f:selectItem itemLabel="Banca" />
-                                <f:selectItem itemLabel="Parda" />
-                                <f:selectItem itemLabel="Amarela" />
-                                <f:selectItem itemLabel="Negra" />
-                                <f:selectItem itemLabel="Morena" />
-                                <f:selectItem itemLabel="Indígena" />
-                                <f:selectItem itemLabel="Não Informada" />
-                            </p:selectOneMenu>
-
-                            <p:outputLabel for="estadoCivil" value="Estado Civil: " />
-                            <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
-                                             editable="true" value="#{responsibleBean.responsible.personCivilStatus}">
-                                <f:selectItem itemLabel="" itemDisabled="true" />
-                                <f:selectItem itemLabel="Solteiro" />
-                                <f:selectItem itemLabel="Casado(a)" />
-                                <f:selectItem itemLabel="Viúvo(a)" />
-                                <f:selectItem itemLabel="Outros" />
-                            </p:selectOneMenu>    
-
                             <p:outputLabel for="parentesco" value="Parentesco Responsável: " />
                             <p:inputText id="parentesco" placeholder="Parentesco responsável" value="#{responsibleBean.responsible.responsibleDegreeKinship}"/>
 
                             <p:outputLabel for="nivelEscolar" value="Nível Escolar: "/>
                             <p:inputText id="nivelEscolar" placeholder="Nível escolar responsável" value="#{responsibleBean.responsible.responsibleLevelEducation}"/>
 
-                            <p:outputLabel for="renda" value="Renda Familiar: "/>
-                            <p:inputText id="renda" placeholder="Renda familiar responsável" styleClass="money" value="#{responsibleBean.responsible.responsibleFamilyIncome}"/>
-                            
                             <p:outputLabel for="mae" value="Nome Mãe: " />
                             <p:inputText id="mae" placeholder="Nome da mãe" value="#{responsibleBean.responsible.personNameMother}" />
-                            
-                            <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
-                            <p:inputMask  id="dataEntrada" mask="99/99/9999" placeholder="Data de Entrada" value="#{responsibleBean.responsible.personEntryDate}" />
-                            
+                           
                             <p:outputLabel for="pai" value="Nome Pai: " />
                             <p:inputText id="pai" placeholder="Nome do pai" value="#{responsibleBean.responsible.personNameFather}" />
-  
+
                             <p:outputLabel for="usuario" value="Usuário: " />
                             <p:inputText id="usuario" placeholder="Nome de usuário" value="#{responsibleBean.responsible.personLogin.login}" />
-                            
+
                             <p:outputLabel for="senha" value="Senha: " />
                             <p:inputText id="senha" placeholder="Senha de usuário" value="#{responsibleBean.responsible.personLogin.password}" />
-                            <p:toolbar>
-                                <p:toolbarGroup align="left">
-                                    <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                                     actionListener="#{responsibleBean.addResponsible}"
-                                    process="@this" update="@form"/>
-                                             
-                                </p:toolbarGroup>
-                        
-                                <p:toolbarGroup align="right">
-                                    <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
-                                </p:toolbarGroup>
-                            </p:toolbar>
-                        </h:panelGrid>
-                    </h:form>
-                </p:tab>
 
-                <p:tab title="Documentos">
-                    <h:form id="documentosResponsible">
-                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
-                            <p:outputLabel/>
-                            <p:outputLabel/>
-                            <p:outputLabel for="cpf" value="CPF: " />
-                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="#{responsibleBean.responsible.personCpf}" />
+                          
 
-                            <p:outputLabel for="rg" value="RG: " />
-                            <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{responsibleBean.responsible.personRg}" />
+                            <p:outputLabel for="nacionalidade:" value="Nacionalidade: " />
+                            <p:inputText id="nacionalidade" placeholder="Nacionalidade do responsável" value="#{responsibleBean.responsible.personNationality}" />
 
-                            <p:outputLabel for="certidao" value="Certidão de Nascimento: " />
-                            <p:inputText id="certidao" placeholder="Nº registro de nascimento" value="" />
-
-                            <p:outputLabel for="nascimento" value="Nacionalidade: " />
-                            <p:inputText id="nascimento" placeholder="Nacionalidade do responsável" value="#{responsibleBean.responsible.personNationality}" />
-
-                        </h:panelGrid>
-                    </h:form>
-            </p:tab>
-
-                <p:tab title="Endereço">
-                    <h:form id="enderecoResponsible">
-                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
-                            <p:outputLabel/>
-                            <p:outputLabel/>
                             <p:outputLabel for="rua" value="Rua: " />
                             <p:inputText id="rua" placeholder="Nome da rua" value="#{responsibleBean.responsible.personAddress.street}" />
 
@@ -153,39 +80,23 @@
                             <p:outputLabel for="pais" value="País: " />
                             <p:inputText id="pais" placeholder="País" value="#{responsibleBean.responsible.personAddress.country}" />
 
-                        </h:panelGrid> 
-                    </h:form>
-                </p:tab>
-
-                <p:tab title="Contato">
-                    <h:form id="contatoResponsible">
-                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
-                            <p:outputLabel/>
-                            <p:outputLabel/>
                             <p:outputLabel for="fone1" value="Telefone 1: " />
                             <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="#{responsibleBean.responsible.personPhoneOne}" />
 
                             <p:outputLabel for="fone2" value="Telefone 2: " />
                             <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="#{responsibleBean.responsible.personPhoneTwo}" />
                         </h:panelGrid>
-                    </h:form>
-                </p:tab>
-            </p:tabView>
-            
-            <h:form>
-                <p:toolbar>
-                    <p:toolbarGroup align="left">
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                         actionListener="#{responsibleBean.addResponsible}"
-                                         process="@this" update="@form"/>
-                                                            
-                    </p:toolbarGroup>
 
-                    <p:toolbarGroup align="right">
+                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                                         action="#{responsibleBean.addResponsible}" update="infoResponsible"/>
+                        
                         <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
-                    </p:toolbarGroup>
-                </p:toolbar>
-            </h:form>    
+
+                    </h:form>
+
+                </p:tab>
+
+            </p:tabView>  
         </p:fieldset>
     </ui:define>
 

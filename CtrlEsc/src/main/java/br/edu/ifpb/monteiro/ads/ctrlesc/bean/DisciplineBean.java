@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DisciplineDao;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Discipline;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -16,7 +15,6 @@ import javax.inject.Named;
 @RequestScoped
 public class DisciplineBean implements Serializable {
 
-    @EJB
     @Inject
     private DisciplineDao disciplineFacade;
     private List<Discipline> listDiscipline;

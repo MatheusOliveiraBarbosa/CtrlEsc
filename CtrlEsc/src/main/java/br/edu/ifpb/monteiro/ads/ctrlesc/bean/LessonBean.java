@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.LessonDao;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Lesson;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -20,7 +19,6 @@ import javax.inject.Named;
 @RequestScoped
 public class LessonBean implements Serializable {
     
-    @EJB
     @Inject
     private LessonDao lessonFacade;
     private Lesson lesson;

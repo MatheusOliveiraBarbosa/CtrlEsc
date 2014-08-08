@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentClassDao;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
@@ -16,7 +15,6 @@ import javax.inject.Inject;
 @RequestScoped
 public class StudentClassBean implements Serializable {
 
-    @EJB
     @Inject
     private StudentClassDao studentClassFacade;
     private List<StudentClass> lisStudentClass;

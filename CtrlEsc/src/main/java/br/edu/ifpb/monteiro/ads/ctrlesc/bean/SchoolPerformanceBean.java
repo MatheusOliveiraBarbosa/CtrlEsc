@@ -15,7 +15,6 @@ import javax.inject.Named;
 @RequestScoped
 public class SchoolPerformanceBean implements Serializable {
 
-    @EJB
     @Inject
     private SchoolPerformanceDao schoolPerformanceFacade;
     private List<SchoolPerformance> listSchoolPerformance;

@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentDao;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
