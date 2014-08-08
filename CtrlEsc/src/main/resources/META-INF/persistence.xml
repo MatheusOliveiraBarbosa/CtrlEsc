@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="CtrlEsc" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/ctrl_esc_database</jta-data-source>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Person</class>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Discipline</class>
@@ -15,8 +16,6 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.target-database" value="PostgreSQL"/>
-      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

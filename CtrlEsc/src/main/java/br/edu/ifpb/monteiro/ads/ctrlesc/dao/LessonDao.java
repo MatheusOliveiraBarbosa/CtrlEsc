@@ -18,6 +18,10 @@ public class LessonDao extends AbstractDao<Lesson> {
         return em;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+    
     public LessonDao() {
         super(Lesson.class);
     }
