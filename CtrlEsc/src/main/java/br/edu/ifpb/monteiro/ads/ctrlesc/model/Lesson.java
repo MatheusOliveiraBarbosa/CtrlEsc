@@ -1,7 +1,7 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +32,7 @@ public class Lesson implements Identifiable<Lesson> {
     
     @Column (name = "lesson_date", nullable = false)
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar lessonDate;
+    private Date lessonDate;
     
     @Column (name = "lesson_presence")
     @Min(value = 0)
@@ -52,20 +52,20 @@ public class Lesson implements Identifiable<Lesson> {
         lessonListStudents = new ArrayList<Student>();
     }
 
-    public Lesson(GregorianCalendar lessonDate, int lessonPresence, String lessonObservation, StudentClass lessonStudentClass, List<Student> lessonListStudents) {
+    public Lesson(Date lessonDate, int lessonPresence, String lessonObservation, StudentClass lessonStudentClass, List<Student> lessonListStudents) {
         this.lessonDate = lessonDate;
         this.lessonPresence = lessonPresence;
         this.lessonObservation = lessonObservation;
         this.lessonStudentClass = lessonStudentClass;
         this.lessonListStudents = lessonListStudents;
     }
-
+    
     //Get's and Set's 
-    public GregorianCalendar getLessonDate() {
+    public Date getLessonDate() {
         return lessonDate;
     }
 
-    public void setLessonDate(GregorianCalendar lessonDate) {
+    public void setLessonDate(Date lessonDate) {
         this.lessonDate = lessonDate;
     }
 

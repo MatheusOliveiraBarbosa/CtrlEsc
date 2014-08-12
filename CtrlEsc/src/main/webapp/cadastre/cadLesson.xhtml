@@ -16,7 +16,7 @@
             
             <p:tabView id="tabLesson">
                 <p:tab title="Atividades">
-                    <h:form id="atividades">   
+                    <h:form id="activits">   
                         <p:growl/>
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" />
@@ -25,8 +25,8 @@
                             <p:outputLabel/>
                             
                             <p:outputLabel for="dataLesson" value="Data Atividade: "/>
-                            <p:inputMask id="dataLesson" mask="99/99/9999" value="#{lessonBean.lesson.lessonDate}" /> 
-                                        
+                            <p:calendar id="dataLesson" mask="99/99/9999" value="#{lessonBean.lesson.lessonDate}" pattern="dd/MM/yyyy"/> 
+                           
                             <p:outputLabel for="observation" value="Observações " />
                             <p:inputTextarea id="observation" value="#{lessonBean.lesson.lessonObservation}" 
                                 rows="10" cols="33" autoResize="true" />
@@ -37,7 +37,8 @@
                             
                         </h:panelGrid>
                         
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" action="#{lessonBean.addLesson}" />
+                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                                         action="#{lessonBean.addLesson}" update="activits"/>
 
                         <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" />
                         

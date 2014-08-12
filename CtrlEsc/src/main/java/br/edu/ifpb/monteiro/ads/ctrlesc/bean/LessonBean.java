@@ -37,7 +37,7 @@ public class LessonBean implements Serializable {
     }
     
     public String editLesson() {
-        return "/registry/resgLesson.xhtml";
+        return "/cadastre/cadLesson.xhtml";
     }
     
     public String addLesson() {
