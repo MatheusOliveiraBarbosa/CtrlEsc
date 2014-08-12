@@ -3,8 +3,8 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
+import java.util.Date;
 
-import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -40,7 +39,7 @@ public abstract class Person implements Identifiable<Person> {
     
     @Column(name = "person_date_birth")
     @Temporal (TemporalType.DATE)
-    private GregorianCalendar personDateBirth;
+    private Date personDateBirth;
     
     @Embedded
     private Address personAddress;
@@ -64,7 +63,7 @@ public abstract class Person implements Identifiable<Person> {
     
     @Column (name = "person_entry_date")
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar personEntryDate;
+    private Date personEntryDate;
     
     @Column (name = "person_phone_one" , length = 25)
     private String personPhoneOne;
@@ -89,11 +88,11 @@ public abstract class Person implements Identifiable<Person> {
 
     public Person() {
         personAddress= new Address();
-        personLogin=new Login();
-        
+        personLogin=new Login();        
     }
-    
-    public Person(String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+
+    public Person(Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+        this.id = id;
         this.personName = personName;
         this.personCpf = personCpf;
         this.personDateBirth = personDateBirth;
@@ -106,15 +105,12 @@ public abstract class Person implements Identifiable<Person> {
         this.personEntryDate = personEntryDate;
         this.personPhoneOne = personPhoneOne;
         this.personPhoneTwo = personPhoneTwo;
-        //this.personPhoneThree = personPhoneThree;
         this.personCivilStatus = personCivilStatus;
         this.personLogin = personLogin;
         this.personNameMother = personNameMother;
         this.personNameFather = personNameFather;
-        
-        
     }
-    
+       
     //Get's and Set's 
     public String getPersonName() {
         return personName;
@@ -132,11 +128,11 @@ public abstract class Person implements Identifiable<Person> {
         this.personCpf = personCpf;
     }
 
-    public GregorianCalendar getPersonDateBirth() {
+    public Date getPersonDateBirth() {
         return personDateBirth;
     }
 
-    public void setPersonDateBirth(GregorianCalendar personDateBirth) {
+    public void setPersonDateBirth(Date personDateBirth) {
         this.personDateBirth = personDateBirth;
     }
 
@@ -188,11 +184,11 @@ public abstract class Person implements Identifiable<Person> {
         this.personNationality = personNationality;
     }
 
-    public GregorianCalendar getPersonEntryDate() {
+    public Date getPersonEntryDate() {
         return personEntryDate;
     }
 
-    public void setPersonEntryDate(GregorianCalendar personEntryDate) {
+    public void setPersonEntryDate(Date personEntryDate) {
         this.personEntryDate = personEntryDate;
     }
 
@@ -253,5 +249,4 @@ public abstract class Person implements Identifiable<Person> {
     public void setId(Long id){
         this.id = id;
     }
-    
 }
