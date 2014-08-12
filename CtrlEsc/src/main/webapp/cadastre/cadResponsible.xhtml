@@ -45,6 +45,12 @@
                             <p:outputLabel for="mae" value="Nome Mãe: " />
                             <p:inputText id="mae" placeholder="Nome da mãe" value="#{responsibleBean.responsible.personNameMother}" />
                            
+                            <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
+                            <p:calendar  id="dataEntrada" value="#{responsibleBean.responsible.personEntryDate}" pattern="d-M-yyyy" 
+                                         locale="pt_BR" >
+                            </p:calendar>
+                                                       
+                            
                             <p:outputLabel for="pai" value="Nome Pai: " />
                             <p:inputText id="pai" placeholder="Nome do pai" value="#{responsibleBean.responsible.personNameFather}" />
 

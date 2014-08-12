@@ -4,6 +4,7 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
@@ -44,15 +45,15 @@ public class Responsible extends Person{
     
     }
 
-    public Responsible(String responsibleLevelEducation, String responsibleProfession, double responsibleFamilyIncome, String responsibleDegreeKinship, List<Student> responsibleListStudenst, String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
-        super(personName, personCpf, personDateBirth, personAddress, personBreed, personRegistration, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, perosnPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
+    public Responsible(String responsibleLevelEducation, String responsibleProfession, double responsibleFamilyIncome, String responsibleDegreeKinship, List<Student> responsibleListStudenst, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+        super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.responsibleLevelEducation = responsibleLevelEducation;
         this.responsibleProfession = responsibleProfession;
         this.responsibleFamilyIncome = responsibleFamilyIncome;
         this.responsibleDegreeKinship = responsibleDegreeKinship;
         this.responsibleListStudenst = responsibleListStudenst;
     }
-   
+  
     //Get's and Set's 
     public String getResponsibleLevelEducation() {
         return responsibleLevelEducation;

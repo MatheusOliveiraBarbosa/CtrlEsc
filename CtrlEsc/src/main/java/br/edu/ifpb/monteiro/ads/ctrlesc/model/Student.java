@@ -6,6 +6,7 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.CertificateReservist
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.ElectionTitle;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
@@ -86,8 +87,8 @@ public class Student extends Person{
     public Student() {
     }
 
-    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, boolean studentFatherAlive, boolean studentMotherAlive, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, String personName, String personCpf, GregorianCalendar personDateBirth, Address personAddress, String personBreed, String personRegistration, char personSex, byte[] personPhoto, String personNationality, GregorianCalendar personEntryDate, String personPhoneOne, String perosnPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
-        super(personName, personCpf, personDateBirth, personAddress, personBreed, personRegistration, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, perosnPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
+    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, boolean studentFatherAlive, boolean studentMotherAlive, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+        super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.studentYear = studentYear;
         this.studentNumberBrothersScholarship = studentNumberBrothersScholarship;
         this.studentRegistration = studentRegistration;
