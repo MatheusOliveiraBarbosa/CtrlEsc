@@ -6,193 +6,176 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="/WEB-INF/template/template.xhtml">
-               
+
     <ui:define name="corpo">
         <p:fieldset legend="Cadastrar Aluno">
-            <p:tabView id="tabAluno">
-                <p:tab title="Informações Pessoais">
-                    <h:form >
+            <h:form id="infoAluno" >
+                <p:tabView id="tabAluno">
+                    <p:tab title="Informações Pessoais">
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
                                            value="Navegue por todas as abas." />
-                            <h:inputHidden id="id"/>
+                            <h:inputHidden id="id" value="#{studentBean.student.id}"/>
                             <p:outputLabel/>
                             <p:outputLabel/>
-                            
+
                             <p:outputLabel for="nome" value="Nome: " />
-                            <p:inputText id="nome" size="50" placeholder="Nome do Aluno" required="true" value="" />
-                            
-                            <p:outputLabel for="nascimento" value="Data de Nascimento: " />
-                            <p:inputMask id="nascimento" mask="99/99/9999" />
-                            
-                            <p:outputLabel for="foto" value="Foto:"/>
-                            <p:fileUpload id="foto" mode="simple" auto="true" sizeLimit="100000"
-                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                            
-                            <p:outputLabel for="profissao" value="Profissão: " />
-                            <p:inputText id="profissao" placeholder="Profissão do estudante" value="" />
-                            
+                            <p:inputText id="nome" size="50" placeholder="Nome do Aluno" required="true" value="#{studentBean.student.personName}" />
+
+                            <p:outputLabel for="dataNascimento" value="Data de Nascimento: " />
+                            <p:calendar id="dataNascimento" mask="99-99-9999"  pattern="dd-MM-yyyy" 
+                                        locale="pt_BR" value="#{studentBean.student.personDateBirth}"/>
+
                             <p:outputLabel for="matricula" value="Matrícula: " />
-                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="" />
-                            
+                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="#{studentBean.student.studentRegistration}" />
+
                             <p:outputLabel for="sexo" value="Sexo: " />
-                            <p:selectOneMenu id="sexo" label="Sexo: " effect="slide" editable="true">
-                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true" value="#{studentBean.student.personSex}">
+                                <f:selectItem itemLabel="Sexo" itemDisabled="true"/>
                                 <f:selectItem itemLabel="M" />
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel for="nivelEscolar" value="Nível Escolar: " />
-                            <p:inputText id="nivelEscolar" placeholder="Nível escolar do aluno" value="" />
-                            
+                            <p:inputText id="nivelEscolar" placeholder="Nível Escolar do Aluno" value="#{studentBean.student.studentLevelEducation}" />
+
                             <p:outputLabel for="estadoCivil" value="Estado Civil: " />
                             <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
-                                             editable="true">
-                                <f:selectItem itemLabel="" itemDisabled="true" />
+                                             editable="true" value="#{studentBean.student.personCivilStatus}">
+                                <f:selectItem itemLabel="Estado Civil" itemDisabled="true" />
                                 <f:selectItem itemLabel="Solteiro" />
                                 <f:selectItem itemLabel="Casado(a)" />
                                 <f:selectItem itemLabel="Viúvo(a)" />
                                 <f:selectItem itemLabel="Outros" />
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel for="ano" value="Ano: " />
-                            <p:inputText id="ano" placeholder="Ano letivo" value="" />
-                            
+                            <p:inputText id="ano" placeholder="Ano Letivo" value="#{studentBean.student.studentYear}" />
+
                             <p:outputLabel for="periodo" value="Periodo: " />
-                            <p:inputText id="periodo" placeholder="Periodo letivo" value="" />
-                            
+                            <p:inputText id="periodo" placeholder="Periodo Letivo" value="#{studentBean.student.studentPeriod}" />
+
                             <p:outputLabel for="pai" value="Nome Pai: " />
-                            <p:inputText id="pai" placeholder="Nome do pai" value="" />
-                            
+                            <p:inputText id="pai" placeholder="Nome do Pai" value="#{studentBean.student.personNameFather}" />
+
                             <p:outputLabel for="mae" value="Nome Mãe: " />
-                            <p:inputText id="mae" placeholder="Nome da mãe" value="" />
-                            
-                            <p:outputLabel for="irmaos" value="Nº de irmãos na escola: " />
-                            <p:inputText id="irmaos" placeholder="Nº irmãos estudando" value="" />
-                            
+                            <p:inputText id="mae" placeholder="Nome da Mãe" value="#{studentBean.student.personNameMother}" />
+
+                            <p:outputLabel for="irmaos" value="Nº de Irmãos na Escola: " />
+                            <p:inputText id="irmaos" placeholder="Nº Irmãos Estudando" value="#{studentBean.student.studentNumberBrotherStudent}" />
+
                             <p:outputLabel for="previdenciario" value="Orgão Previdênciario: " />
-                            <p:inputText id="previdenciario" placeholder="Orgão previdênciario" value="" />
-                            
+                            <p:inputText id="previdenciario" placeholder="Orgão Previdênciario" value="#{studentBean.student.studentPensionOrgan}" />
+
                             <p:outputLabel for="usuario" value="Usuário: " />
-                            <p:inputText id="usuario" placeholder="Nome de usuário" value="" />
-                            
+                            <p:inputText id="usuario" placeholder="Nome de Usuário" value="#{studentBean.student.personLogin.login}" />
+
                             <p:outputLabel for="senha" value="Senha: " />
-                            <p:inputText id="senha" placeholder="Senha de usuário" value="" />
-                            
+                            <p:inputText id="senha" placeholder="Senha de Usuário" value="#{studentBean.student.personLogin.password}" />
+
                             <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
-                            <p:inputMask  id="dataEntrada" mask="99/99/9999" value="" />
+                            <p:calendar id="dataEntrada" mask="99-99-9999"  pattern="dd-MM-yyyy" 
+                                        locale="pt_BR" value="#{studentBean.student.personEntryDate}"/>
 
                         </h:panelGrid>
-                    </h:form>
-                </p:tab>
-                
-                <p:tab title="Documentos">
-                    <h:form >
+                    </p:tab>
+
+                    <p:tab title="Documentos">
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="gridDoc">
-                            
+
                             <p:outputLabel for="cpf" value="CPF: " />
-                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" value="" />
-                            
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" value="#{studentBean.student.personCpf}" />
+
                             <p:outputLabel for="rg" value="RG: " />
-                            <p:inputMask  id="rg" size="10" mask="9.999.999" value="" />
-                            
+                            <p:inputMask  id="rg" size="10" mask="9.999.999" value="#{studentBean.student.personRg}" />
+
                             <p:outputLabel for="nascionalidade" value="Nacionalidade: " />
-                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do estudante" value="" />
-                            
+                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do estudante" value="#{studentBean.student.personNationality}" />
+
                             <p:outputLabel for="reservista" value="Número de reservista: " />
-                            <p:inputText id="reservista" placeholder="Nº reservista" value="" />
-                            
+                            <p:inputText id="reservista" placeholder="Nº reservista" value="#{studentBean.student.studentCertificateReservist.numberCertificateReservist}" />
+
                             <p:outputLabel for="categoria" value="Categoria: " />
-                            <p:inputText id="categoria" placeholder="Categoria" value="" />
-                            
+                            <p:inputText id="categoria" placeholder="Categoria" value="#{studentBean.student.studentCertificateReservist.category}" />
+
                             <p:outputLabel for="emissorReservista" value="Orgão Emissor: " />
-                            <p:inputText id="emissorReservista" placeholder="Orgão emissor" value="" />
-                            
+                            <p:inputText id="emissorReservista" placeholder="Orgão emissor" value="#{studentBean.student.studentCertificateReservist.stateEmitterCertificateReservist}" />
+
                             <p:outputLabel for="tituloEleitoral" value="Título Eleitoral:  " />
-                            <p:inputText id="tituloEleitoral" placeholder="Nº título eleitoral" value="" />
-                            
+                            <p:inputText id="tituloEleitoral" placeholder="Nº título eleitoral" value="#{studentBean.student.studentElectionTitle.numberElectionTitle}" />
+
                             <p:outputLabel for="secao" value="Seção: " />
-                            <p:inputText id="secao" placeholder="Nº da seção" value="" />
-                            
+                            <p:inputText id="secao" placeholder="Nº da Seção" value="#{studentBean.student.studentElectionTitle.section}" />
+
                             <p:outputLabel for="zona" value="Zona: " />
-                            <p:inputText id="zona" placeholder="Nº zona eleitoral" value="" />
-                            
+                            <p:inputText id="zona" placeholder="Nº Zona Eleitoral" value="#{studentBean.student.studentElectionTitle.zone}" />
+
                             <p:outputLabel for="emissorTitulo" value="Orgão Emissor: " />
-                            <p:inputText id="emissorTitulo" placeholder="Orgão emissor" value="" />
-                            
+                            <p:inputText id="emissorTitulo" placeholder="Orgão Emissor" value="#{studentBean.student.studentElectionTitle.stateEmitterElectionTitle}" />
+
                             <p:outputLabel for="nascimento" value="Certidão de Nascimento: " />
-                            <p:inputText id="nascimento" placeholder="Nº registro de nascimento" value="" />
-                            
+                            <p:inputText id="nascimento" placeholder="Nº Registro de Nascimento" value="#{studentBean.student.studentBirthRecord.registry}" />
+
                             <p:outputLabel for="folha" value="Folha: " />
-                            <p:inputText id="folha" placeholder="Folha" value="" />
-                            
+                            <p:inputText id="folha" placeholder="Folha" value="#{studentBean.student.studentBirthRecord.folha}" />
+
                             <p:outputLabel for="livro" value="Livro: " />
-                            <p:inputText id="livro" placeholder="Livro" value="" />
-                            
+                            <p:inputText id="livro" placeholder="Livro" value="#{studentBean.student.studentBirthRecord.livro}" />
+
                             <p:outputLabel for="carteiraTrabalho" value="Nº Carteira de Trabalho: " />
-                            <p:inputText id="carteiraTrabalho" placeholder="Nº carteira de trabalho" value="" />
-                            
+                            <p:inputText id="carteiraTrabalho" placeholder="Nº Carteira de Trabalho" value="#{studentBean.student.studentPortfolioWork.numberPortfolioWork}" />
+
                             <p:outputLabel for="serie" value="Série: " />
-                            <p:inputText id="serie" placeholder="Série" value="" />
-                            
+                            <p:inputText id="serie" placeholder="Série" value="#{studentBean.student.studentPortfolioWork.series}" />
+
                         </h:panelGrid>
-                    </h:form>    
-                </p:tab>
-                
-                <p:tab title="Endereço">
-                    <h:form >
+                    </p:tab>
+
+                    <p:tab title="Endereço">
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="rua" value="Rua: " />
-                            <p:inputText id="rua" placeholder="Nome da rua" value="" />
-                            
+                            <p:inputText id="rua" placeholder="Nome da Rua" value="#{studentBean.student.personAddress.street}" />
+
                             <p:outputLabel for="numero" value="Número: " />
-                            <p:inputText id="numero" placeholder="Nº da rua" value="" />
-                            
+                            <p:inputText id="numero" placeholder="Nº da Rua" value="#{studentBean.student.personAddress.houseNumber}" />
+
                             <p:outputLabel for="distrito" value="Distrito: " />
-                            <p:inputText id="distrito" placeholder="Distrito" value="" />
-                            
+                            <p:inputText id="distrito" placeholder="Distrito" value="#{studentBean.student.personAddress.district}" />
+
                             <p:outputLabel for="cep" value="CEP: " />
-                            <p:inputMask id="cep" mask="99999-999" value="" />
-                            
+                            <p:inputMask id="cep" mask="99999-999" value="#{studentBean.student.personAddress.cep}" />
+
                             <p:outputLabel for="cidade" value="Cidade: " />
-                            <p:inputText id="cidade" placeholder="Nome da cidade" value="" />
-                            
+                            <p:inputText id="cidade" placeholder="Cidade" value="#{studentBean.student.personAddress.city}" />
+
                             <p:outputLabel for="estado" value="Estado: " />
-                            <p:inputText id="estado" placeholder="Unidade da federação" value="" />
-                            
+                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{studentBean.student.personAddress.uf}" />
+
                             <p:outputLabel for="pais" value="País: " />
-                            <p:inputText id="pais" placeholder="País" value="" />
+                            <p:inputText id="pais" placeholder="País" value="#{studentBean.student.personAddress.country}" />
                         </h:panelGrid>    
-                    </h:form>
-                </p:tab>
-                
-                <p:tab title="Contato">
-                    <h:form >
+                    </p:tab>
+
+                    <p:tab title="Contato">
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="fone1" value="Telefone 1: " />
-                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="" />
-                            
-                            <p:outputLabel for="fone2" value="Telefone 2: " />
-                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="" />
-                        </h:panelGrid>
-                    </h:form>
-                </p:tab>
-            </p:tabView>
-            
-            <h:form>
-                <p:toolbar>
-                    <p:toolbarGroup>
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk"/>
-                    </p:toolbarGroup>
+                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="#{studentBean.student.personPhoneOne}" />
 
-                    <p:toolbarGroup align="right">
-                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
-                    </p:toolbarGroup>
-                </p:toolbar>
+                            <p:outputLabel for="fone2" value="Telefone 2: " />
+                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="#{studentBean.student.personPhoneTwo}" />
+                        </h:panelGrid>
+                    </p:tab>
+                </p:tabView>
+
+                <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                                 action="#{studentBean.addStudent}" update="infoAluno"/>
+
+                <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
+                                 action="#{studentBean.limpStudent}" update="infoAluno"/>
             </h:form>    
         </p:fieldset>
     </ui:define>
