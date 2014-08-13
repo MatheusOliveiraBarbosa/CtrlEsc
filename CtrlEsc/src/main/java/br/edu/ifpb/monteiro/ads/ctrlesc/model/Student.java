@@ -48,13 +48,7 @@ public class Student extends Person{
     
     @Embedded
     private BirthRecord studentBirthRecord;
-    
-    @Column (name = "student_father_alive")
-    private boolean studentFatherAlive;
-    
-    @Column (name = "student_mother_alive")
-    private boolean studentMotherAlive;
-    
+       
     @Column (name = "student_profession",length = 50)
     private String studentProfession;
     
@@ -74,7 +68,7 @@ public class Student extends Person{
     private int studentNumberBrotherStudent;
     
     @ManyToOne
-    @JoinColumn(name = "id_student")
+    @JoinColumn(name = "id_responsible")
     private Responsible studentResponsible;
     
     @OneToMany (mappedBy = "schoolPerformanceStudent", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)  
@@ -85,9 +79,13 @@ public class Student extends Person{
     private List<Lesson> studentListLessons;
 
     public Student() {
+        studentBirthRecord= new BirthRecord();
+        studentCertificateReservist= new CertificateReservist();
+        studentElectionTitle=new ElectionTitle();
+        studentPortfolioWork=new PortfolioWork();
     }
 
-    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, boolean studentFatherAlive, boolean studentMotherAlive, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.studentYear = studentYear;
         this.studentNumberBrothersScholarship = studentNumberBrothersScholarship;
@@ -95,8 +93,6 @@ public class Student extends Person{
         this.studentCertificateReservist = studentCertificateReservist;
         this.studentElectionTitle = studentElectionTitle;
         this.studentBirthRecord = studentBirthRecord;
-        this.studentFatherAlive = studentFatherAlive;
-        this.studentMotherAlive = studentMotherAlive;
         this.studentProfession = studentProfession;
         this.studentPortfolioWork = studentPortfolioWork;
         this.studentPensionOrgan = studentPensionOrgan;
@@ -157,21 +153,6 @@ public class Student extends Person{
         this.studentBirthRecord = studentBirthRecord;
     }
 
-    public boolean isStudentFatherAlive() {
-        return studentFatherAlive;
-    }
-
-    public void setStudentFatherAlive(boolean studentFatherAlive) {
-        this.studentFatherAlive = studentFatherAlive;
-    }
-
-    public boolean isStudentMotherAlive() {
-        return studentMotherAlive;
-    }
-
-    public void setStudentMotherAlive(boolean studentMotherAlive) {
-        this.studentMotherAlive = studentMotherAlive;
-    }
 
     public String getStudentProfession() {
         return studentProfession;

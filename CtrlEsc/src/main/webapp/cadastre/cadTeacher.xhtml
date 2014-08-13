@@ -6,39 +6,43 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="/WEB-INF/template/template.xhtml">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
 
     <ui:define name="corpo">
-        <p:fieldset legend="Cadastro de Professores">
-            <p:tabView id="tabProfessor">
-                <p:tab title="Informações Pessoais">
-                    <h:form >
+        <p:fieldset legend="Cadastrar Administrador">
+
+            <h:form id="infoAdministrator">   
+                <p:tabView id="tabAdministrator">
+                    <p:tab title="Informações Pessoais">
                         <p:growl/>
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
                                            value="Navegue por todas as abas." />
-                            <h:inputHidden id="id"/>
+                            <h:inputHidden id="id" value="#{teacherBean.teacher.id}"/>
                             <p:outputLabel/>
                             <p:outputLabel/>
 
                             <p:outputLabel for="nome" value="Nome: " />
-                            <p:inputText id="nome" size="35" placeholder="Nome do professor" required="true" value="" />
-                            
-                            <p:outputLabel for="nascimento" value="Data de Nascimento: " />
-                            <p:inputMask id="nascimento" mask="99/99/9999" placeholder="Data de Nascimento"/>
+                            <p:inputText id="nome" size="50" placeholder="Nome do administrador" required="true" 
+                                         value="#{teacherBean.teacher.personName}" />
 
-                            <p:outputLabel for="foto" value="Foto:"/>
-                            <p:fileUpload id="foto" mode="simple" auto="true" sizeLimit="100000"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                            
-                            <p:outputLabel for="matricula" value="Matrícula: " />
-                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="" />
+                            <p:outputLabel for="nascimento" value="Data de Nascimento: "/>
+                            <p:calendar id="nascimento" mask="99-99-9999"  pattern="dd-MM-yyyy" 
+                                        locale="pt_BR" value="#{teacherBean.teacher.personDateBirth}"/>
 
-                           
+                            <p:outputLabel for="sexo" value="Sexo: " />
+                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true"  value="#{teacherBean.teacher.personSex}">
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="M" />
+                                <f:selectItem itemLabel="F" />
+                            </p:selectOneMenu>
 
                             <p:outputLabel for="cor" value="Cor: " />
-                            <p:selectOneMenu id="cor" label="Cor: " effect="slide" editable="true" required="true">
-                                <f:selectItem itemLabel="" itemDisabled="true" />
-                                <f:selectItem itemLabel="Banca" />
+                            <p:selectOneMenu id="cor" label="Cor: " effect="slide" editable="true" value="#{teacherBean.teacher.personBreed}" >
+                                <f:selectItem itemLabel="" itemDisabled="true"/>
+                                <f:selectItem itemLabel="Branca" />
                                 <f:selectItem itemLabel="Parda" />
                                 <f:selectItem itemLabel="Amarela" />
                                 <f:selectItem itemLabel="Negra" />
@@ -47,118 +51,101 @@
                                 <f:selectItem itemLabel="Não Informada" />
                             </p:selectOneMenu>
 
-                            <p:outputLabel for="sexo" value="Sexo: " />
-                            <p:selectOneMenu id="sexo" label="Sexo: " effect="slide" editable="true" required="true">
-                                <f:selectItem itemLabel="" itemDisabled="true"/>
-                                <f:selectItem itemLabel="M" />
-                                <f:selectItem itemLabel="F" />
-                            </p:selectOneMenu>
-
-                            <p:outputLabel for="mae" value="Nome Mãe: " />
-                            <p:inputText id="mae" placeholder="Nome da mãe" value="" />
-                            
-                            <p:outputLabel for="pai" value="Nome Pai: " />
-                            <p:inputText id="pai" placeholder="Nome do pai" value="" />
-                            
                             <p:outputLabel for="estadoCivil" value="Estado Civil: " />
                             <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
-                                             editable="true" required="true" >
+                                             editable="true" value="#{teacherBean.teacher.personCivilStatus}">
                                 <f:selectItem itemLabel="" itemDisabled="true" />
                                 <f:selectItem itemLabel="Solteiro" />
                                 <f:selectItem itemLabel="Casado(a)" />
                                 <f:selectItem itemLabel="Viúvo(a)" />
                                 <f:selectItem itemLabel="Outros" />
+                            </p:selectOneMenu>    
 
-                            </p:selectOneMenu>        
-                            <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
-                            <p:inputMask  id="dataEntrada" mask="99/99/9999" placeholder="Data de Entrada" value="" />
+                            <p:outputLabel for="mae" value="Nome Mãe: " />
+                            <p:inputText id="mae" placeholder="Nome da mãe" value="#{teacherBean.teacher.personNameMother}" />
+
+                            <p:outputLabel for="dataEntrada" value="Data de Entrada: "/>
+                            <p:calendar id="dataEntrada" mask="99-99-9999"  pattern="dd-MM-yyyy" 
+                                        locale="pt_BR" value="#{teacherBean.teacher.personDateBirth}"/>
+
+                            <p:outputLabel for="pai" value="Nome Pai: " />
+                            <p:inputText id="pai" placeholder="Nome do pai" value="#{teacherBean.teacher.personNameFather}" />
 
                             <p:outputLabel for="usuario" value="Usuário: " />
-                            <p:inputText id="usuario" placeholder="Nome de usuário" value="" />
+                            <p:inputText id="usuario" required="true" placeholder="Nome de Usuário" value="#{teacherBean.teacher.personLogin.login}" />
 
                             <p:outputLabel for="senha" value="Senha: " />
-                            <p:inputText id="senha" placeholder="Senha de usuário" value="" />
-                        </h:panelGrid>
-                    </h:form>
-                </p:tab>
+                            <p:inputText id="senha" required="true" placeholder="Senha de Usuário" value="#{teacherBean.teacher.personLogin.password}" />
 
-                <p:tab title="Documentos">
-                    <h:form >
+                        </h:panelGrid>
+                    </p:tab>
+
+                    <p:tab title="Documentos">
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridDocumentos">
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="cpf" value="CPF: " />
-                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="" />
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="#{teacherBean.teacher.personCpf}" />
 
                             <p:outputLabel for="rg" value="RG: " />
-                            <p:inputMask  id="rg" mask="9.999.999" placeholder="Nº RG" value="" />
+                            <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{teacherBean.teacher.personRg}" />
 
                             <p:outputLabel for="certidao" value="Certidão de Nascimento: " />
-                            <p:inputText id="certidao" placeholder="Nº registro de nascimento" value="" />
+                            <p:inputText id="certidao" placeholder="Nº Registro de Nascimento" value="#{teacherBean.teacher.personDateBirth}" />
 
-                            <p:outputLabel for="nascionalidade" value="Nacionalidade: " />
-                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do professor" value="" />
+                            <p:outputLabel for="nacionalidade" value="Nacionalidade: " />
+                            <p:inputText id="nacionalidade" placeholder="Nacionalidade do Administrator" value="#{teacherBean.teacher.personNationality}" />
 
                         </h:panelGrid>
-                    </h:form>
-                </p:tab>
+                    </p:tab>
 
-                <p:tab title="Endereço">
-                    <h:form >
+                    <p:tab title="Endereço">
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridEndereco">
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="rua" value="Rua: " />
-                            <p:inputText id="rua" placeholder="Nome da rua" value="" />
+                            <p:inputText id="rua" placeholder="Nome da rua" value="#{teacherBean.teacher.personAddress.street}" />
 
                             <p:outputLabel for="numero" value="Número: " />
-                            <p:inputText id="numero" placeholder="Número da residência" value="" />
+                            <p:inputText id="numero" placeholder="Número da Residência" value="#{teacherBean.teacher.personAddress.houseNumber}" />
 
                             <p:outputLabel for="distrito" value="Distrito: " />
-                            <p:inputText id="distrito" placeholder="Distrito pertencente" value="" />
+                            <p:inputText id="distrito" placeholder="Distrito Pertencente" value="#{teacherBean.teacher.personAddress.district}" />
 
                             <p:outputLabel for="cep" value="CEP: " />
-                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="" />
+                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="#{teacherBean.teacher.personAddress.cep}" />
 
                             <p:outputLabel for="cidade" value="Cidade: " />
-                            <p:inputText id="cidade" placeholder="Cidade onde mora" value="" />
+                            <p:inputText id="cidade" placeholder="Cidade"  value="#{teacherBean.teacher.personAddress.city}" />
 
                             <p:outputLabel for="estado" value="Estado: " />
-                            <p:inputText id="estado" placeholder="Unidade da federação" value="" />
+                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{teacherBean.teacher.personAddress.uf}" />
 
                             <p:outputLabel for="pais" value="País: " />
-                            <p:inputText id="pais" placeholder="País" value="" />
+                            <p:inputText id="pais" placeholder="País" value="#{teacherBean.teacher.personAddress.country}" />
 
-                        </h:panelGrid>
-                    </h:form>
-                </p:tab>
+                        </h:panelGrid> 
+                    </p:tab>
 
-                <p:tab title="Contato">
-                    <h:form >
+                    <p:tab title="Contato">
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="gridContato">
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="fone1" value="Telefone 1: " />
-                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="" />
+                            <p:inputText id="fone1" placeholder="Telefone 1 Contato" styleClass="phone" value="#{teacherBean.teacher.personPhoneOne}" />
 
                             <p:outputLabel for="fone2" value="Telefone 2: " />
-                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="" />
-
+                            <p:inputText id="fone2" placeholder="Telefone 2 Contato" styleClass="phone" value="#{teacherBean.teacher.personPhoneTwo}" />
                         </h:panelGrid>
-                    </h:form>
-                </p:tab>
-            </p:tabView>
+                    </p:tab>
+                </p:tabView>
 
-            <h:form>
-                <p:toolbar>
-                    <p:toolbarGroup>
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk"/>
-                    </p:toolbarGroup>
+                <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
+                                 action="#{teacherBean.addTeacher}" update="infoAdministrator"/>
 
-                    <p:toolbarGroup align="right">
-                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
-                    </p:toolbarGroup>
-                </p:toolbar>
+                <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
+                                 action="#{teacherBean.limpTeacher}" update="infoAdministrator"/>
+
             </h:form>    
         </p:fieldset>
     </ui:define>

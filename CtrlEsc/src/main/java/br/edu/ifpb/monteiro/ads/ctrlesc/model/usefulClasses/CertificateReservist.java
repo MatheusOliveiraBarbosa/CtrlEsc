@@ -10,27 +10,27 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CertificateReservist {
 
-    private int number;
+    private int numberCertificateReservist;
     
     private String category;
     
-    private String stateEmitter;
+    private String stateEmitterCertificateReservist;
     
     public CertificateReservist(int number, String category, String stateEmitter) {
-        this.number = number;
+        this.numberCertificateReservist = number;
         this.category = category;
-        this.stateEmitter = stateEmitter;
+        this.stateEmitterCertificateReservist = stateEmitter;
     }
     public CertificateReservist(){
         
     }
     
-    public int getNumber() {
-        return number;
+    public int getNumberCertificateReservist() {
+        return numberCertificateReservist;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumberCertificateReservist(int numberCertificateReservist) {
+        this.numberCertificateReservist = numberCertificateReservist;
     }
 
     public String getCategory() {
@@ -41,12 +41,12 @@ public class CertificateReservist {
         this.category = category;
     }
 
-    public String getStateEmitter() {
-        return stateEmitter;
+    public String getStateEmitterCertificateReservist() {
+        return stateEmitterCertificateReservist;
     }
 
-    public void setStateEmitter(String stateEmitter) {
-        this.stateEmitter = stateEmitter;
+    public void setStateEmitterCertificateReservist(String stateEmitterCertificateReservist) {
+        this.stateEmitterCertificateReservist = stateEmitterCertificateReservist;
     }
     
 }

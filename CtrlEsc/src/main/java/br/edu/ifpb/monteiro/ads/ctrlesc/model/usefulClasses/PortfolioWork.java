@@ -10,12 +10,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PortfolioWork {
 
-    private int number;
+    private int numberPortfolioWork;
     
     private String series;
     
     public PortfolioWork(int number, String series) {
-        this.number = number;
+        this.numberPortfolioWork = number;
         this.series = series;
     }
     
@@ -23,12 +23,12 @@ public class PortfolioWork {
         
     }
        
-    public int getNumber() {
-        return number;
+    public int getNumberPortfolioWork() {
+        return numberPortfolioWork;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumberPortfolioWork(int numberPortfolioWork) {
+        this.numberPortfolioWork = numberPortfolioWork;
     }
 
     public String getSeries() {
