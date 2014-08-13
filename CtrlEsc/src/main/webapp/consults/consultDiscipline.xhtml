@@ -19,35 +19,32 @@
                     <p:outputLabel/>
                     <h:inputHidden id="id"/>
                     
-                    <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" placeholder="Nome do professor" />
-
+                    <p:outputLabel for="professor" value="Professor "/>
+                    <p:inputText id="professor" placeholder="Nome do professor" />
+                    
                     <p:outputLabel />
                     <p:outputLabel />
+                    
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                        outcome="/cadastre/cadDiscipline.xhtml"/>  
                 </h:panelGrid>
                 
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
-                                      outcome="/cadastre/cadDiscipline.xhtml"/>  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
             </h:form>
             
             <h:form id="formTableConsultDiscipline">
                 
-                <p:dataTable id="tableDiscipline" var="consultDiscipline" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
+                <p:dataTable id="tableDiscipline" value="#{disciplineBean.discipline.disciplineListTeachers}" var="consultDiscipline" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Disciplinas</f:facet>
 
-                    <p:column headerText="Nome" width="200" />    
+                    <p:column headerText="Disciplina" width="100" >
+                        <h:outputText value="#{disciplineBean.discipline.disciplineName}"/>    
+                    </p:column>          
+                    
+                    <p:column headerText="Professor" width="100" />    
 
                 </p:dataTable>
             </h:form>

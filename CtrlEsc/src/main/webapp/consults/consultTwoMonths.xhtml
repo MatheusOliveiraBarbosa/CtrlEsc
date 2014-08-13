@@ -27,20 +27,11 @@
                     <p:outputLabel />
                     <p:outputLabel />
                     
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                                      outcome="/cadastre/cadTwoMonths.xhtml"/>  
                 </h:panelGrid>
-                
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
-                                      outcome="/cadastre/cadNotes.xhtml"/>  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
 
             </h:form>
             
@@ -51,7 +42,9 @@
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Notas</f:facet>
                     
-                    <p:column headerText="Matrícula" width="100" />
+                    <p:column headerText="Matrícula" width="100" >
+                              <h:outputText value="#{studentBean.student.studentRegistration}"/> 
+                    </p:column>
 
                     <p:column headerText="Nome" width="200" />    
 
