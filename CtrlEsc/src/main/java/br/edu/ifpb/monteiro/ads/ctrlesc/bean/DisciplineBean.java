@@ -1,22 +1,22 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DisciplineDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DisciplineDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Discipline;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class DisciplineBean implements Serializable {
 
-    @Inject
-    private DisciplineDao disciplineFacade;
+    @EJB
+    private DisciplineDaoIF disciplineFacade;
     private List<Discipline> listDiscipline;
     private Discipline discipline;
 
@@ -59,11 +59,11 @@ public class DisciplineBean implements Serializable {
         disciplineFacade.remove(discipline);
     }
 
-    public DisciplineDao getDisciplineFacade() {
+    public DisciplineDaoIF getDisciplineFacade() {
         return disciplineFacade;
     }
 
-    public void setDisciplineFacade(DisciplineDao disciplineFacade) {
+    public void setDisciplineFacade(DisciplineDaoIF disciplineFacade) {
         this.disciplineFacade = disciplineFacade;
     }
 

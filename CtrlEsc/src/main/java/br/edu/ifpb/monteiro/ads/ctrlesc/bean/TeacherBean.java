@@ -1,14 +1,13 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DaoIF;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TeacherDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TeacherDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Teacher;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -19,8 +18,8 @@ import javax.inject.Named;
 @RequestScoped
 public class TeacherBean implements Serializable{
 
-    @Inject
-    private TeacherDao teacherFacade;
+    @EJB
+    private TeacherDaoIF teacherFacade;
     private Teacher teacher;
     private List<Teacher> listTeacher;
     
@@ -67,7 +66,7 @@ public class TeacherBean implements Serializable{
     }
     //Get's
 
-    public DaoIF getTeacherFacade() {
+    public TeacherDaoIF getTeacherFacade() {
         return teacherFacade;
     }
 

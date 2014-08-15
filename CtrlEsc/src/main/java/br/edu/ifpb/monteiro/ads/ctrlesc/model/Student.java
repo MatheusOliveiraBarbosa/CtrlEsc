@@ -32,10 +32,10 @@ public class Student extends Person{
     
     @Column (name = "student_year")
     @Min( value = 0 )
-    private int studentYear;
+    private Integer studentYear;
     
     @Column (name = "student_number_brothers_scholarship")
-    private int studentNumberBrothersScholarship;
+    private Integer studentNumberBrothersScholarship;
     
     @Column (name = "student_registration", length = 50)   
     private String studentRegistration;
@@ -65,7 +65,7 @@ public class Student extends Person{
     private String studentLevelEducation;
     
     @Column (name = "student_number_brother_student")
-    private int studentNumberBrotherStudent;
+    private Integer studentNumberBrotherStudent;
     
     @ManyToOne
     @JoinColumn(name = "id_responsible")
@@ -85,7 +85,7 @@ public class Student extends Person{
         studentPortfolioWork=new PortfolioWork();
     }
 
-    public Student(int studentYear, int studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, int studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Student(Integer studentYear, Integer studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, Integer studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.studentYear = studentYear;
         this.studentNumberBrothersScholarship = studentNumberBrothersScholarship;
@@ -105,11 +105,11 @@ public class Student extends Person{
     }
 
     //Get's and Set's
-    public int getStudentYear() {
+    public Integer getStudentYear() {
         return studentYear;
     }
 
-    public void setStudentYear(int studentYear) {
+    public void setStudentYear(Integer studentYear) {
         this.studentYear = studentYear;
     }
 
@@ -121,11 +121,11 @@ public class Student extends Person{
         this.studentRegistration = studentRegistration;
     }
     
-    public int getStudentNumberBrothersScholarship() {
+    public Integer getStudentNumberBrothersScholarship() {
         return studentNumberBrothersScholarship;
     }
 
-    public void setStudentNumberBrothersScholarship(int studentNumberBrothersScholarship) {
+    public void setStudentNumberBrothersScholarship(Integer studentNumberBrothersScholarship) {
         this.studentNumberBrothersScholarship = studentNumberBrothersScholarship;
     }
 
@@ -194,11 +194,11 @@ public class Student extends Person{
         this.studentLevelEducation = studentLevelEducation;
     }
 
-    public int getStudentNumberBrotherStudent() {
+    public Integer getStudentNumberBrotherStudent() {
         return studentNumberBrotherStudent;
     }
 
-    public void setStudentNumberBrotherStudent(int studentNumberBrotherStudent) {
+    public void setStudentNumberBrotherStudent(Integer studentNumberBrotherStudent) {
         this.studentNumberBrotherStudent = studentNumberBrotherStudent;
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
  * @author Elisângela
  */
 @Stateless
-public class TwoMonthsDao extends AbstractDao<TwoMonths> {
+public class TwoMonthsDao extends AbstractDao<TwoMonths> implements TwoMonthsDaoIF{
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager em;
 

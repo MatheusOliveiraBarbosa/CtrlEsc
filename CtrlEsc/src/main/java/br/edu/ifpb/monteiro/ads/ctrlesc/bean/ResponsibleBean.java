@@ -1,13 +1,13 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -17,8 +17,8 @@ import javax.inject.Named;
 @RequestScoped
 public class ResponsibleBean implements Serializable {
 
-    @Inject
-    private ResponsibleDao responsibleFacade;
+    @EJB
+    private ResponsibleDaoIF responsibleFacade;
     private Responsible responsible;
     private List<Responsible> listResponsibles;
     
@@ -61,11 +61,11 @@ public class ResponsibleBean implements Serializable {
         responsibleFacade.remove(responsible);
     }
      
-     public ResponsibleDao getResponsibleFacade() {
+     public ResponsibleDaoIF getResponsibleFacade() {
         return responsibleFacade;
     }
 
-    public void setResponsibleFacade(ResponsibleDao responsibleFacade) {
+    public void setResponsibleFacade(ResponsibleDaoIF responsibleFacade) {
         this.responsibleFacade = responsibleFacade;
     }
 

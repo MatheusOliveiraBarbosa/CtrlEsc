@@ -36,7 +36,7 @@ public class Lesson implements Identifiable<Lesson> {
     
     @Column (name = "lesson_presence")
     @Min(value = 0)
-    private int lessonPresence;
+    private Integer lessonPresence;
     
     @Column(name = "lesson_observation")
     private String lessonObservation;
@@ -52,7 +52,7 @@ public class Lesson implements Identifiable<Lesson> {
         lessonListStudents = new ArrayList<Student>();
     }
 
-    public Lesson(Date lessonDate, int lessonPresence, String lessonObservation, StudentClass lessonStudentClass, List<Student> lessonListStudents) {
+    public Lesson(Date lessonDate, Integer lessonPresence, String lessonObservation, StudentClass lessonStudentClass, List<Student> lessonListStudents) {
         this.lessonDate = lessonDate;
         this.lessonPresence = lessonPresence;
         this.lessonObservation = lessonObservation;
@@ -69,11 +69,11 @@ public class Lesson implements Identifiable<Lesson> {
         this.lessonDate = lessonDate;
     }
 
-    public int getLessonPresence() {
+    public Integer getLessonPresence() {
         return lessonPresence;
     }
 
-    public void setLessonPresence(int lessonPresence) {
+    public void setLessonPresence(Integer lessonPresence) {
         this.lessonPresence = lessonPresence;
     }
 

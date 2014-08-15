@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
  * @author Elisângela
  */
 @Stateless
-public class LessonDao extends AbstractDao<Lesson> {
+public class LessonDao extends AbstractDao<Lesson> implements LessonDaoIF{
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager em;
 

@@ -29,18 +29,18 @@ public class SchoolPerformance implements Identifiable<SchoolPerformance>{
     
     @Column (name = "schoolPerformance_bimonthly_synthesis")
     @Min(value =0)
-    @Max(value = 10)
-    private double bimonthlySynthesis;
+    @Max(value = 100)
+    private Integer bimonthlySynthesis;
     
     @Column (name = "schoolPerformance_final_teste")
     @Min(value = 0)
-    @Max (value = 10)
-    private double finalTeste;
+    @Max (value = 100)
+    private Integer finalTeste;
     
     @Column (name = "schoolPerformance_final_media")
     @Min(value = 0)
-    @Max (value = 10)
-    private double finalMedia;
+    @Max (value = 100)
+    private Integer finalMedia;
     
     @ManyToOne
     @JoinColumn(name = "schoolPerfomanceStudentClass")
@@ -65,7 +65,7 @@ public class SchoolPerformance implements Identifiable<SchoolPerformance>{
     public SchoolPerformance() {
     }
 
-    public SchoolPerformance(double bimonthlySynthesis, double finalTeste, double finalMedia, StudentClass schoolPerformanceStudentClass, Student schoolPerformanceStudent, TwoMonths schoolPerformanceFirstTwoMonths, TwoMonths schoolPerformanceSecondTwoMonths, TwoMonths schoolPerformanceThirdTwoMonths, TwoMonths schoolPerformanceFourthTwoMonths) {
+    public SchoolPerformance(Integer bimonthlySynthesis, Integer finalTeste, Integer finalMedia, StudentClass schoolPerformanceStudentClass, Student schoolPerformanceStudent, TwoMonths schoolPerformanceFirstTwoMonths, TwoMonths schoolPerformanceSecondTwoMonths, TwoMonths schoolPerformanceThirdTwoMonths, TwoMonths schoolPerformanceFourthTwoMonths) {
         this.bimonthlySynthesis = bimonthlySynthesis;
         this.finalTeste = finalTeste;
         this.finalMedia = finalMedia;
@@ -77,28 +77,28 @@ public class SchoolPerformance implements Identifiable<SchoolPerformance>{
         this.schoolPerformanceFourthTwoMonths = schoolPerformanceFourthTwoMonths;
     }
 
-    public double getBimonthlySynthesis() {
+    public Integer getBimonthlySynthesis() {
         return bimonthlySynthesis;
     }
 
-    public void setBimonthlySynthesis(double bimonthlySynthesis) {
+    public void setBimonthlySynthesis(Integer bimonthlySynthesis) {
         this.bimonthlySynthesis = bimonthlySynthesis;
     }
 
     //Get's and Set's 
-    public double getFinalTeste() {
+    public Integer getFinalTeste() {
         return finalTeste;
     }
 
-    public void setFinalTeste(double finalTeste) {
+    public void setFinalTeste(Integer finalTeste) {
         this.finalTeste = finalTeste;
     }
 
-    public double getFinalMedia() {
+    public Integer getFinalMedia() {
         return finalMedia;
     }
 
-    public void setFinalMedia(double finalMedia) {
+    public void setFinalMedia(Integer finalMedia) {
         this.finalMedia = finalMedia;
     }
 

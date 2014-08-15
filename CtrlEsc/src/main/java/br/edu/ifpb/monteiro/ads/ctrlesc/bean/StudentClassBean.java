@@ -1,22 +1,22 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.StudentClass;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentClassDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentClassDaoIF;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 @Named
 @RequestScoped
 public class StudentClassBean implements Serializable {
 
-    @Inject
-    private StudentClassDao studentClassFacade;
+    @EJB
+    private StudentClassDaoIF studentClassFacade;
     private List<StudentClass> lisStudentClass;
     private StudentClass studentClass;
 
@@ -58,11 +58,11 @@ public class StudentClassBean implements Serializable {
         studentClassFacade.remove(studentClass);
     }
 
-    public StudentClassDao getStudentClassFacade() {
+    public StudentClassDaoIF getStudentClassFacade() {
         return studentClassFacade;
     }
 
-    public void setStudentClassFacade(StudentClassDao studentClassFacade) {
+    public void setStudentClassFacade(StudentClassDaoIF studentClassFacade) {
         this.studentClassFacade = studentClassFacade;
     }
 

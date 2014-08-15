@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
  * @author Elisângela
  */
 @Stateless
-public class SchoolPerformanceDao extends AbstractDao<SchoolPerformance> {
+public class SchoolPerformanceDao extends AbstractDao<SchoolPerformance> implements SchoolPerformanceDaoIF{
 
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager em;

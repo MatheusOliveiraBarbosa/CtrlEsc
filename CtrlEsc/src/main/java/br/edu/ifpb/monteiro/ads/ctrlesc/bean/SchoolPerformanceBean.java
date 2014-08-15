@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.SchoolPerformanceDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.SchoolPerformanceDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.SchoolPerformance;
 import java.io.Serializable;
 import java.util.List;
@@ -8,15 +8,14 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class SchoolPerformanceBean implements Serializable {
 
-    @Inject
-    private SchoolPerformanceDao schoolPerformanceFacade;
+    @EJB
+    private SchoolPerformanceDaoIF schoolPerformanceFacade;
     private List<SchoolPerformance> listSchoolPerformance;
     private SchoolPerformance schoolPerformance;
 
@@ -59,11 +58,11 @@ public class SchoolPerformanceBean implements Serializable {
         schoolPerformanceFacade.remove(schoolPerformance);
     }
 
-    public SchoolPerformanceDao getSchoolPerformanceFacade() {
+    public SchoolPerformanceDaoIF getSchoolPerformanceFacade() {
         return schoolPerformanceFacade;
     }
 
-    public void setSchoolPerformanceFacade(SchoolPerformanceDao schoolPerformanceFacade) {
+    public void setSchoolPerformanceFacade(SchoolPerformanceDaoIF schoolPerformanceFacade) {
         this.schoolPerformanceFacade = schoolPerformanceFacade;
     }
 
