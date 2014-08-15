@@ -38,9 +38,10 @@
                         </h:panelGrid>
                         
                         <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                         action="#{lessonBean.addLesson}" update="activits"/>
+                            action="#{lessonBean.addLesson}" update="activits"/>
 
-                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" />
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
+                            action="#{lessonBean.limpLesson}" update="activits"/>
                         
                     </h:form>
                 </p:tab>

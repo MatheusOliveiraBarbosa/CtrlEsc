@@ -35,17 +35,17 @@
             
             <h:form id="formTableConsultDiscipline">
                 
-                <p:dataTable id="tableDiscipline" value="#{disciplineBean.discipline.disciplineListTeachers}" var="consultDiscipline" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
+                <p:dataTable id="tableDiscipline" var="consultDiscipline" value="#{disciplineBean.listDiscipline}" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
                              {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
                     <f:facet name="header">Lista de Disciplinas</f:facet>
 
-                    <p:column headerText="Disciplina" width="100" >
-                        <h:outputText value="#{disciplineBean.discipline.disciplineName}"/>    
-                    </p:column>          
-                    
-                    <p:column headerText="Professor" width="100" />    
-
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Disciplina"/>
+                        </f:facet>
+                        <h:outputText value="#{disciplineBean.discipline.disciplineName}"/>
+                    </p:column>
                 </p:dataTable>
             </h:form>
         </p:fieldset>

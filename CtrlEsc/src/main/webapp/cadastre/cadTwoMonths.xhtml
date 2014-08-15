@@ -45,9 +45,10 @@
                         </h:panelGrid>
                         
                         <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                            action="#{twoMonthsBean.addTwoMonths}" update="@form"/>
+                            action="#{twoMonthsBean.addTwoMonths}" update="formDesempenhoEscolar"/>
                 
-                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel"/>
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
+                            action="#{twoMonthsBean.limpTwoMonths}" update="formDesempenhoEscolar"/>
                 
                     </h:form>
                 </p:tab>
