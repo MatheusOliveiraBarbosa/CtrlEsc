@@ -11,15 +11,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ElectionTitle {
 
-    private int numberElectionTitle;
+    private Integer numberElectionTitle;
     
-    private int section;
+    private Integer section;
     
-    private int zone;
+    private Integer zone;
     
     private String stateEmitterElectionTitle;
     
-    public ElectionTitle(int number, int section, int zone, String stateEmitter) {
+    public ElectionTitle(Integer number, Integer section, Integer zone, String stateEmitter) {
         this.numberElectionTitle = number;
         this.section = section;
         this.zone = zone;
@@ -30,27 +30,27 @@ public class ElectionTitle {
         
     }
     
-    public int getNumberElectionTitle() {
+    public Integer getNumberElectionTitle() {
         return numberElectionTitle;
     }
 
-    public void setNumberElectionTitle(int numberElectionTitle) {
+    public void setNumberElectionTitle(Integer numberElectionTitle) {
         this.numberElectionTitle = numberElectionTitle;
     }
 
-    public int getSection() {
+    public Integer getSection() {
         return section;
     }
 
-    public void setSection(int section) {
+    public void setSection(Integer section) {
         this.section = section;
     }
 
-    public int getZone() {
+    public Integer getZone() {
         return zone;
     }
 
-    public void setZone(int zone) {
+    public void setZone(Integer zone) {
         this.zone = zone;
     }
 

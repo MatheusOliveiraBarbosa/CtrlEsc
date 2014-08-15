@@ -1,9 +1,10 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.AdministratorDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.AdministratorDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
@@ -14,8 +15,8 @@ import javax.inject.Inject;
 @RequestScoped
 public class AdministratorBean implements Serializable {
 
-    @Inject 
-    private AdministratorDao administratorFacade;
+    @EJB 
+    private AdministratorDaoIF administratorFacade;
     private List<Administrator> listAdministrator;
     private Administrator administrator;
 
@@ -58,11 +59,11 @@ public class AdministratorBean implements Serializable {
         administratorFacade.remove(administrator);
     }
 
-    public AdministratorDao getAdministratorFacade() {
+    public AdministratorDaoIF getAdministratorFacade() {
         return administratorFacade;
     }
 
-    public void setAdministratorFacade(AdministratorDao administratorFacade) {
+    public void setAdministratorFacade(AdministratorDaoIF administratorFacade) {
         this.administratorFacade = administratorFacade;
     }
 

@@ -32,7 +32,7 @@ public class Responsible extends Person{
 
     @Column (name = "responsible_family_income")
     @Min(value = 0)
-    private double responsibleFamilyIncome;
+    private Integer responsibleFamilyIncome;
     
     @Column(name = "responsible_degree_kiniship", length = 50)
     private String responsibleDegreeKinship;
@@ -45,7 +45,7 @@ public class Responsible extends Person{
     
     }
 
-    public Responsible(String responsibleLevelEducation, String responsibleProfession, double responsibleFamilyIncome, String responsibleDegreeKinship, List<Student> responsibleListStudenst, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Responsible(String responsibleLevelEducation, String responsibleProfession, Integer responsibleFamilyIncome, String responsibleDegreeKinship, List<Student> responsibleListStudenst, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.responsibleLevelEducation = responsibleLevelEducation;
         this.responsibleProfession = responsibleProfession;
@@ -71,11 +71,11 @@ public class Responsible extends Person{
         this.responsibleProfession = responsibleProfession;
     }
 
-    public double getResponsibleFamilyIncome() {
+    public Integer getResponsibleFamilyIncome() {
         return responsibleFamilyIncome;
     }
 
-    public void setResponsibleFamilyIncome(double responsibleFamilyIncome) {
+    public void setResponsibleFamilyIncome(Integer responsibleFamilyIncome) {
         this.responsibleFamilyIncome = responsibleFamilyIncome;
     }
 

@@ -1,22 +1,21 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TwoMonthsDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.TwoMonths;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TwoMonthsDao;
-
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
+import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class TwoMonthsBean implements Serializable {
 
-    @Inject
-    private TwoMonthsDao twoMonthsFacade;
+    @EJB
+    private TwoMonthsDaoIF twoMonthsFacade;
     private List<TwoMonths> listTwoMonths;
     private TwoMonths twoMonths;
 
@@ -67,11 +66,11 @@ public class TwoMonthsBean implements Serializable {
         twoMonthsFacade.remove(twoMonths);
     }
 
-    public TwoMonthsDao getTwoMonthsFacade() {
+    public TwoMonthsDaoIF getTwoMonthsFacade() {
         return twoMonthsFacade;
     }
 
-    public void setTwoMonthsFacade(TwoMonthsDao twoMonthsFacade) {
+    public void setTwoMonthsFacade(TwoMonthsDaoIF twoMonthsFacade) {
         this.twoMonthsFacade = twoMonthsFacade;
     }
 

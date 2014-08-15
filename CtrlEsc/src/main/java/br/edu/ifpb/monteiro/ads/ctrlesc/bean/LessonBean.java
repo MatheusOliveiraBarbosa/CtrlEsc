@@ -1,14 +1,13 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DaoIF;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.LessonDao;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.LessonDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Lesson;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -19,8 +18,8 @@ import javax.inject.Named;
 @RequestScoped
 public class LessonBean implements Serializable {
     
-    @Inject
-    private LessonDao lessonFacade;
+    @EJB
+    private LessonDaoIF lessonFacade;
     private Lesson lesson;
     private List<Lesson> listLesson;
 
@@ -66,7 +65,7 @@ public class LessonBean implements Serializable {
         lessonFacade.remove(lesson);
     }
 
-    public DaoIF getLessonFacade() {
+    public LessonDaoIF getLessonFacade() {
         return lessonFacade;
     }
 

@@ -25,43 +25,43 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     
     @Column(name = "twoMonths_exercise_first")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsExerciseFirst;
+    @Max(value = 100)
+    private Integer twoMonthsExerciseFirst;
 
     @Column(name = "twoMonths_exercise_second")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsExerciseSecond;
+    @Max(value = 100)
+    private Integer twoMonthsExerciseSecond;
 
     @Column(name = "twoMonths_exercise_third")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsExerciseThird;
+    @Max(value = 100)
+    private Integer twoMonthsExerciseThird;
 
     @Column(name = "twoMonths_recuperation_first")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsRecuperationFirst;
+    @Max(value = 100)
+    private Integer twoMonthsRecuperationFirst;
 
     @Column(name = "twoMonths_recuperation_second")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsRecuperationSecond;
+    @Max(value = 100)
+    private Integer twoMonthsRecuperationSecond;
 
     @Column(name = "twoMonths_recuperation_third")
     @Min(value = 0)
-    @Max(value = 10)
-    private double twoMonthsRecuperationThird;
+    @Max(value = 100)
+    private Integer twoMonthsRecuperationThird;
 
     @Column(name = "twoMonths_number_twoMonths")
     @Min(value = 1)
     @Max(value = 4)
-    private int twoMonthsNumberTwoMonths;
+    private Integer twoMonthsNumberTwoMonths;
     
 //    @OneToOne (mappedBy = "schoolPerformanceFirstTwoMonths", targetEntity = SchoolPerformance.class)
 //    private SchoolPerformance twoMonthsSchoolPerformance;
 
-    public TwoMonths(double twoMonthsExerciseFirst, double twoMonthsExerciseSecond, double twoMonthsExerciseThird, double twoMonthsRecuperationFirst, double twoMonthsRecuperationSecond, double twoMonthsRecuperationThird, int twoMonthsNumberTwoMonths) {
+    public TwoMonths(Integer twoMonthsExerciseFirst, Integer twoMonthsExerciseSecond, Integer twoMonthsExerciseThird, Integer twoMonthsRecuperationFirst, Integer twoMonthsRecuperationSecond, Integer twoMonthsRecuperationThird, Integer twoMonthsNumberTwoMonths) {
         this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
         this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
         this.twoMonthsExerciseThird = twoMonthsExerciseThird;
@@ -75,59 +75,59 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     }
 
     //Get's and Set's 
-    public double getTwoMonthsExerciseFirst() {
+    public Integer getTwoMonthsExerciseFirst() {
         return twoMonthsExerciseFirst;
     }
 
-    public void setTwoMonthsExerciseFirst(double twoMonthsExerciseFirst) {
+    public void setTwoMonthsExerciseFirst(Integer twoMonthsExerciseFirst) {
         this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
     }
 
-    public double getTwoMonthsExerciseSecond() {
+    public Integer getTwoMonthsExerciseSecond() {
         return twoMonthsExerciseSecond;
     }
 
-    public void setTwoMonthsExerciseSecond(double twoMonthsExerciseSecond) {
+    public void setTwoMonthsExerciseSecond(Integer twoMonthsExerciseSecond) {
         this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
     }
 
-    public double getTwoMonthsExerciseThird() {
+    public Integer getTwoMonthsExerciseThird() {
         return twoMonthsExerciseThird;
     }
 
-    public void setTwoMonthsExerciseThird(double twoMonthsExerciseThird) {
+    public void setTwoMonthsExerciseThird(Integer twoMonthsExerciseThird) {
         this.twoMonthsExerciseThird = twoMonthsExerciseThird;
     }
 
-    public double getTwoMonthsRecuperationFirst() {
+    public Integer getTwoMonthsRecuperationFirst() {
         return twoMonthsRecuperationFirst;
     }
 
-    public void setTwoMonthsRecuperationFirst(double twoMonthsRecuperationFirst) {
+    public void setTwoMonthsRecuperationFirst(Integer twoMonthsRecuperationFirst) {
         this.twoMonthsRecuperationFirst = twoMonthsRecuperationFirst;
     }
 
-    public double getTwoMonthsRecuperationSecond() {
+    public Integer getTwoMonthsRecuperationSecond() {
         return twoMonthsRecuperationSecond;
     }
 
-    public void setTwoMonthsRecuperationSecond(double twoMonthsRecuperationSecond) {
+    public void setTwoMonthsRecuperationSecond(Integer twoMonthsRecuperationSecond) {
         this.twoMonthsRecuperationSecond = twoMonthsRecuperationSecond;
     }
 
-    public double getTwoMonthsRecuperationThird() {
+    public Integer getTwoMonthsRecuperationThird() {
         return twoMonthsRecuperationThird;
     }
 
-    public void setTwoMonthsRecuperationThird(double twoMonthsRecuperationThird) {
+    public void setTwoMonthsRecuperationThird(Integer twoMonthsRecuperationThird) {
         this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
     }
 
-    public int getTwoMonthsNumberTwoMonths() {
+    public Integer getTwoMonthsNumberTwoMonths() {
         return twoMonthsNumberTwoMonths;
     }
 
-    public void setTwoMonthsNumberTwoMonths(int twoMonthsNumberTwoMonths) {
+    public void setTwoMonthsNumberTwoMonths(Integer twoMonthsNumberTwoMonths) {
         this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
     }
 
