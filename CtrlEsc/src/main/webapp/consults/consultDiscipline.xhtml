@@ -17,15 +17,15 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id"/>
+                    <h:inputHidden id="id" value="#{disciplineBean.discipline.id}"/>
                     
                     <p:outputLabel for="professor" value="Professor "/>
-                    <p:inputText id="professor" placeholder="Nome do professor" />
+                    <p:inputText id="professor" placeholder="Nome do professor" value="#{teacherBean.teacher.personName}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
                     
-                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search" />
                     
                     <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
                         outcome="/cadastre/cadDiscipline.xhtml"/>  
@@ -35,17 +35,31 @@
             
             <h:form id="formTableConsultDiscipline">
                 
-                <p:dataTable id="tableDiscipline" var="consultDiscipline" value="#{disciplineBean.listDiscipline}" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Disciplinas</f:facet>
-
+                <p:dataTable id="tableDiscipline" var="discipline" value="#{disciplineBean.listDiscipline}"
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Lista de Disicplinas</f:facet> 
+                    
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Disciplina"/>
                         </f:facet>
-                        <h:outputText value="#{disciplineBean.discipline.disciplineName}"/>
+                        <h:outputText value="#{discipline.disciplineName}"/>
                     </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{disciplineBean.editDiscipline}" value="Editar"
+                                         icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{discipline}" target="#{disciplineBean.discipline}"/>
+                            <f:setPropertyActionListener value="#{discipline.disciplineName}" 
+                                                         target="#{disciplineBean.discipline.disciplineName}" />
+                        </p:commandButton>     
+                    </p:column>
+                    
                 </p:dataTable>
             </h:form>
         </p:fieldset>

@@ -27,36 +27,69 @@
                     
                     <p:outputLabel />
                     <p:outputLabel />
-                </h:panelGrid>
-                
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                    
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
                                       outcome="/cadastre/cadResponsible.xhtml"/>  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
+                </h:panelGrid>
+
             </h:form>
             
             <h:form id="formTableConsultResponsible">
                 
-                <p:dataTable id="tableNotes" var="consultResponsible" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Responsáveis</f:facet>
-
-                    <p:column headerText="Nome" width="200" />    
-
-                    <p:column headerText="CPF" width="40" />
-                        
-                    <p:column headerText="Aluno" width="200" />
-
-                    <p:column headerText="Grau de Parentesco" width="140" />
+                <p:dataTable id="tableResponsible" var="responsible" value="#{responsibleBean.listResponsibles}"
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Lista de Responsáveis</f:facet> 
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Responsável"/>
+                        </f:facet>
+                        <h:outputText value="#{responsible.personName}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="CPF"/>
+                        </f:facet>
+                        <h:outputText value="#{responsible.personCpf}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Aluno"/>
+                        </f:facet>
+                        <h:outputText value="#{responsible.personName}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Grau de Parentesco"/>
+                        </f:facet>
+                        <h:outputText value="#{responsible.responsibleDegreeKinship}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{responsibleBean.editResponsible}" value="Editar"
+                                icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{responsible}" target="#{responsibleBean.responsible}"/>
+                            <f:setPropertyActionListener value="#{responsible.personName}" 
+                                target="#{responsibleBean.responsible.personName}" />
+                            
+                            <f:setPropertyActionListener value="#{responsible.personCpf}" target="#{responsibleBean.responsible.personCpf}"/>
+                            
+                            <f:setPropertyActionListener value="#{responsible.personName}" target="#{responsibleBean.responsible.personName}"/>
+                            
+                            <f:setPropertyActionListener value="#{responsible.responsibleDegreeKinship}" target="#{responsibleBean.responsible.responsibleDegreeKinship}"/>
+                            
+                        </p:commandButton>     
+                    </p:column>
                     
                 </p:dataTable>
             </h:form>

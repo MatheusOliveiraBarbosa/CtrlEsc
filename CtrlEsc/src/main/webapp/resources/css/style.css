@@ -26,7 +26,7 @@ body {
     padding: 2px;
     padding-bottom: 30px;
     font: normal 13px Arial;
-    background-image: url(icones/background.png);
+    background-image: url(./icons/background.png);
     margin: 0 auto;
     clear: both;
 }

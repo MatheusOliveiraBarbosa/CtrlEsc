@@ -12,48 +12,74 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id"/>
+                    <h:inputHidden id="id" />
 
                     <p:outputLabel for="matricula" value="Matrícula: "/>
-                    <p:inputText id="matricula" placeholder="Matrícula do aluno" />
+                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.student.studentRegistration}" />
                     
                     <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" placeholder="Nome do aluno" />
+                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.student.personName}" />
+                    
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                                      outcome="/cadastre/cadStudent.xhtml" />  
 
                     <p:outputLabel />
                     <p:outputLabel />
 
                 </h:panelGrid>
-                
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
-                                      outcome="/cadastre/cadStudent.xhtml" />  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
 
             </h:form>
             
             <h:form id="formTableConsultStudent">
                 
-                <p:dataTable id="tableNotes" var="consultStudent" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Estudantes</f:facet>
+                <p:dataTable id="tableConsultStudent" var="student" value="#{studentBean.listStudents}" 
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Lista de Estudantes</f:facet> 
                     
-                    <p:column headerText="Matrícula" width="100" />    
-
-                    <p:column headerText="Aluno" width="200" />  
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Matrícula"/>
+                        </f:facet>
+                        <h:outputText value="#{student.studentRegistration}"/>
+                    </p:column>
                     
-                    <p:column headerText="Curso" width="200" />  
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Aluno"/>
+                        </f:facet>
+                        <h:outputText value="#{student.personName}"/>
+                    </p:column>
                     
-                    <p:column headerText="Turma" width="80" />  
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Curso"/>
+                        </f:facet>
+                        <h:outputText value="#{student.studentYear}"/>
+                    </p:column>
+                        
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{studentBean.editStudent()}" value="Editar"
+                                         icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{student}" target="#{studentBean.student}"/>
+                            
+                            <f:setPropertyActionListener value="#{student.studentRegistration}" 
+                                target="#{studentBean.student.studentRegistration}" />
+                            
+                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.student.personName}" />
+                            
+                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.student.personName}" />
+                            
+                            <f:setPropertyActionListener value="#{student.studentYear}" target="#{studentBean.student.studentYear}" />
+                            
+                        </p:commandButton>     
+                    </p:column>
                     
                 </p:dataTable>
             </h:form>

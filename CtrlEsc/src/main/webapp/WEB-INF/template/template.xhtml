@@ -10,15 +10,14 @@
         <title>Ctrl Esc - Controle Escolar</title>
         <h:outputStylesheet library="css" name="style.css"/>
         <h:outputScript library="js" name="jquery.mask.min.js" />
-        <h:outputScript library="js" name="jquery.maskmoney.js" />
-        <link href="./icones/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="./icons/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </h:head>
 
     <h:body>
         
         <header>
             <div id="top">
-                <p:graphicImage library="icones" name="headerCtrlEsc.png"/>
+                <p:graphicImage library="icons" name="headerCtrlEsc.png"/>
             </div>
         </header>
 
@@ -61,24 +60,6 @@
                 Sistema de Controle Escolar - Ctrl Esc  
                 </div>
             </footer>
-        
-
-        <!--This script changes the mask of money format-->
-       <script>
-           function validateMoney() {
-               $(".money").maskMoney({
-                   decimal: ",",
-                   thousands: ".",
-                   allowZero: true,
-                   symbol: "R$ ",
-                   symbolStay: true
-               });
-           }
-
-           $(document).ready(function() {
-               validateMoney();
-           });
-       </script>
         
         <!--This script changes the mask of phone numbers with 8 and 9 digits-->
        <script>

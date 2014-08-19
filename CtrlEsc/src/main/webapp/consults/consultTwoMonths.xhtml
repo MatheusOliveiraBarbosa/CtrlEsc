@@ -16,13 +16,13 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id"/>
+                    <h:inputHidden id="id" value="#{twoMonthsBean.twoMonths.id}" />
                     
                     <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" placeholder="Nome do aluno" />
+                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.student.personName}" />
 
                     <p:outputLabel for="matricula" value="Matrícula: "/>
-                    <p:inputText id="matricula" placeholder="Matrícula do aluno" />
+                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.student.studentRegistration}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
@@ -37,29 +37,102 @@
             
             <h:form id="formTableConsultNotes">
                 
-                <p:dataTable id="tableNotes" var="consultNotes" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Notas</f:facet>
+                <p:dataTable id="tableConsultNotes" var="notes" value="#{twoMonthsBean.listTwoMonths}"
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Performance Escolar</f:facet> 
                     
-                    <p:column headerText="Matrícula" width="100" >
-                              <h:outputText value="#{studentBean.student.studentRegistration}"/> 
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Unidade I"/>
+                        </f:facet>
+                       <h:outputText value="#{notes.twoMonthsExerciseFirst}"/>
                     </p:column>
-
-                    <p:column headerText="Nome" width="200" />    
-
-                    <p:column headerText="Unidade I" width="80" />
-                        
-                    <p:column headerText="Unidade II" width="80" />
-
-                    <p:column headerText="Unidade III" width="80" />
-                       
-                    <p:column headerText="Unidade IV" width="80" />
-
-                    <p:column headerText="Média Final" width="80" />
                     
-                    <p:column headerText="Nota Final" width="80" />
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Recuperação Unid I"/>
+                        </f:facet>
+                        <h:outputText value="#{notes.twoMonthsRecuperationFirst}"/>
+                    </p:column>
                     
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Unidade II"/>
+                        </f:facet>
+                        <h:outputText value="#{notes.twoMonthsExerciseSecond}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Recuperação Unid II"/>
+                        </f:facet>
+                        <h:outputText value="#{notes.twoMonthsRecuperationSecond}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Unidade III"/>
+                        </f:facet>
+                        <h:outputText value="#{notes.twoMonthsExerciseThird}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Recuperação Unid III"/>
+                        </f:facet>
+                        <h:outputText value="#{notes.twoMonthsRecuperationThird}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Unidade IV"/>
+                        </f:facet>
+                       <h:outputText value=""/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Recuperação Unid IV"/>
+                        </f:facet>
+                       <h:outputText value=""/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{twoMonthsBean.editTwoMonths}" value="Editar"
+                                         icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{notes}" target="#{twoMonthsBean.twoMonths}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsExerciseFirst}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseFirst}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationFirst}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationFirst}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsExerciseSecond}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseSecond}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationSecond}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationSecond}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsExerciseThird}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseThird}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationThird}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationThird}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsExerciseQuater}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseQuater}" />
+                            
+                            <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationQuater}" 
+                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationQuater}" />
+                            
+                        </p:commandButton>     
+                    </p:column>
                 </p:dataTable>
             </h:form>
             

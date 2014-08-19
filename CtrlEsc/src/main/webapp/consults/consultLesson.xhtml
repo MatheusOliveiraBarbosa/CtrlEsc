@@ -17,46 +17,73 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id"/>
+                    <h:inputHidden id="id" value="#{lessonBean.lesson.id}"/>
                     
                     <p:outputLabel for="dataLesson" value="Data Atividade: "/>
                             <p:calendar id="dataLesson" navigator="true" effect="fold" 
                                 pattern="dd/MM/yyyy" yearRange="c-50:c+50" placeholder="Data da atividade" 
-                                readonly="true" locale="pt" />
+                                readonly="true" locale="pt" value="#{lessonBean.lesson.lessonDate}" />
                             
                     <p:outputLabel for="discipline" value="Disciplina: "/>
-                    <p:inputText id="discipline" placeholder="Disciplina" />
+                    <p:inputText id="discipline" placeholder="Disciplina" value="#{disciplineBean.discipline.disciplineName}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
-                </h:panelGrid>
-                
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                    
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
                                       outcome="/cadastre/cadLesson.xhtml"/>  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
+                </h:panelGrid>
             </h:form>
             
             <h:form id="formTableConsultLesson">
                 
-                <p:dataTable id="tableLesson" var="consultLesson" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Atividades</f:facet>
+                <p:dataTable id="tableConsultLesson" var="lesson" value="#{lessonBean.listLesson}"
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Lista de Atividades</f:facet> 
 
-                    <p:column headerText="Disciplina" width="60" />    
-
-                    <p:column headerText="Data" width="30" />
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Disciplina"/>
+                        </f:facet>
+                        <h:outputText value="#{discipline.disciplineName}"/>
+                    </p:column>    
                         
-                    <p:column headerText="Observações" width="100" />
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data"/>
+                        </f:facet>
+                        <h:outputText value="#{lesson.lessonDate}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Observações"/>
+                        </f:facet>
+                        <h:outputText value="#{lesson.lessonObservation}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{lessonBean.editLesson}" value="Editar"
+                                         icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{lesson}" target="#{lessonBean.lesson}"/>
+                            
+                            <f:setPropertyActionListener value="#{discipline.disciplineName}" 
+                                target="#{disciplineBean.discipline.disciplineName}" />
+                            
+                            <f:setPropertyActionListener value="#{lesson.lessonDate}" 
+                                target="#{lessonBean.lesson.lessonDate}" />
+                            
+                            <f:setPropertyActionListener value="#{lesson.lessonObservation}" 
+                                target="#{lessonBean.lesson.lessonObservation}" />
+                        </p:commandButton>     
+                    </p:column>
                     
                 </p:dataTable>
             </h:form>

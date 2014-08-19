@@ -67,6 +67,7 @@ public class StudentBean implements Serializable {
     }
 
     public List<Student> getListStudents() {
+        listStudents = studentFacade.findAll();
         return listStudents;
     }
 

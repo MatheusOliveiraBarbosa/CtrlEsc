@@ -27,34 +27,62 @@
                     
                     <p:outputLabel />
                     <p:outputLabel />
-                </h:panelGrid>
-                
-                <h:form>
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
-                        </p:toolbarGroup>
-                        
-                        <p:toolbarGroup align="right">
-                            <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
+                    
+                    <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
+                    
+                    <p:button id="btNovoCad" value="Novo cadastro" icon="ui-icon ui-icon-pencil" 
                                       outcome="/cadastre/cadTeacher.xhtml"/>  
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                </h:form>
+                    
+                </h:panelGrid>
             </h:form>
             
             <h:form id="formTableConsultTeacher">
                 
-                <p:dataTable id="tableTeacher" var="consultTeacher" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
-                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
-                    <f:facet name="header">Lista de Professores</f:facet>
+                <p:dataTable id="tableConsultTeacher" var="teacher" value="#{teacherBean.listTeacher}"
+                    paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
+                    {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15">         
+                    <f:facet name="header">Lista de Professores</f:facet> 
 
-                    <p:column headerText="Nome" width="200" />    
-
-                    <p:column headerText="Matrícula" width="40" />
-                        
-                    <p:column headerText="Data de Entrada" width="60" />
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Professor"/>
+                        </f:facet>
+                        <h:outputText value="#{teacher.personName}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Matrícula"/>
+                        </f:facet>
+                        <h:outputText value="#{teacher.teacherRegistration}"/>
+                    </p:column>
+                    
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data de Entrada"/>
+                        </f:facet>
+                         <h:outputText value="#{teacher.personEntryDate}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton id="btEditar" action="#{teacherBean.editTeacher}" value="Editar"
+                                         icon="ui-icon ui-icon-pencil" >
+                            <f:setPropertyActionListener value="#{teacher}" target="#{teacherBean.teacher}"/>
+                            
+                            <f:setPropertyActionListener value="#{teacher.personName}" 
+                                target="#{teacherBean.teacher.personName}" />
+                            
+                            <f:setPropertyActionListener value="#{teacher.teacherRegistration}" 
+                                target="#{teacherBean.teacher.teacherRegistration}" />
+                            
+                            <f:setPropertyActionListener value="#{teacher.personEntryDate}" 
+                                target="#{teacherBean.teacher.personDateBirth}" />
+                        </p:commandButton>     
+                    </p:column>
                     
                 </p:dataTable>
             </h:form>

@@ -75,6 +75,7 @@ public class TwoMonthsBean implements Serializable {
     }
 
     public List<TwoMonths> getListTwoMonths() {
+        listTwoMonths = twoMonthsFacade.findAll();
         return listTwoMonths;
     }
 

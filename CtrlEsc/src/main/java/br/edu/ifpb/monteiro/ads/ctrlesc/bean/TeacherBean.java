@@ -75,6 +75,7 @@ public class TeacherBean implements Serializable{
     }
 
     public List<Teacher> getListTeacher() {
+        listTeacher = teacherFacade.findAll();
         return listTeacher;
     }
             

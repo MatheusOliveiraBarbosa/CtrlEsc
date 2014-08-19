@@ -35,7 +35,7 @@ public class ResponsibleBean implements Serializable {
         return "/cadastre/cadResponsible.xhtml";
     }
     
-    public void addResponsible(){
+    public String addResponsible(){
         
        if (responsible.getId() == null || responsible.getId() == 0) {
             insertResponsible();
@@ -43,6 +43,7 @@ public class ResponsibleBean implements Serializable {
             updateResponsible();
         }
         limpResponsible();
+        return null;
     }
     
     private void insertResponsible() {

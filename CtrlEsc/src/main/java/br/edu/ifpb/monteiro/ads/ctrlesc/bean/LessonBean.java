@@ -20,8 +20,8 @@ public class LessonBean implements Serializable {
     
     @EJB
     private LessonDaoIF lessonFacade;
-    private Lesson lesson;
     private List<Lesson> listLesson;
+    private Lesson lesson;
 
     /**
      * Creates a new instance of LessonBean
@@ -65,6 +65,18 @@ public class LessonBean implements Serializable {
         lessonFacade.remove(lesson);
     }
 
+    public void setLessonFacade(LessonDaoIF lessonFacade) {
+        this.lessonFacade = lessonFacade;
+    }
+
+    public void setListLesson(List<Lesson> listLesson) {
+        this.listLesson = listLesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
     public LessonDaoIF getLessonFacade() {
         return lessonFacade;
     }
@@ -74,6 +86,7 @@ public class LessonBean implements Serializable {
     }
 
     public List<Lesson> getListLesson() {
+        listLesson = lessonFacade.findAll();
         return listLesson;
     }
     

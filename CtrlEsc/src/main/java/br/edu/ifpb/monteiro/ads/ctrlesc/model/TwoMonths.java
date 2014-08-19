@@ -37,6 +37,11 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     @Min(value = 0)
     @Max(value = 100)
     private Integer twoMonthsExerciseThird;
+    
+    @Column(name = "twoMonths_exercise_quater")
+    @Min(value = 0)
+    @Max(value = 100)
+    private Integer twoMonthsExerciseQuater;
 
     @Column(name = "twoMonths_recuperation_first")
     @Min(value = 0)
@@ -52,6 +57,11 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     @Min(value = 0)
     @Max(value = 100)
     private Integer twoMonthsRecuperationThird;
+    
+    @Column(name = "twoMonths_recuperation_quater")
+    @Min(value = 0)
+    @Max(value = 100)
+    private Integer twoMonthsRecuperationQuater;
 
     @Column(name = "twoMonths_number_twoMonths")
     @Min(value = 1)
@@ -60,17 +70,20 @@ public class TwoMonths implements Identifiable<TwoMonths> {
     
 //    @OneToOne (mappedBy = "schoolPerformanceFirstTwoMonths", targetEntity = SchoolPerformance.class)
 //    private SchoolPerformance twoMonthsSchoolPerformance;
-
-    public TwoMonths(Integer twoMonthsExerciseFirst, Integer twoMonthsExerciseSecond, Integer twoMonthsExerciseThird, Integer twoMonthsRecuperationFirst, Integer twoMonthsRecuperationSecond, Integer twoMonthsRecuperationThird, Integer twoMonthsNumberTwoMonths) {
+    
+    public TwoMonths(Long id, Integer twoMonthsExerciseFirst, Integer twoMonthsExerciseSecond, Integer twoMonthsExerciseThird, Integer twoMonthsExerciseQuater, Integer twoMonthsRecuperationFirst, Integer twoMonthsRecuperationSecond, Integer twoMonthsRecuperationThird, Integer twoMonthsRecuperationQuater, Integer twoMonthsNumberTwoMonths) {
+        this.id = id;
         this.twoMonthsExerciseFirst = twoMonthsExerciseFirst;
         this.twoMonthsExerciseSecond = twoMonthsExerciseSecond;
         this.twoMonthsExerciseThird = twoMonthsExerciseThird;
+        this.twoMonthsExerciseQuater = twoMonthsExerciseQuater;
         this.twoMonthsRecuperationFirst = twoMonthsRecuperationFirst;
         this.twoMonthsRecuperationSecond = twoMonthsRecuperationSecond;
         this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
+        this.twoMonthsRecuperationQuater = twoMonthsRecuperationQuater;
         this.twoMonthsNumberTwoMonths = twoMonthsNumberTwoMonths;
     }
-
+    
     public TwoMonths() {
     }
 
@@ -99,6 +112,14 @@ public class TwoMonths implements Identifiable<TwoMonths> {
         this.twoMonthsExerciseThird = twoMonthsExerciseThird;
     }
 
+    public Integer getTwoMonthsExerciseQuater() {
+        return twoMonthsExerciseQuater;
+    }
+
+    public void setTwoMonthsExerciseQuater(Integer twoMonthsExerciseQuater) {
+        this.twoMonthsExerciseQuater = twoMonthsExerciseQuater;
+    }
+
     public Integer getTwoMonthsRecuperationFirst() {
         return twoMonthsRecuperationFirst;
     }
@@ -121,6 +142,14 @@ public class TwoMonths implements Identifiable<TwoMonths> {
 
     public void setTwoMonthsRecuperationThird(Integer twoMonthsRecuperationThird) {
         this.twoMonthsRecuperationThird = twoMonthsRecuperationThird;
+    }
+
+    public Integer getTwoMonthsRecuperationQuater() {
+        return twoMonthsRecuperationQuater;
+    }
+
+    public void setTwoMonthsRecuperationQuater(Integer twoMonthsRecuperationQuater) {
+        this.twoMonthsRecuperationQuater = twoMonthsRecuperationQuater;
     }
 
     public Integer getTwoMonthsNumberTwoMonths() {

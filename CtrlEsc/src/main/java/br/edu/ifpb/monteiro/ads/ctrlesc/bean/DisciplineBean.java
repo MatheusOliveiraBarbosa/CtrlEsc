@@ -68,6 +68,7 @@ public class DisciplineBean implements Serializable {
     }
 
     public List<Discipline> getListDiscipline() {
+        listDiscipline = disciplineFacade.findAll();
         return listDiscipline;
     }
 
