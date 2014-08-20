@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * Class for persisting data with the database, which contains methods to persist,
+ * delete, update, Search by id, search all, multiple search and counting
  * @author Elisângela
  */
 @Stateless
@@ -14,13 +16,15 @@ public class SchoolPerformanceDao extends AbstractDao<SchoolPerformance> impleme
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager em;
     
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
+    /**
+     * Constructor for the class play this class for the parent class.
+     */
     public SchoolPerformanceDao() {
         super(SchoolPerformance.class);
     }
     
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 }

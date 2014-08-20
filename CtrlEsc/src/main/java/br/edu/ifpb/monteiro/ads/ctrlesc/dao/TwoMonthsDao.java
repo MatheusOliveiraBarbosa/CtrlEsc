@@ -13,17 +13,16 @@ public class TwoMonthsDao extends AbstractDao<TwoMonths> implements TwoMonthsDao
     @PersistenceContext(unitName = "CtrlEsc")
     private EntityManager em;
 
+    /**
+     * Constructor for the class play this class for the parent class.
+     */
+    public TwoMonthsDao() {
+        super(TwoMonths.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
-    
-    public TwoMonthsDao() {
-        super(TwoMonths.class);
     }
     
 }
