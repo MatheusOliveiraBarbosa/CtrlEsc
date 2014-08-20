@@ -11,10 +11,10 @@
     </h:head>
 
     <ui:define name="corpo">
-        <p:fieldset legend="Cadastrar Administrador">
+        <p:fieldset legend="Cadastrar Professor">
 
-            <h:form id="infoAdministrator">   
-                <p:tabView id="tabAdministrator">
+            <h:form id="infoTeacher">   
+                <p:tabView id="tabTeacher">
                     <p:tab title="Informações Pessoais">
                         <p:growl/>
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
@@ -90,9 +90,6 @@
                             <p:outputLabel for="rg" value="RG: " />
                             <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{teacherBean.teacher.personRg}" />
 
-                            <p:outputLabel for="certidao" value="Certidão de Nascimento: " />
-                            <p:inputText id="certidao" placeholder="Nº Registro de Nascimento" value="#{teacherBean.teacher.personDateBirth}" />
-
                             <p:outputLabel for="nacionalidade" value="Nacionalidade: " />
                             <p:inputText id="nacionalidade" placeholder="Nacionalidade do Administrator" value="#{teacherBean.teacher.personNationality}" />
 
@@ -141,10 +138,10 @@
                 </p:tabView>
 
                 <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                 action="#{teacherBean.addTeacher}" update="infoAdministrator"/>
+                                 action="#{teacherBean.addTeacher}" update="infoTeacher"/>
 
                 <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
-                                 action="#{teacherBean.limpTeacher}" update="infoAdministrator"/>
+                                 action="#{teacherBean.limpTeacher}" update="infoTeacher"/>
 
             </h:form>    
         </p:fieldset>
