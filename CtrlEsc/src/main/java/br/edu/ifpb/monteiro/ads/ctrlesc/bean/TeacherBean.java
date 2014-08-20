@@ -30,15 +30,27 @@ public class TeacherBean implements Serializable{
         teacher= new Teacher();
     }
     
+    /**
+     * Method used by the cancel button to clear the data in a form.
+     * @return editTeacher
+     */
     public String limpTeacher() {
         teacher = new Teacher();
         return editTeacher();
     }
     
+    /**
+     * Method used by the edit button for editing data in a registration form.
+     * @return cadTeacher
+     */
     public String editTeacher() {
         return "/cadastre/cadTeacher.xhtml";
     }
     
+    /**
+     * Method used by the save button for adding a new teacher.
+     * @return null
+     */
     public String addTeacher() {
         if (teacher.getId() == null || teacher.getId() == 0) {
             insertTeacher();
@@ -49,23 +61,36 @@ public class TeacherBean implements Serializable{
         return null;
     }
     
+    /**
+     * Method responsible for the insertion of a teacher. And exposure 
+     * confirmation message to the user.
+     */
     private void insertTeacher() {
         teacherFacade.create(teacher);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
     }
     
+    /**
+     * Method responsible for editing the form teacher. And exposure 
+     * confirmation message to the user.
+     */
     private void updateTeacher() {
         teacherFacade.edit(teacher);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
     }
 
+    /**
+     * Method responsible for the removal of a teacher.
+     */
     public void removeTeacher() {
         teacherFacade.remove(teacher);
     }
-    //Get's
 
+    /*
+    Getters and Setters
+    */
     public TeacherDaoIF getTeacherFacade() {
         return teacherFacade;
     }

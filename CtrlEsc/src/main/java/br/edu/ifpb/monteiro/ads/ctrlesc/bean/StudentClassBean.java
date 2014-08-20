@@ -20,18 +20,34 @@ public class StudentClassBean implements Serializable {
     private List<StudentClass> lisStudentClass;
     private StudentClass studentClass;
 
+    /**
+     * Creates a new instance of StudentClassBean.
+     */
     public StudentClassBean() {
         studentClass= new StudentClass();
     }
-   public String limpStudentClass() {
+    
+    /**
+     * Method used by the cancel button to clear the data in a form.
+     * @return editStudentClass
+     */
+    public String limpStudentClass() {
         studentClass=new StudentClass();       
         return editStudentClass();
     }
     
+    /**
+     * Method used by the edit button for editing data in a registration form.
+     * @return cadStudentClass
+     */
     public String editStudentClass() {
         return "/cadastre/cadStudentClass.xhtml";
     }
     
+    /**
+     * Method used by the save button for adding a new studentClass.
+     * @return null
+     */
     public String addStudentClass() {
         if (studentClass.getId() == null || studentClass.getId() == 0) {
             insertStudentClass();
@@ -42,22 +58,36 @@ public class StudentClassBean implements Serializable {
         return null;
     }
     
+    /**
+     * Method responsible for inserting a studentClass. And exposure 
+     * confirmation message to the user.
+     */
     private void insertStudentClass() {
         studentClassFacade.create(studentClass);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
     }
     
+    /**
+     * Method responsible for editing the form studentClass. And exposure 
+     * confirmation message to the user.
+     */
     private void updateStudentClass() {
         studentClassFacade.edit(studentClass);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
     }
 
+    /**
+     * Method responsible for the removal of a studentClass.
+     */
     public void removeStudentClass() {
         studentClassFacade.remove(studentClass);
     }
 
+    /*
+    Getters and Setters
+    */
     public StudentClassDaoIF getStudentClassFacade() {
         return studentClassFacade;
     }

@@ -19,19 +19,34 @@ public class TwoMonthsBean implements Serializable {
     private List<TwoMonths> listTwoMonths;
     private TwoMonths twoMonths;
 
+    /**
+     * Creates a new instance of TwoMonthsBean
+     */
     public TwoMonthsBean() {
         twoMonths = new TwoMonths();
     }
 
-     public String limpTwoMonths() {
+    /**
+     * Method used by the cancel button to clear the data in a form.
+     * @return editTwoMonths
+     */
+    public String limpTwoMonths() {
         twoMonths = new TwoMonths();       
         return editTwoMonths();
     }
     
+    /**
+     * Method used by the edit button for editing data in a registration form.
+     * @return cadTwoMonths
+     */
     public String editTwoMonths() {
         return "/cadastre/cadTwoMonths.xhtml";
     }
     
+    /**
+     * Method used by the save button for adding data from two months.
+     * @return null
+     */
     public String addTwoMonths() {
         if (twoMonths.getId() == null || twoMonths.getId() == 0) {
             insertTwoMonths();
@@ -42,6 +57,10 @@ public class TwoMonthsBean implements Serializable {
         return null;
     }
     
+    /**
+     * Method responsible for data entry of two months. And exposure 
+     * confirmation message to the user.
+     */
     private void insertTwoMonths() {
         try {
         twoMonthsFacade.create(twoMonths);
@@ -56,16 +75,26 @@ public class TwoMonthsBean implements Serializable {
         }
     }
     
+    /**
+     * Method responsible for editing the form of two months. And exposure 
+     * confirmation message to the user.
+     */
     private void updateTwoMonths() {
         twoMonthsFacade.edit(twoMonths);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
     }
 
+    /**
+     * Method responsible for the removal of a quarter.
+     */
     public void removeTwoMonths() {
         twoMonthsFacade.remove(twoMonths);
     }
 
+    /*
+    Getters and Setters
+    */
     public TwoMonthsDaoIF getTwoMonthsFacade() {
         return twoMonthsFacade;
     }

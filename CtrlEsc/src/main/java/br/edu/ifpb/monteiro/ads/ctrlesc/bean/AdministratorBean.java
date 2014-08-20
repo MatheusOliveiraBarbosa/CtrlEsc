@@ -9,7 +9,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 @Named
 @RequestScoped
@@ -19,20 +18,34 @@ public class AdministratorBean implements Serializable {
     private AdministratorDaoIF administratorFacade;
     private List<Administrator> listAdministrator;
     private Administrator administrator;
-
+    
+    /**
+     * Creates a new instance of AdministratorBean
+     */
     public AdministratorBean() {
         administrator= new Administrator();
     }
-
+    
+    /**
+     * Method used by the cancel button to clear the data in a form.
+     * @return editAdministrador
+     */
     public String limpAdministrator() {
         administrator = new Administrator();
         return editAdministrator();
     }
     
+    /**
+     * Method used by the edit button for editing data in a registration form.
+     * @return cadAdministrator
+     */
     public String editAdministrator() {
         return "/cadastre/cadAdministrator.xhtml";
     }
-    
+    /**
+     * Method used by the save button for adding a new administrator.
+     * @return null
+     */
     public String addAdministrator() {
         if (administrator.getId() == null || administrator.getId() == 0) {
             insertAdministrator();
@@ -43,22 +56,36 @@ public class AdministratorBean implements Serializable {
         return null;
     }
     
+    /**
+     * Method responsible for adding an administrator. And exposure 
+     * confirmation message to the user
+     */
     private void insertAdministrator() {
         administratorFacade.create(administrator);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
     }
     
+    /**
+     * Method responsible for editing the form administrator. And exposure 
+     * confirmation message to the user.
+     */
     private void updateAdministrator() {
         administratorFacade.edit(administrator);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
     }
     
-      public void removeAdministrator() {
+    /**
+     * Method responsible for removing an administrator.
+     */
+    public void removeAdministrator() {
         administratorFacade.remove(administrator);
     }
 
+    /*
+      Getters and Setters
+      */  
     public AdministratorDaoIF getAdministratorFacade() {
         return administratorFacade;
     }
@@ -68,6 +95,7 @@ public class AdministratorBean implements Serializable {
     }
 
     public List<Administrator> getListAdministrator() {
+        listAdministrator = administratorFacade.findAll();
         return listAdministrator;
     }
 
