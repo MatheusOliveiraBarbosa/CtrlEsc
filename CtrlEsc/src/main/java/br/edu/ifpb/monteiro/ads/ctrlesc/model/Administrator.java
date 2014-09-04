@@ -9,6 +9,7 @@ import javax.persistence.Table;
  * @author Markus Patriota
  */
 
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Administrator
 @Entity
 @Table(name = "TB_administrator")
 public class Administrator extends Person {

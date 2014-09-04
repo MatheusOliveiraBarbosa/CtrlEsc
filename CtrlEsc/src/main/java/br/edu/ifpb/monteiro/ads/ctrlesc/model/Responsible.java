@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ import javax.validation.constraints.Min;
  * 
  * @author E.Wellington
  */
-
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Responsible
 @Entity
 @Table(name = "TB_responsible")
 public class Responsible extends Person{

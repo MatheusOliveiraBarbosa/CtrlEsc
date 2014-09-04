@@ -1,124 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TwoMonthsDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.TwoMonths;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.TwoMonthsServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-@Named
+@Named(value = "twoMonthsBean")
 @RequestScoped
-public class TwoMonthsBean implements Serializable {
+public class TwoMonthsBean extends AbstractBean<TwoMonths> implements TwoMonthsBeanIF{
 
-    @EJB
-    private TwoMonthsDaoIF twoMonthsFacade;
-    private List<TwoMonths> listTwoMonths;
-    private TwoMonths twoMonths;
+    @Inject
+    private TwoMonthsServiceIF services;
 
-    /**
-     * Creates a new instance of TwoMonthsBean
-     */
-    public TwoMonthsBean() {
-        twoMonths = new TwoMonths();
-    }
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.TwoMonths
+    private TwoMonths selected;
 
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editTwoMonths
-     */
-    public String limpTwoMonths() {
-        twoMonths = new TwoMonths();       
-        return editTwoMonths();
-    }
     
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadTwoMonths
-     */
-    public String editTwoMonths() {
-        return "/cadastre/cadTwoMonths.xhtml";
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
+
+    @Override
+    public TwoMonths getSelected() {
+     return this.selected;
+    }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(TwoMonths selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding data from two months.
-     * @return null
-     */
-    public String addTwoMonths() {
-        if (twoMonths.getId() == null || twoMonths.getId() == 0) {
-            insertTwoMonths();
-        } else {
-            updateTwoMonths();
+     @FacesConverter(forClass = TwoMonths.class)
+    public static class TwoMonthsBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            TwoMonthsBean controller = (TwoMonthsBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "twoMonthsBean");
+            return controller.getItem(getKey(value));
         }
-        limpTwoMonths();
-        return null;
-    }
-    
-    /**
-     * Method responsible for data entry of two months. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertTwoMonths() {
-        try {
-        twoMonthsFacade.create(twoMonths);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-        } catch (Throwable e) {
-            e.printStackTrace();
-            while (e.getCause() != null) {
-                e = e.getCause();
-                e.printStackTrace();
+
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
+
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof TwoMonths) {
+                TwoMonths o = (TwoMonths) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TwoMonths.class.getName()});
+                return null;
             }
         }
-    }
-    
-    /**
-     * Method responsible for editing the form of two months. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateTwoMonths() {
-        twoMonthsFacade.edit(twoMonths);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
 
-    /**
-     * Method responsible for the removal of a quarter.
-     */
-    public void removeTwoMonths() {
-        twoMonthsFacade.remove(twoMonths);
-    }
-
-    /*
-    Getters and Setters
-    */
-    public TwoMonthsDaoIF getTwoMonthsFacade() {
-        return twoMonthsFacade;
-    }
-
-    public void setTwoMonthsFacade(TwoMonthsDaoIF twoMonthsFacade) {
-        this.twoMonthsFacade = twoMonthsFacade;
-    }
-
-    public List<TwoMonths> getListTwoMonths() {
-        listTwoMonths = twoMonthsFacade.findAll();
-        return listTwoMonths;
-    }
-
-    public void setListTwoMonths(List<TwoMonths> listTwoMonths) {
-        this.listTwoMonths = listTwoMonths;
-    }
-
-    public TwoMonths getTwoMonths() {
-        return twoMonths;
-    }
-
-    public void setTwoMonths(TwoMonths twoMonths) {
-        this.twoMonths = twoMonths;
-    }
-
-    
+           
+}
 }

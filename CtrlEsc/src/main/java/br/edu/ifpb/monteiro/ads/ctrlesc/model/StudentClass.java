@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,15 +16,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Entity StudentClass contains atribudos and methods of creating a 
- * student class.
- * 
+ * Entity StudentClass contains atribudos and methods of creating a student
+ * class.
+ *
  * @author E.Wellington
  */
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.StudentClass
 @Entity
 @Table(name = "TB_studentClass")
-public class StudentClass implements Identifiable<StudentClass> {
-    
+public class StudentClass implements Identifiable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -35,7 +37,8 @@ public class StudentClass implements Identifiable<StudentClass> {
     @JoinTable(name = "TB_StudentClasses_Disciplines", joinColumns = @JoinColumn(name = "id_studentClass"), inverseJoinColumns = @JoinColumn(name = "id_discipline"))
     private List<Discipline> studentClassListDicipline;
 
-    @OneToMany(mappedBy = "schoolPerformanceStudentClass",targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)
+    
+    @OneToMany(mappedBy = "schoolPerformanceStudentClass", targetEntity = SchoolPerformance.class, fetch = FetchType.LAZY)
     private List<SchoolPerformance> studentClassListSchoolPerformance;
 
     @OneToMany(mappedBy = "lessonStudentClass", targetEntity = Lesson.class)
@@ -44,12 +47,11 @@ public class StudentClass implements Identifiable<StudentClass> {
     @ManyToMany(mappedBy = "teacherListStudentClasses", targetEntity = Teacher.class)
     private List<Teacher> studentClassListTeachers;
 
-    
     public StudentClass() {
-        studentClassListDicipline = new ArrayList<Discipline>();
-        studentClassListLessons = new ArrayList<Lesson>();
-        studentClassListSchoolPerformance = new ArrayList<SchoolPerformance>();
-        studentClassListTeachers = new ArrayList<Teacher>();
+//        studentClassListDicipline = new ArrayList();
+//        studentClassListLessons = new ArrayList();
+//        studentClassListSchoolPerformance = new ArrayList();
+//        studentClassListTeachers = new ArrayList();
     }
 
     public String getStudentClassName() {
@@ -98,9 +100,4 @@ public class StudentClass implements Identifiable<StudentClass> {
         return id;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id=id;
-    }
-    
 }

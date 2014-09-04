@@ -1,118 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.LessonDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Lesson;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.LessonServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-/**
- * @author MarkusPatriota
- */
-@Named
+@Named(value = "lessonBean")
 @RequestScoped
-public class LessonBean implements Serializable {
-    
-    @EJB
-    private LessonDaoIF lessonFacade;
-    private List<Lesson> listLesson;
-    private Lesson lesson;
+public class LessonBean extends AbstractBean<Lesson> implements LessonBeanIF{
 
-    /**
-     * Creates a new instance of LessonBean
-     */
-    public LessonBean() {
-        lesson= new Lesson();
-    }
+    @Inject
+    private LessonServiceIF services;
+
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Lesson
+    private Lesson selected;
+
     
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editLesson
-     */
-    public String limpLesson() {
-        lesson = new Lesson();
-        return editLesson();
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadLesson
-     */
-    public String editLesson() {
-        return "/cadastre/cadLesson.xhtml";
+
+    @Override
+    public Lesson getSelected() {
+     return this.selected;
     }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(Lesson selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding a new activity.
-     * @return null
-     */
-    public String addLesson() {
-        if (lesson.getId() == null || lesson.getId() == 0) {
-            insertLesson();
-        } else {
-            updateLesson();
+     @FacesConverter(forClass = Lesson.class)
+    public static class AdministratorBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            LessonBean controller = (LessonBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "lessonBean");
+            return controller.getItem(getKey(value));
         }
-        limpLesson();
-        return null;
-    }
-    
-    /**
-     * Method responsible for the insertion of an activity. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertLesson() {
-        lessonFacade.create(lesson);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form of activity. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateLesson() {
-        lessonFacade.edit(lesson);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for removing an activity.
-     */
-    public void removeLesson() {
-        lessonFacade.remove(lesson);
-    }
 
-    /*
-    Getters and Setters
-    */
-    public void setLessonFacade(LessonDaoIF lessonFacade) {
-        this.lessonFacade = lessonFacade;
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    public void setListLesson(List<Lesson> listLesson) {
-        this.listLesson = listLesson;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Lesson) {
+                Lesson o = (Lesson) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Lesson.class.getName()});
+                return null;
+            }
+        }
 
-    public LessonDaoIF getLessonFacade() {
-        return lessonFacade;
-    }
-
-    public Lesson getLesson() {
-        return lesson;
-    }
-
-    public List<Lesson> getListLesson() {
-        listLesson = lessonFacade.findAll();
-        return listLesson;
-    }
-    
+           
+}
 }

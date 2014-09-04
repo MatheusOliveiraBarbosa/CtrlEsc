@@ -1,116 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.StudentClass;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentClassDaoIF;
-
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.StudentClassServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-@Named
+@Named(value = "studentClassBean")
 @RequestScoped
-public class StudentClassBean implements Serializable {
+public class StudentClassBean extends AbstractBean<StudentClass> implements StudentClassBeanIF{
 
-    @EJB
-    private StudentClassDaoIF studentClassFacade;
-    private List<StudentClass> lisStudentClass;
-    private StudentClass studentClass;
+    @Inject
+    private StudentClassServiceIF services;
 
-    /**
-     * Creates a new instance of StudentClassBean.
-     */
-    public StudentClassBean() {
-        studentClass= new StudentClass();
-    }
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.StudentClass
+    private StudentClass selected;
+
     
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editStudentClass
-     */
-    public String limpStudentClass() {
-        studentClass=new StudentClass();       
-        return editStudentClass();
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadStudentClass
-     */
-    public String editStudentClass() {
-        return "/cadastre/cadStudentClass.xhtml";
+
+    @Override
+    public StudentClass getSelected() {
+     return this.selected;
     }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(StudentClass selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding a new studentClass.
-     * @return null
-     */
-    public String addStudentClass() {
-        if (studentClass.getId() == null || studentClass.getId() == 0) {
-            insertStudentClass();
-        } else {
-            updateStudentClass();
+     @FacesConverter(forClass = StudentClass.class)
+    public static class StudentClassBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            StudentClassBean controller = (StudentClassBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "studentClassBean");
+            return controller.getItem(getKey(value));
         }
-        limpStudentClass();
-        return null;
-    }
-    
-    /**
-     * Method responsible for inserting a studentClass. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertStudentClass() {
-        studentClassFacade.create(studentClass);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form studentClass. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateStudentClass() {
-        studentClassFacade.edit(studentClass);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
 
-    /**
-     * Method responsible for the removal of a studentClass.
-     */
-    public void removeStudentClass() {
-        studentClassFacade.remove(studentClass);
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    /*
-    Getters and Setters
-    */
-    public StudentClassDaoIF getStudentClassFacade() {
-        return studentClassFacade;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public void setStudentClassFacade(StudentClassDaoIF studentClassFacade) {
-        this.studentClassFacade = studentClassFacade;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof StudentClass) {
+                StudentClass o = (StudentClass) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), StudentClass.class.getName()});
+                return null;
+            }
+        }
 
-    public List<StudentClass> getLisStudentClass() {
-        return lisStudentClass;
-    }
-
-    public void setLisStudentClass(List<StudentClass> lisStudentClass) {
-        this.lisStudentClass = lisStudentClass;
-    }
-
-    public StudentClass getStudentClass() {
-        return studentClass;
-    }
-
-    public void setStudentClass(StudentClass studentClass) {
-        this.studentClass = studentClass;
-    }
-    
-    
+           
+}
 }

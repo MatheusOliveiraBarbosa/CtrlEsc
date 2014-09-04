@@ -1,116 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Student;
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentDaoIF;
-
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.StudentServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-@Named
+@Named(value = "studentBean")
 @RequestScoped
-public class StudentBean implements Serializable {
+public class StudentBean extends AbstractBean<Student> implements StudentBeanIF{
 
-    @EJB
-    private StudentDaoIF studentFacade;
-    private List<Student> listStudents;
-    private Student student;
+    @Inject
+    private StudentServiceIF services;
 
-    /**
-     * Creates a new instance of StudentBean.
-    */
-    public StudentBean() {
-        student=new Student();
-    }
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Student
+    private Student selected;
+
     
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editStudent
-     */
-    public String limpStudent() {
-        student=new Student();       
-        return editStudent();
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadStudent
-     */
-    public String editStudent() {
-        return "/cadastre/cadStudent.xhtml";
+
+    @Override
+    public Student getSelected() {
+     return this.selected;
     }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(Student selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding a new student.
-     * @return null
-    */
-    public String addStudent() {
-        if (student.getId() == null || student.getId() == 0) {
-            insertStudent();
-        } else {
-            updateStudent();
+     @FacesConverter(forClass = Student.class)
+    public static class StudentBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            StudentBean controller = (StudentBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "studentBean");
+            return controller.getItem(getKey(value));
         }
-        limpStudent();
-        return null;
-    }
-    
-     /**
-     * Method responsible for the insertion of a student. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertStudent() {
-        studentFacade.create(student);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form student. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateStudent() {
-        studentFacade.edit(student);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
 
-    /**
-     * Method responsible for the removal of a student.
-     */
-    public void removeStudent() {
-        studentFacade.remove(student);
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    /*
-    Getters and Setters
-    */
-    public StudentDaoIF getStudentFacade() {
-        return studentFacade;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public void setStudentFacade(StudentDaoIF studentFacade) {
-        this.studentFacade = studentFacade;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Student) {
+                Student o = (Student) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Student.class.getName()});
+                return null;
+            }
+        }
 
-    public List<Student> getListStudents() {
-        listStudents = studentFacade.findAll();
-        return listStudents;
-    }
-
-    public void setListStudents(List<Student> listStudents) {
-        this.listStudents = listStudents;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-        
+           
+}
 }

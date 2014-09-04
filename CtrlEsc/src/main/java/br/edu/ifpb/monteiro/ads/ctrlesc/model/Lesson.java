@@ -22,9 +22,10 @@ import javax.validation.constraints.Min;
  * 
  * @author E.Wellington
  */
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Lesson
 @Entity
 @Table(name = "TB_lesson")
-public class Lesson implements Identifiable<Lesson> {
+public class Lesson implements Identifiable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -106,9 +107,5 @@ public class Lesson implements Identifiable<Lesson> {
         return id;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-  
+   
 }

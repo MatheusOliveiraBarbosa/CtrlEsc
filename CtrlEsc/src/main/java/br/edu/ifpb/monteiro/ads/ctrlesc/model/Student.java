@@ -7,7 +7,6 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.ElectionTitle;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -26,6 +25,7 @@ import javax.validation.constraints.Min;
  * student.
  * @author E.Wellington
  */
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Student
 @Entity
 @Table (name = "TB_student")
 public class Student extends Person{

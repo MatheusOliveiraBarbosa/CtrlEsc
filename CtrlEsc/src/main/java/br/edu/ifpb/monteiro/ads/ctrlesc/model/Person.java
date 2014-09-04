@@ -23,9 +23,10 @@ import javax.persistence.Transient;
  * person.
  * @author E.Wellington
  */
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Person implements Identifiable<Person> {
+public abstract class Person implements Identifiable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -245,8 +246,5 @@ public abstract class Person implements Identifiable<Person> {
         return id;
     }
     
-    @Override
-    public void setId(Long id){
-        this.id = id;
-    }
+   
 }

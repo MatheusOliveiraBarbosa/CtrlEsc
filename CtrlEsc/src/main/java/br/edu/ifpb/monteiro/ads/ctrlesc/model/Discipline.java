@@ -16,9 +16,10 @@ import javax.persistence.Table;
  * discipline.
  * @author E.Wellington
  */
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Discipline
 @Entity
 @Table (name = "TB_discipline")
-public class Discipline implements Identifiable<Discipline> {
+public class Discipline implements Identifiable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,10 +89,6 @@ public class Discipline implements Identifiable<Discipline> {
         return id;
     }
     
-    @Override
-    public void setId(Long id){
-        this.id = id;
-    }
-    
+   
     
 }

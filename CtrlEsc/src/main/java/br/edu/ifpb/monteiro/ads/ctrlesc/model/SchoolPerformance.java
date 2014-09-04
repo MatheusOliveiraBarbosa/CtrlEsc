@@ -19,9 +19,10 @@ import javax.validation.constraints.Min;
  * @author E.Wellington
  */
 
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.SchoolPerformance
 @Entity
 @Table (name = "TB_schoolPerformance")
-public class SchoolPerformance implements Identifiable<SchoolPerformance>{
+public class SchoolPerformance implements Identifiable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -155,11 +156,7 @@ public class SchoolPerformance implements Identifiable<SchoolPerformance>{
         return id;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id= id;
-    }
-    
+   
     
     
 }

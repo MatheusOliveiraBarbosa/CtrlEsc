@@ -7,11 +7,11 @@ import java.io.Serializable;
  * and a method of creation. 
  * 
  * @author E.Wellington
- * @param <T>
+ * 
  */
-public interface Identifiable<T> extends Serializable{
+public interface Identifiable extends Serializable{
     
     public Long getId();
 
-    public void setId(Long id);
+  
 }

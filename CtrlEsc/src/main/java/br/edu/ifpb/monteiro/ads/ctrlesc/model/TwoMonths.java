@@ -9,15 +9,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+
 /**
  * Entity TwoMonths contains atribudos and methods of creating a 
  * two months.
  *
  * @author Ricardo
  */
+@br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.TwoMonths
 @Entity
 @Table(name = "TB_twoMonths")
-public class TwoMonths implements Identifiable<TwoMonths> {
+public class TwoMonths implements Identifiable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -165,8 +167,5 @@ public class TwoMonths implements Identifiable<TwoMonths> {
         return id;
     }
     
-    @Override
-    public void setId(Long id){
-        this.id = id;
-    }
+   
 }

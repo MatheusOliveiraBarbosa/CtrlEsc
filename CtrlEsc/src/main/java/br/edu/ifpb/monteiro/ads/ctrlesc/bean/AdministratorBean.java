@@ -1,114 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.AdministratorDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.AdministratorServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-@Named
+@Named(value = "administratorBean")
 @RequestScoped
-public class AdministratorBean implements Serializable {
+public class AdministratorBean extends AbstractBean<Administrator> implements AdministratorBeanIF{
 
-    @EJB 
-    private AdministratorDaoIF administratorFacade;
-    private List<Administrator> listAdministrator;
-    private Administrator administrator;
+    @Inject
+    private AdministratorServiceIF services;
+
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Administrator
+    private Administrator selected;
+
     
-    /**
-     * Creates a new instance of AdministratorBean
-     */
-    public AdministratorBean() {
-        administrator= new Administrator();
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
+
+    @Override
+    public Administrator getSelected() {
+     return this.selected;
+    }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(Administrator selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editAdministrador
-     */
-    public String limpAdministrator() {
-        administrator = new Administrator();
-        return editAdministrator();
-    }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadAdministrator
-     */
-    public String editAdministrator() {
-        return "/cadastre/cadAdministrator.xhtml";
-    }
-    /**
-     * Method used by the save button for adding a new administrator.
-     * @return null
-     */
-    public String addAdministrator() {
-        if (administrator.getId() == null || administrator.getId() == 0) {
-            insertAdministrator();
-        } else {
-            updateAdministrator();
+     @FacesConverter(forClass = Administrator.class)
+    public static class AdministratorBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            AdministratorBean controller = (AdministratorBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "administratorBean");
+            return controller.getItem(getKey(value));
         }
-        limpAdministrator();
-        return null;
-    }
-    
-    /**
-     * Method responsible for adding an administrator. And exposure 
-     * confirmation message to the user
-     */
-    private void insertAdministrator() {
-        administratorFacade.create(administrator);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form administrator. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateAdministrator() {
-        administratorFacade.edit(administrator);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for removing an administrator.
-     */
-    public void removeAdministrator() {
-        administratorFacade.remove(administrator);
-    }
 
-    /*
-      Getters and Setters
-      */  
-    public AdministratorDaoIF getAdministratorFacade() {
-        return administratorFacade;
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    public void setAdministratorFacade(AdministratorDaoIF administratorFacade) {
-        this.administratorFacade = administratorFacade;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public List<Administrator> getListAdministrator() {
-        listAdministrator = administratorFacade.findAll();
-        return listAdministrator;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Administrator) {
+                Administrator o = (Administrator) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Administrator.class.getName()});
+                return null;
+            }
+        }
 
-    public void setListAdministrator(List<Administrator> listAdministrator) {
-        this.listAdministrator = listAdministrator;
-    }
-
-    public Administrator getAdministrator() {
-        return administrator;
-    }
-
-    public void setAdministrator(Administrator administrator) {
-        this.administrator = administrator;
-    }
            
+}
 }

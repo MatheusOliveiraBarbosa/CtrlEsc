@@ -1,6 +1,10 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.dao;
 
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
 import java.util.List;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Default;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 /**
@@ -10,14 +14,21 @@ import javax.persistence.EntityManager;
  * @author Elisângela
  * @param <T>
  */
-public abstract class AbstractDao<T>{
+@Default
+@Dependent
+public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
     private Class<T> entityClass;
 
+    @Inject
+    protected EntityManager entityManager;
+    
     /**
-     * Abstrator method to retrieve the EntityManager 
+     * Method to retrieve the EntityManager 
      * @return 
      */
-    protected abstract EntityManager getEntityManager();
+    protected EntityManager getEntityManager(){
+        return entityManager;
+    };
     
     /**
      * The class constructor receives with Parliament the entity that will be 
@@ -29,12 +40,22 @@ public abstract class AbstractDao<T>{
         this.entityClass = entityClass;
     }
     
+    public AbstractDao() { }
+    
+    
     /**
      * Persistence method of an entity in the database, return a persisted entity.
      * @param entity 
      */
-    public void create(T entity) {
-        getEntityManager().persist(entity);
+    @Override
+    public void create(Identifiable entity) {
+         System.out.println("Passei aqui D");  //Substituir por Logger
+        try {
+            getEntityManager().persist(entity);
+        } catch (Exception e) {
+            System.err.println("Erro no DAO: "+e.getMessage()); //Substituir por Logger
+        }
+        
     }
 
     /**
@@ -43,7 +64,8 @@ public abstract class AbstractDao<T>{
      * 
      * @param entity 
      */
-    public void edit(T entity) {
+    @Override
+    public void edit(Identifiable entity) {
         getEntityManager().merge(entity);
     }
 
@@ -52,7 +74,8 @@ public abstract class AbstractDao<T>{
      * to be removed.
      * @param entity 
      */
-    public void remove(T entity) {
+    @Override
+    public void remove(Identifiable entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
@@ -61,7 +84,8 @@ public abstract class AbstractDao<T>{
      * @param id
      * @return 
      */
-    public T find(Object id) {
+    @Override
+    public Identifiable find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
     
@@ -70,7 +94,8 @@ public abstract class AbstractDao<T>{
      * the entity.
      * @return 
      */
-    public List<T> findAll() {
+    @Override
+    public List<Identifiable> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
@@ -81,7 +106,8 @@ public abstract class AbstractDao<T>{
      * @param range
      * @return 
      */
-    public List<T> findRange(int[] range) {
+    @Override
+    public List<Identifiable> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -95,9 +121,10 @@ public abstract class AbstractDao<T>{
      * amount.
      * @return 
      */
+    @Override
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+        javax.persistence.criteria.Root<Identifiable> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();

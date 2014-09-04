@@ -1,116 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.DisciplineDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Discipline;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.DisciplineServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-@Named
+@Named(value = "disciplineBean")
 @RequestScoped
-public class DisciplineBean implements Serializable {
+public class DisciplineBean extends AbstractBean<Discipline> implements DisciplineBeanIF{
 
-    @EJB
-    private DisciplineDaoIF disciplineFacade;
-    private List<Discipline> listDiscipline;
-    private Discipline discipline;
+    @Inject
+    private DisciplineServiceIF services;
 
-    /**
-     * Creates a new instance of DisciplineBean
-     */
-    public DisciplineBean() {
-        discipline= new Discipline();
-    }
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Discipline
+    private Discipline selected;
 
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editDiscipline
-     */
-    public String limpDiscipline() {
-        discipline = new Discipline();
-        return editDiscipline();
-    }
     
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadDiscipline
-     */
-    public String editDiscipline() {
-        return "/cadastre/cadDiscipline.xhtml";
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
+
+    @Override
+    public Discipline getSelected() {
+     return this.selected;
+    }
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelected(Discipline selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding a new discipline.
-     * @return null
-     */
-    public String addDiscipline() {
-        if (discipline.getId() == null || discipline.getId() == 0) {
-            insertDiscipline();
-        } else {
-            updateDiscipline();
+     @FacesConverter(forClass = Discipline.class)
+    public static class AdministratorBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            DisciplineBean controller = (DisciplineBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "disciplineBean");
+            return controller.getItem(getKey(value));
         }
-        limpDiscipline();
-        return null;
-    }
-    
-    /**
-     * Method responsible for the insertion of a discipline. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertDiscipline() {
-        disciplineFacade.create(discipline);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form of discipline. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateDiscipline() {
-        disciplineFacade.edit(discipline);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for removing a discipline.
-     */
-    public void removeDiscipline() {
-        disciplineFacade.remove(discipline);
-    }
 
-    /*
-      Getters and Setters
-      */  
-    public DisciplineDaoIF getDisciplineFacade() {
-        return disciplineFacade;
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    public void setDisciplineFacade(DisciplineDaoIF disciplineFacade) {
-        this.disciplineFacade = disciplineFacade;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public List<Discipline> getListDiscipline() {
-        listDiscipline = disciplineFacade.findAll();
-        return listDiscipline;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Discipline) {
+                Discipline o = (Discipline) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Discipline.class.getName()});
+                return null;
+            }
+        }
 
-    public void setListDiscipline(List<Discipline> listDiscipline) {
-        this.listDiscipline = listDiscipline;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
-    }
-        
+           
+}
 }

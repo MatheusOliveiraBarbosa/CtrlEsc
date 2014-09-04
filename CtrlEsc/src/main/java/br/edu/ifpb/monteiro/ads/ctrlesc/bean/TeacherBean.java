@@ -1,107 +1,90 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.TeacherDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Teacher;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.TeacherServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-/**
- *
- * @author MarkusPatriota
- */
-@Named
+@Named(value = "teacherBean")
 @RequestScoped
-public class TeacherBean implements Serializable{
+public class TeacherBean extends AbstractBean<Teacher> implements TeacherBeanIF{
 
-    @EJB
-    private TeacherDaoIF teacherFacade;
-    private Teacher teacher;
-    private List<Teacher> listTeacher;
+    @Inject
+    private TeacherServiceIF services;
+
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Teacher
+    private Teacher selected;
+
     
-    /**
-     * Creates a new instance of TeacherBean
-     */
-    public TeacherBean() {
-        teacher= new Teacher();
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
-    
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editTeacher
-     */
-    public String limpTeacher() {
-        teacher = new Teacher();
-        return editTeacher();
+
+    @Override
+    public Teacher getSelected() {
+     return this.selected;
     }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadTeacher
-     */
-    public String editTeacher() {
-        return "/cadastre/cadTeacher.xhtml";
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setSelected(Teacher selected) {
+        this.selected =  selected;
+    }
+
     
-    /**
-     * Method used by the save button for adding a new teacher.
-     * @return null
-     */
-    public String addTeacher() {
-        if (teacher.getId() == null || teacher.getId() == 0) {
-            insertTeacher();
-        } else {
-            updateTeacher();
+     @FacesConverter(forClass = Teacher.class)
+    public static class TeacherBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            TeacherBean controller = (TeacherBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "teacherBean");
+            return controller.getItem(getKey(value));
         }
-        limpTeacher();
-        return null;
-    }
-    
-    /**
-     * Method responsible for the insertion of a teacher. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertTeacher() {
-        teacherFacade.create(teacher);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form teacher. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateTeacher() {
-        teacherFacade.edit(teacher);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
 
-    /**
-     * Method responsible for the removal of a teacher.
-     */
-    public void removeTeacher() {
-        teacherFacade.remove(teacher);
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    /*
-    Getters and Setters
-    */
-    public TeacherDaoIF getTeacherFacade() {
-        return teacherFacade;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Teacher) {
+                Teacher o = (Teacher) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Teacher.class.getName()});
+                return null;
+            }
+        }
 
-    public List<Teacher> getListTeacher() {
-        listTeacher = teacherFacade.findAll();
-        return listTeacher;
-    }
-            
+           
+}
 }

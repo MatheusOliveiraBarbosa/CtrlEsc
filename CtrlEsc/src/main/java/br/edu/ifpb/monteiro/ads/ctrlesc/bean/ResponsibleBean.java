@@ -1,114 +1,87 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.ResponsibleDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Responsible;
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ResponsibleServiceIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
 import javax.inject.Named;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-/**
- * @author Elisângela
- */
-@Named
+@Named(value = "responsibleBean")
 @RequestScoped
-public class ResponsibleBean implements Serializable {
+public class ResponsibleBean extends AbstractBean<Responsible> implements ResponsibleBeanIF {
 
-    @EJB
-    private ResponsibleDaoIF responsibleFacade;
-    private Responsible responsible;
-    private List<Responsible> listResponsibles;
-    
-    /**
-     * Creates a new instance of ResponsibleBean
-     */
-    public ResponsibleBean() {
-        responsible = new Responsible();
+    @Inject
+    private ResponsibleServiceIF services;
+
+    @Inject
+    @br.edu.ifpb.monteiro.ads.ctrlesc.model.qualifiers.Responsible
+    private Responsible selected;
+
+    @Override
+    protected ServicesIF getServices() {
+        return this.services;
     }
-      
-    /**
-     * Method used by the cancel button to clear the data in a form.
-     * @return editResponsible
-     */
-    public String limpResponsible() {
-        responsible = new Responsible();
-        return editResponsible();
+
+    @Override
+    public Responsible getSelected() {
+        return this.selected;
     }
-    
-    /**
-     * Method used by the edit button for editing data in a registration form.
-     * @return cadResponsible
-     */
-    public String editResponsible() {
-        return "/cadastre/cadResponsible.xhtml";
+
+    @Override
+    public void resetFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    /**
-     * Method used by the save button for adding a new charge.
-     * @return null
-     */
-    public String addResponsible(){
-        
-       if (responsible.getId() == null || responsible.getId() == 0) {
-            insertResponsible();
-        } else {
-            updateResponsible();
+
+    @Override
+    public void setSelected(Responsible selected) {
+        this.selected = selected;
+    }
+
+    @FacesConverter(forClass = Responsible.class)
+    public static class AdministratorBeanConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            ResponsibleBean controller = (ResponsibleBean) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "responsibleBean");
+            return controller.getItem(getKey(value));
         }
-        limpResponsible();
-        return null;
-    }
-    
-    /**
-     * Method responsible for inserting a charge. And exposure 
-     * confirmation message to the user.
-     */
-    private void insertResponsible() {
-        responsibleFacade.create(responsible);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Gravação Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for editing the form responsible. And exposure 
-     * confirmation message to the user.
-     */
-    private void updateResponsible() {
-        responsibleFacade.edit(responsible);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                FacesMessage.SEVERITY_INFO, "Atualização Efetuada com Sucesso", ""));
-    }
-    
-    /**
-     * Method responsible for removal of a guardian.
-     */
-    public void removeResponsible() {
-        responsibleFacade.remove(responsible);
-    }
-     
-    /*
-    Getters and Setters
-    */
-    public ResponsibleDaoIF getResponsibleFacade() {
-        return responsibleFacade;
-    }
 
-    public void setResponsibleFacade(ResponsibleDaoIF responsibleFacade) {
-        this.responsibleFacade = responsibleFacade;
-    }
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
+            return key;
+        }
 
-    public Responsible getResponsible() {
-        return responsible;
-    }
+        String getStringKey(java.lang.Long value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
 
-    public void setResponsible(Responsible responsible) {
-        this.responsible = responsible;
-    }
-    
-    public List<Responsible> getListResponsibles() {
-        listResponsibles = responsibleFacade.findAll();
-        return listResponsibles;
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Responsible) {
+                Responsible o = (Responsible) object;
+                return getStringKey(o.getId());
+            } else {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Responsible.class.getName()});
+                return null;
+            }
+        }
+
     }
 }
