@@ -6,6 +6,7 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.service;
 
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.StudentClassDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.dao.qualifiers.StudentClassDAO;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
 import br.edu.ifpb.monteiro.ads.ctrlesc.util.jpa.Transactional;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
 public class StudentClassService implements StudentClassServiceIF{
 
     @Inject @StudentClassDAO
-    private StudentClassServiceIF dao;
+    private StudentClassDaoIF dao;
     
     @Override
     public int count() {

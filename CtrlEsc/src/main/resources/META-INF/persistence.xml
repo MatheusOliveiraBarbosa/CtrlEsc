@@ -13,9 +13,10 @@
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Teacher</class>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.TwoMonths</class>
     <class>br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.target-database" value="PostgreSQL"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>
