@@ -20,28 +20,28 @@
                         <p:growl/>
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" />
-                            <h:inputHidden id="id" value="#{lessonBean.lesson.id}" />
+                            <h:inputHidden id="id" value="#{lessonBean.selected.id}" />
                             <p:outputLabel/>
                             <p:outputLabel/>
                             
                             <p:outputLabel for="dataLesson" value="Data Atividade: "/>
-                            <p:calendar id="dataLesson" mask="99/99/9999" value="#{lessonBean.lesson.lessonDate}" pattern="dd/MM/yyyy"/> 
+                            <p:calendar id="dataLesson" mask="99/99/9999" value="#{lessonBean.selected.lessonDate}" pattern="dd/MM/yyyy"/> 
                            
                             <p:outputLabel for="observation" value="Observações " />
-                            <p:inputTextarea id="observation" value="#{lessonBean.lesson.lessonObservation}" 
+                            <p:inputTextarea id="observation" value="#{lessonBean.selected.lessonObservation}" 
                                 rows="10" cols="33" autoResize="true" />
 
                             <p:outputLabel for="presence" value="Presença: " />
-                            <p:inputText id="presence" value="#{lessonBean.lesson.lessonPresence}" 
+                            <p:inputText id="presence" value="#{lessonBean.selected.lessonPresence}" 
                                 placeholder="Presença" />
                             
                         </h:panelGrid>
                         
                         <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                            action="#{lessonBean.addLesson}" update="activits"/>
+                            action="#{lessonBean.selected}" update="activits"/>
 
                         <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
-                            action="#{lessonBean.limpLesson}" update="activits"/>
+                            action="#{lessonBean.selected}" update="activits"/>
                         
                     </h:form>
                 </p:tab>
