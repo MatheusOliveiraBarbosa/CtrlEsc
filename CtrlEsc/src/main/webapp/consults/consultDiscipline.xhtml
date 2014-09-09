@@ -17,10 +17,10 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id" value="#{disciplineBean.discipline.id}"/>
+                    <h:inputHidden id="id" value="#{disciplineBean.selected.id}"/>
                     
                     <p:outputLabel for="professor" value="Professor "/>
-                    <p:inputText id="professor" placeholder="Nome do professor" value="#{teacherBean.teacher.personName}" />
+                    <p:inputText id="professor" placeholder="Nome do professor" value="#{teacherBean.selected.personName}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
@@ -35,7 +35,7 @@
             
             <h:form id="formTableConsultDiscipline">
                 
-                <p:dataTable id="tableDiscipline" var="discipline" value="#{disciplineBean.listDiscipline}"
+                <p:dataTable id="tableDiscipline" var="discipline" value="#{disciplineBean.selected}"
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -52,11 +52,11 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{disciplineBean.editDiscipline}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{disciplineBean.selected}" value="Editar"
                                          icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{discipline}" target="#{disciplineBean.discipline}"/>
+                            <f:setPropertyActionListener value="#{discipline}" target="#{disciplineBean.selected}"/>
                             <f:setPropertyActionListener value="#{discipline.disciplineName}" 
-                                                         target="#{disciplineBean.discipline.disciplineName}" />
+                                                         target="#{disciplineBean.selected.disciplineName}" />
                         </p:commandButton>     
                     </p:column>
                     

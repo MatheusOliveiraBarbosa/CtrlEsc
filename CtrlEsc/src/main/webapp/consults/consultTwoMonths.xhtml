@@ -16,13 +16,13 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id" value="#{twoMonthsBean.twoMonths.id}" />
+                    <h:inputHidden id="id" value="#{twoMonthsBean.selected.id}" />
                     
                     <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.student.personName}" />
+                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.selected.personName}" />
 
                     <p:outputLabel for="matricula" value="Matrícula: "/>
-                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.student.studentRegistration}" />
+                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.selected.studentRegistration}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
@@ -37,7 +37,7 @@
             
             <h:form id="formTableConsultNotes">
                 
-                <p:dataTable id="tableConsultNotes" var="notes" value="#{twoMonthsBean.listTwoMonths}"
+                <p:dataTable id="tableConsultNotes" var="notes" value="#{twoMonthsBean.selected}"
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -103,33 +103,33 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{twoMonthsBean.editTwoMonths}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{twoMonthsBean.selected}" value="Editar"
                                          icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{notes}" target="#{twoMonthsBean.twoMonths}" />
+                            <f:setPropertyActionListener value="#{notes}" target="#{twoMonthsBean.selected}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsExerciseFirst}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseFirst}" />
+                                target="#{twoMonthsBean.selected.twoMonthsExerciseFirst}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationFirst}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationFirst}" />
+                                target="#{twoMonthsBean.selected.twoMonthsRecuperationFirst}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsExerciseSecond}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseSecond}" />
+                                target="#{twoMonthsBean.selected.twoMonthsExerciseSecond}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationSecond}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationSecond}" />
+                                target="#{twoMonthsBean.selected.twoMonthsRecuperationSecond}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsExerciseThird}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseThird}" />
+                                target="#{twoMonthsBean.selected.twoMonthsExerciseThird}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationThird}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationThird}" />
+                                target="#{twoMonthsBean.selected.twoMonthsRecuperationThird}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsExerciseQuater}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsExerciseQuater}" />
+                                target="#{twoMonthsBean.selected.twoMonthsExerciseQuater}" />
                             
                             <f:setPropertyActionListener value="#{notes.twoMonthsRecuperationQuater}" 
-                                target="#{twoMonthsBean.twoMonths.twoMonthsRecuperationQuater}" />
+                                target="#{twoMonthsBean.selected.twoMonthsRecuperationQuater}" />
                             
                         </p:commandButton>     
                     </p:column>

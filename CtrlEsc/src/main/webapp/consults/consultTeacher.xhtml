@@ -38,7 +38,7 @@
             
             <h:form id="formTableConsultTeacher">
                 
-                <p:dataTable id="tableConsultTeacher" var="teacher" value="#{teacherBean.listTeacher}"
+                <p:dataTable id="tableConsultTeacher" var="teacher" value="#{teacherBean.selected}"
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -69,18 +69,18 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{teacherBean.editTeacher}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{teacherBean.selected}" value="Editar"
                                          icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{teacher}" target="#{teacherBean.teacher}"/>
+                            <f:setPropertyActionListener value="#{teacher}" target="#{teacherBean.selected}"/>
                             
                             <f:setPropertyActionListener value="#{teacher.personName}" 
-                                target="#{teacherBean.teacher.personName}" />
+                                target="#{teacherBean.selected.personName}" />
                             
                             <f:setPropertyActionListener value="#{teacher.teacherRegistration}" 
-                                target="#{teacherBean.teacher.teacherRegistration}" />
+                                target="#{teacherBean.selected.teacherRegistration}" />
                             
                             <f:setPropertyActionListener value="#{teacher.personEntryDate}" 
-                                target="#{teacherBean.teacher.personDateBirth}" />
+                                target="#{teacherBean.selected.personDateBirth}" />
                         </p:commandButton>     
                     </p:column>
                     
