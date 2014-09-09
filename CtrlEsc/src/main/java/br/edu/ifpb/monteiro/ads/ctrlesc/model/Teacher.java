@@ -36,8 +36,7 @@ public class Teacher extends Person {
 
    
     public Teacher() {
-        teacherListDisciplines = new ArrayList<Discipline>();
-        teacherListStudentClasses = new ArrayList<StudentClass>();
+        
     }
 
     public Teacher(String teacheRegistration, List<Discipline> teacherListDisciplines, List<StudentClass> teacherListStudentClasses, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {

@@ -40,7 +40,6 @@ public class Responsible extends Person{
     private List<Student> responsibleListStudenst;
 
     public Responsible() {
-        responsibleListStudenst = new ArrayList<Student>();
     
     }
 

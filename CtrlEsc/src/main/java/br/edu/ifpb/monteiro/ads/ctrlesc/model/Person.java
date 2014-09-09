@@ -4,6 +4,7 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
 import java.util.Date;
+import javax.inject.Inject;
 
 
 import javax.persistence.Column;
@@ -42,6 +43,7 @@ public abstract class Person implements Identifiable {
     @Temporal (TemporalType.DATE)
     private Date personDateBirth;
     
+    @Inject
     @Embedded
     private Address personAddress;
     
@@ -78,6 +80,7 @@ public abstract class Person implements Identifiable {
     @Column (name = "person_civil_status", length = 15)
     private String personCivilStatus;
     
+    @Inject
     @Embedded
     private Login personLogin;
     
@@ -88,8 +91,7 @@ public abstract class Person implements Identifiable {
     private String personNameFather;
 
     public Person() {
-        personAddress= new Address();
-        personLogin=new Login();        
+        
     }
 
     public Person(Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {

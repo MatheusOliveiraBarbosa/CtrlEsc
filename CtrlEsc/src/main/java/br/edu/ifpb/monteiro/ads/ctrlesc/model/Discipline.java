@@ -1,7 +1,6 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,8 +45,7 @@ public class Discipline implements Identifiable {
     }
 
     public Discipline() {
-        disciplineListStudentClasses = new ArrayList<StudentClass>();
-        disciplineListTeachers = new ArrayList<Teacher>();
+        
     }
 
     // Get's and Set's

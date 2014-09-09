@@ -50,7 +50,6 @@ public class Lesson implements Identifiable {
     private List<Student> lessonListStudents;
 
     public Lesson() {
-        lessonListStudents = new ArrayList<Student>();
     }
 
     public Lesson(Date lessonDate, Integer lessonPresence, String lessonObservation, StudentClass lessonStudentClass, List<Student> lessonListStudents) {

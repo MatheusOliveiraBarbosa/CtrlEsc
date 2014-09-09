@@ -8,6 +8,7 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Login;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
 import java.util.Date;
 import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -40,18 +41,22 @@ public class Student extends Person{
     @Column (name = "student_registration", length = 50)   
     private String studentRegistration;
     
+    @Inject
     @Embedded
     private CertificateReservist studentCertificateReservist;
     
+    @Inject
     @Embedded
     private ElectionTitle studentElectionTitle;
     
+    @Inject
     @Embedded
     private BirthRecord studentBirthRecord;
        
     @Column (name = "student_profession",length = 50)
     private String studentProfession;
     
+    @Inject
     @Embedded
     private PortfolioWork studentPortfolioWork;
     
@@ -78,12 +83,7 @@ public class Student extends Person{
     @JoinTable(name = "TB_student_lessons", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_lesson"))
     private List<Lesson> studentListLessons;
 
-    public Student() {
-        studentBirthRecord= new BirthRecord();
-        studentCertificateReservist= new CertificateReservist();
-        studentElectionTitle=new ElectionTitle();
-        studentPortfolioWork=new PortfolioWork();
-    }
+    public Student() {}
 
     public Student(Integer studentYear, Integer studentNumberBrothersScholarship, String studentRegistration, CertificateReservist studentCertificateReservist, ElectionTitle studentElectionTitle, BirthRecord studentBirthRecord, String studentProfession, PortfolioWork studentPortfolioWork, String studentPensionOrgan, String studentPeriod, String studentLevelEducation, Integer studentNumberBrotherStudent, Responsible studentResponsible, List<SchoolPerformance> studentListSchoolPerformances, List<Lesson> studentListLessons, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
