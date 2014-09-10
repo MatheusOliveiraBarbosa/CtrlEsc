@@ -17,15 +17,15 @@
                 
                 <h:panelGrid columns="2" cellpadding="2">
                     <p:outputLabel/>
-                    <h:inputHidden id="id" value="#{lessonBean.lesson.id}"/>
+                    <h:inputHidden id="id" value="#{lessonBean.selected.id}"/>
                     
                     <p:outputLabel for="dataLesson" value="Data Atividade: "/>
                             <p:calendar id="dataLesson" navigator="true" effect="fold" 
                                 pattern="dd/MM/yyyy" yearRange="c-50:c+50" placeholder="Data da atividade" 
-                                readonly="true" locale="pt" value="#{lessonBean.lesson.lessonDate}" />
+                                readonly="true" locale="pt" value="#{lessonBean.selected.lessonDate}" />
                             
                     <p:outputLabel for="discipline" value="Disciplina: "/>
-                    <p:inputText id="discipline" placeholder="Disciplina" value="#{disciplineBean.discipline.disciplineName}" />
+                    <p:inputText id="discipline" placeholder="Disciplina" value="#{disciplineBean.selected.disciplineName}" />
                     
                     <p:outputLabel />
                     <p:outputLabel />
@@ -39,7 +39,7 @@
             
             <h:form id="formTableConsultLesson">
                 
-                <p:dataTable id="tableConsultLesson" var="lesson" value="#{lessonBean.listLesson}"
+                <p:dataTable id="tableConsultLesson" var="lesson" value="#{lessonBean.selected}"
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -70,9 +70,9 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{lessonBean.editLesson}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{lessonBean.selected}" value="Editar"
                                          icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{lesson}" target="#{lessonBean.lesson}"/>
+                            <f:setPropertyActionListener value="#{lesson}" target="#{lessonBean.selected}"/>
                             
                             <f:setPropertyActionListener value="#{discipline.disciplineName}" 
                                 target="#{disciplineBean.discipline.disciplineName}" />

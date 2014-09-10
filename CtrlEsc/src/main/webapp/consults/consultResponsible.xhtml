@@ -38,7 +38,7 @@
             
             <h:form id="formTableConsultResponsible">
                 
-                <p:dataTable id="tableResponsible" var="responsible" value="#{responsibleBean.listResponsibles}"
+                <p:dataTable id="tableResponsible" var="responsible" value="#{responsibleBean.selected}"
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -76,17 +76,17 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{responsibleBean.editResponsible}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{responsibleBean.selected}" value="Editar"
                                 icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{responsible}" target="#{responsibleBean.responsible}"/>
+                            <f:setPropertyActionListener value="#{responsible}" target="#{responsibleBean.selected}"/>
                             <f:setPropertyActionListener value="#{responsible.personName}" 
-                                target="#{responsibleBean.responsible.personName}" />
+                                target="#{responsibleBean.selected.personName}" />
                             
-                            <f:setPropertyActionListener value="#{responsible.personCpf}" target="#{responsibleBean.responsible.personCpf}"/>
+                            <f:setPropertyActionListener value="#{responsible.personCpf}" target="#{responsibleBean.selected.personCpf}"/>
                             
-                            <f:setPropertyActionListener value="#{responsible.personName}" target="#{responsibleBean.responsible.personName}"/>
+                            <f:setPropertyActionListener value="#{responsible.personName}" target="#{responsibleBean.selected.personName}"/>
                             
-                            <f:setPropertyActionListener value="#{responsible.responsibleDegreeKinship}" target="#{responsibleBean.responsible.responsibleDegreeKinship}"/>
+                            <f:setPropertyActionListener value="#{responsible.responsibleDegreeKinship}" target="#{responsibleBean.selected.responsibleDegreeKinship}"/>
                             
                         </p:commandButton>     
                     </p:column>

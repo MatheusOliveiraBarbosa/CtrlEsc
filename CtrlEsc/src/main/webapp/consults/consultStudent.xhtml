@@ -15,10 +15,10 @@
                     <h:inputHidden id="id" />
 
                     <p:outputLabel for="matricula" value="Matrícula: "/>
-                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.student.studentRegistration}" />
+                    <p:inputText id="matricula" placeholder="Matrícula do aluno" value="#{studentBean.selected.studentRegistration}" />
                     
                     <p:outputLabel for="nome" value="Nome: "/>
-                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.student.personName}" />
+                    <p:inputText id="nome" placeholder="Nome do aluno" value="#{studentBean.selected.personName}" />
                     
                     <p:button id="btPesquisar" value="Pesquisar" icon="ui-icon ui-icon-search"/>
                     
@@ -34,7 +34,7 @@
             
             <h:form id="formTableConsultStudent">
                 
-                <p:dataTable id="tableConsultStudent" var="student" value="#{studentBean.listStudents}" 
+                <p:dataTable id="tableConsultStudent" var="student" value="#{studentBean.selected}" 
                     paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" paginatorTemplate="{CurrentPageReport}
                     {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,15">         
@@ -65,18 +65,18 @@
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
-                        <p:commandButton id="btEditar" action="#{studentBean.editStudent()}" value="Editar"
+                        <p:commandButton id="btEditar" action="#{studentBean.selected()}" value="Editar"
                                          icon="ui-icon ui-icon-pencil" >
-                            <f:setPropertyActionListener value="#{student}" target="#{studentBean.student}"/>
+                            <f:setPropertyActionListener value="#{student}" target="#{studentBean.selected}"/>
                             
                             <f:setPropertyActionListener value="#{student.studentRegistration}" 
-                                target="#{studentBean.student.studentRegistration}" />
+                                target="#{studentBean.selected.studentRegistration}" />
                             
-                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.student.personName}" />
+                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.selected.personName}" />
                             
-                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.student.personName}" />
+                            <f:setPropertyActionListener value="#{student.personName}" target="#{studentBean.selected.personName}" />
                             
-                            <f:setPropertyActionListener value="#{student.studentYear}" target="#{studentBean.student.studentYear}" />
+                            <f:setPropertyActionListener value="#{student.studentYear}" target="#{studentBean.selected.studentYear}" />
                             
                         </p:commandButton>     
                     </p:column>

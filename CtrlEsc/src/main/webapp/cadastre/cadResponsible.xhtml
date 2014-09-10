@@ -21,30 +21,30 @@
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
                                            value="Navegue por todas as abas." />
-                            <h:inputHidden id="id" value="#{responsibleBean.responsible.id}"/>
+                            <h:inputHidden id="id" value="#{responsibleBean.selected.id}"/>
                             <p:outputLabel/>
                             <p:outputLabel/>
 
                             <p:outputLabel for="nome" value="Nome: " />
                             <p:inputText id="nome" size="50" placeholder="Nome do Responsável" required="true" 
-                                         value="#{responsibleBean.responsible.personName}" />
+                                         value="#{responsibleBean.selected.personName}" />
 
                             <p:outputLabel for="nascimento" value="Data de Nascimento: "/>
                             <p:calendar id="nascimento" mask="99-99-9999"  pattern="dd-MM-yyyy" 
-                                       locale="pt_BR" value="#{responsibleBean.responsible.personDateBirth}"/>
+                                       locale="pt_BR" value="#{responsibleBean.selected.personDateBirth}"/>
 
                             <p:outputLabel for="profissao" value="Profissão: "/>
-                            <p:inputText id="profissao" placeholder="Profissão" value="#{responsibleBean.responsible.responsibleProfession}"/>
+                            <p:inputText id="profissao" placeholder="Profissão" value="#{responsibleBean.selected.responsibleProfession}"/>
 
                             <p:outputLabel for="sexo" value="Sexo: "  />
-                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true" value="#{responsibleBean.responsible.personSex}" >
+                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true" value="#{responsibleBean.selected.personSex}" >
                                 <f:selectItem itemLabel="" itemDisabled="true"/>
                                 <f:selectItem itemLabel="M" />
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
 
                             <p:outputLabel for="cor" value="Cor da Pele: " />
-                            <p:selectOneMenu id="cor" label="Cor da Pele: " effect="slide" editable="true"  value="#{responsibleBean.responsible.personBreed}">
+                            <p:selectOneMenu id="cor" label="Cor da Pele: " effect="slide" editable="true"  value="#{responsibleBean.selected.personBreed}">
                                 <f:selectItem itemLabel="" itemDisabled="true"/>
                                 <f:selectItem itemLabel="Branca" />
                                 <f:selectItem itemLabel="Parda" />
@@ -57,7 +57,7 @@
 
                             <p:outputLabel for="estadoCivil" value="Estado Civil: " />
                             <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
-                                             editable="true" value="#{responsibleBean.responsible.personCivilStatus}">
+                                             editable="true" value="#{responsibleBean.selected.personCivilStatus}">
                                 <f:selectItem itemLabel="" itemDisabled="true" />
                                 <f:selectItem itemLabel="Solteiro(a)" />
                                 <f:selectItem itemLabel="Casado(a)" />
@@ -66,23 +66,23 @@
                             </p:selectOneMenu>    
 
                             <p:outputLabel for="renda" value="Renda Familiar: "/>
-                            <p:inputText id="renda" placeholder="Renda Familiar Responsável" styleClass="money" value="#{responsibleBean.responsible.responsibleFamilyIncome}"/>
+                            <p:inputText id="renda" placeholder="Renda Familiar Responsável" styleClass="money" value="#{responsibleBean.selected.responsibleFamilyIncome}"/>
 
                             <p:outputLabel for="mae" value="Nome Mãe: " />
-                            <p:inputText id="mae" placeholder="Nome da mãe" value="#{responsibleBean.responsible.personNameMother}" />
+                            <p:inputText id="mae" placeholder="Nome da mãe" value="#{responsibleBean.selected.personNameMother}" />
 
                             <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
                             <p:calendar id="dataEntrada" mask="99-99-9999"  pattern="dd-MM-yyyy" 
-                                        locale="pt_BR" value="#{responsibleBean.responsible.personEntryDate}"/>
+                                        locale="pt_BR" value="#{responsibleBean.selected.personEntryDate}"/>
 
                             <p:outputLabel for="pai" value="Nome Pai: " />
-                            <p:inputText id="pai" placeholder="Nome do Pai" value="#{responsibleBean.responsible.personNameFather}" />
+                            <p:inputText id="pai" placeholder="Nome do Pai" value="#{responsibleBean.selected.personNameFather}" />
 
                             <p:outputLabel for="usuario" value="Usuário: " />
-                            <p:inputText id="usuario" placeholder="Nome de Usuário" value="#{responsibleBean.responsible.personLogin.login}" />
+                            <p:inputText id="usuario" placeholder="Nome de Usuário" value="#{responsibleBean.selected.personLogin.login}" />
 
                             <p:outputLabel for="senha" value="Senha: " />
-                            <p:inputText id="senha" placeholder="Senha de Usuário" value="#{responsibleBean.responsible.personLogin.password}" />
+                            <p:inputText id="senha" placeholder="Senha de Usuário" value="#{responsibleBean.selected.personLogin.password}" />
 
                         </h:panelGrid>
                     </p:tab>
@@ -92,13 +92,13 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="cpf" value="CPF: " />
-                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="#{responsibleBean.responsible.personCpf}" />
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" placeholder="Nº CPF" value="#{responsibleBean.selected.personCpf}" />
 
                             <p:outputLabel for="rg" value="RG: " />
-                            <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{responsibleBean.responsible.personRg}" />
+                            <p:inputMask  id="rg" size="10" mask="9.999.999" placeholder="Nº RG" value="#{responsibleBean.selected.personRg}" />
 
                             <p:outputLabel for="nacionalidade" value="Nacionalidade: " />
-                            <p:inputText id="nacionalidade" placeholder="Nacionalidade do Responsável" value="#{responsibleBean.responsible.personNationality}" />
+                            <p:inputText id="nacionalidade" placeholder="Nacionalidade do Responsável" value="#{responsibleBean.selected.personNationality}" />
 
                         </h:panelGrid>
                     </p:tab>
@@ -108,25 +108,25 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="rua" value="Rua: " />
-                            <p:inputText id="rua" placeholder="Nome da rua" value="#{responsibleBean.responsible.personAddress.street}" />
+                            <p:inputText id="rua" placeholder="Nome da rua" value="#{responsibleBean.selected.personAddress.street}" />
 
                             <p:outputLabel for="numero" value="Número: " />
-                            <p:inputText id="numero" placeholder="Número da Residência" value="#{responsibleBean.responsible.personAddress.houseNumber}" />
+                            <p:inputText id="numero" placeholder="Número da Residência" value="#{responsibleBean.selected.personAddress.houseNumber}" />
 
                             <p:outputLabel for="distrito" value="Distrito: " />
-                            <p:inputText id="distrito" placeholder="Distrito Pertencente" value="#{responsibleBean.responsible.personAddress.district}" />
+                            <p:inputText id="distrito" placeholder="Distrito Pertencente" value="#{responsibleBean.selected.personAddress.district}" />
 
                             <p:outputLabel for="cep" value="CEP: " />
-                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="#{responsibleBean.responsible.personAddress.cep}" />
+                            <p:inputMask id="cep" mask="99999-999" placeholder="CEP" value="#{responsibleBean.selected.personAddress.cep}" />
 
                             <p:outputLabel for="cidade" value="Cidade: " />
-                            <p:inputText id="cidade" placeholder="Cidade " value="#{responsibleBean.responsible.personAddress.city}" />
+                            <p:inputText id="cidade" placeholder="Cidade " value="#{responsibleBean.selected.personAddress.city}" />
 
                             <p:outputLabel for="estado" value="Estado: " />
-                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{responsibleBean.responsible.personAddress.uf}" />
+                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{responsibleBean.selected.personAddress.uf}" />
 
                             <p:outputLabel for="pais" value="País: " />
-                            <p:inputText id="pais" placeholder="País" value="#{responsibleBean.responsible.personAddress.country}" />
+                            <p:inputText id="pais" placeholder="País" value="#{responsibleBean.selected.personAddress.country}" />
 
                         </h:panelGrid> 
                     </p:tab>
@@ -136,18 +136,18 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="fone1" value="Telefone 1: " />
-                            <p:inputText id="fone1" placeholder="Telefone 1 Contato" styleClass="phone" value="#{responsibleBean.responsible.personPhoneOne}" />
+                            <p:inputText id="fone1" placeholder="Telefone 1 Contato" styleClass="phone" value="#{responsibleBean.selected.personPhoneOne}" />
 
                             <p:outputLabel for="fone2" value="Telefone 2: " />
-                            <p:inputText id="fone2" placeholder="Telefone 2 Contato" styleClass="phone" value="#{responsibleBean.responsible.personPhoneTwo}" />
+                            <p:inputText id="fone2" placeholder="Telefone 2 Contato" styleClass="phone" value="#{responsibleBean.selected.personPhoneTwo}" />
                         </h:panelGrid>
                     </p:tab>
                 </p:tabView>
                 <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                 action="#{responsibleBean.addResponsible}" update="infoResponsible"/>
+                                 action="#{responsibleBean.selected}" update="infoResponsible"/>
 
                 <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
-                                 action="#{responsibleBean.limpResponsible}" update="infoResponsible"/>
+                                 action="#{responsibleBean.selected}" update="infoResponsible"/>
             </h:form>
 
         </p:fieldset>

@@ -15,33 +15,33 @@
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" 
                                            value="Navegue por todas as abas." />
-                            <h:inputHidden id="id" value="#{studentBean.student.id}"/>
+                            <h:inputHidden id="id" value="#{studentBean.selected.id}"/>
                             <p:outputLabel/>
                             <p:outputLabel/>
 
                             <p:outputLabel for="nome" value="Nome: " />
-                            <p:inputText id="nome" size="50" placeholder="Nome do Aluno" required="true" value="#{studentBean.student.personName}" />
+                            <p:inputText id="nome" size="50" placeholder="Nome do Aluno" required="true" value="#{studentBean.selected.personName}" />
 
                             <p:outputLabel for="dataNascimento" value="Data de Nascimento: " />
                             <p:calendar id="dataNascimento" mask="99-99-9999"  pattern="dd-MM-yyyy" 
-                                        locale="pt_BR" value="#{studentBean.student.personDateBirth}"/>
+                                        locale="pt_BR" value="#{studentBean.selected.personDateBirth}"/>
 
                             <p:outputLabel for="matricula" value="Matrícula: " />
-                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="#{studentBean.student.studentRegistration}" />
+                            <p:inputText id="matricula" placeholder="Nº de matrícula" value="#{studentBean.selected.studentRegistration}" />
 
                             <p:outputLabel for="sexo" value="Sexo: " />
-                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true" value="#{studentBean.student.personSex}">
+                            <p:selectOneMenu id="sexo" label="Sexo: " required="true" effect="slide" editable="true" value="#{studentBean.selected.personSex}">
                                 <f:selectItem itemLabel="Sexo" itemDisabled="true"/>
                                 <f:selectItem itemLabel="M" />
                                 <f:selectItem itemLabel="F" />
                             </p:selectOneMenu>
 
                             <p:outputLabel for="nivelEscolar" value="Nível Escolar: " />
-                            <p:inputText id="nivelEscolar" placeholder="Nível Escolar do Aluno" value="#{studentBean.student.studentLevelEducation}" />
+                            <p:inputText id="nivelEscolar" placeholder="Nível Escolar do Aluno" value="#{studentBean.selected.studentLevelEducation}" />
 
                             <p:outputLabel for="estadoCivil" value="Estado Civil: " />
                             <p:selectOneMenu id="estadoCivil" label="Estado Civil: " effect="slide" 
-                                             editable="true" value="#{studentBean.student.personCivilStatus}">
+                                             editable="true" value="#{studentBean.selected.personCivilStatus}">
                                 <f:selectItem itemLabel="Estado Civil" itemDisabled="true" />
                                 <f:selectItem itemLabel="Solteiro" />
                                 <f:selectItem itemLabel="Casado(a)" />
@@ -50,32 +50,32 @@
                             </p:selectOneMenu>
 
                             <p:outputLabel for="ano" value="Ano: " />
-                            <p:inputText id="ano" placeholder="Ano Letivo" value="#{studentBean.student.studentYear}" />
+                            <p:inputText id="ano" placeholder="Ano Letivo" value="#{studentBean.selected.studentYear}" />
 
                             <p:outputLabel for="periodo" value="Periodo: " />
-                            <p:inputText id="periodo" placeholder="Periodo Letivo" value="#{studentBean.student.studentPeriod}" />
+                            <p:inputText id="periodo" placeholder="Periodo Letivo" value="#{studentBean.selected.studentPeriod}" />
 
                             <p:outputLabel for="pai" value="Nome Pai: " />
-                            <p:inputText id="pai" placeholder="Nome do Pai" value="#{studentBean.student.personNameFather}" />
+                            <p:inputText id="pai" placeholder="Nome do Pai" value="#{studentBean.selected.personNameFather}" />
 
                             <p:outputLabel for="mae" value="Nome Mãe: " />
-                            <p:inputText id="mae" placeholder="Nome da Mãe" value="#{studentBean.student.personNameMother}" />
+                            <p:inputText id="mae" placeholder="Nome da Mãe" value="#{studentBean.selected.personNameMother}" />
 
                             <p:outputLabel for="irmaos" value="Nº de Irmãos na Escola: " />
-                            <p:inputText id="irmaos" placeholder="Nº Irmãos Estudando" value="#{studentBean.student.studentNumberBrotherStudent}" />
+                            <p:inputText id="irmaos" placeholder="Nº Irmãos Estudando" value="#{studentBean.selected.studentNumberBrotherStudent}" />
 
                             <p:outputLabel for="previdenciario" value="Orgão Previdênciario: " />
-                            <p:inputText id="previdenciario" placeholder="Orgão Previdênciario" value="#{studentBean.student.studentPensionOrgan}" />
+                            <p:inputText id="previdenciario" placeholder="Orgão Previdênciario" value="#{studentBean.selected.studentPensionOrgan}" />
 
                             <p:outputLabel for="usuario" value="Usuário: " />
-                            <p:inputText id="usuario" placeholder="Nome de Usuário" value="#{studentBean.student.personLogin.login}" />
+                            <p:inputText id="usuario" placeholder="Nome de Usuário" value="#{studentBean.selected.personLogin.login}" />
 
                             <p:outputLabel for="senha" value="Senha: " />
-                            <p:inputText id="senha" placeholder="Senha de Usuário" value="#{studentBean.student.personLogin.password}" />
+                            <p:inputText id="senha" placeholder="Senha de Usuário" value="#{studentBean.selected.personLogin.password}" />
 
                             <p:outputLabel for="dataEntrada" value="Data de Entrada: " />
                             <p:calendar id="dataEntrada" mask="99-99-9999"  pattern="dd-MM-yyyy" 
-                                        locale="pt_BR" value="#{studentBean.student.personEntryDate}"/>
+                                        locale="pt_BR" value="#{studentBean.selected.personEntryDate}"/>
 
                         </h:panelGrid>
                     </p:tab>
@@ -84,49 +84,49 @@
                         <h:panelGrid columns="4" cellpadding="7" styleClass="panelGrid" id="gridDoc">
 
                             <p:outputLabel for="cpf" value="CPF: " />
-                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" value="#{studentBean.student.personCpf}" />
+                            <p:inputMask  id="cpf" size="14" mask="999.999.999-99" value="#{studentBean.selected.personCpf}" />
 
                             <p:outputLabel for="rg" value="RG: " />
-                            <p:inputMask  id="rg" size="10" mask="9.999.999" value="#{studentBean.student.personRg}" />
+                            <p:inputMask  id="rg" size="10" mask="9.999.999" value="#{studentBean.selected.personRg}" />
 
                             <p:outputLabel for="nascionalidade" value="Nacionalidade: " />
-                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do estudante" value="#{studentBean.student.personNationality}" />
+                            <p:inputText id="nascionalidade" placeholder="Nacionalidade do estudante" value="#{studentBean.selected.personNationality}" />
 
                             <p:outputLabel for="reservista" value="Número de reservista: " />
-                            <p:inputText id="reservista" placeholder="Nº reservista" value="#{studentBean.student.studentCertificateReservist.numberCertificateReservist}" />
+                            <p:inputText id="reservista" placeholder="Nº reservista" value="#{studentBean.selected.studentCertificateReservist.numberCertificateReservist}" />
 
                             <p:outputLabel for="categoria" value="Categoria: " />
-                            <p:inputText id="categoria" placeholder="Categoria" value="#{studentBean.student.studentCertificateReservist.category}" />
+                            <p:inputText id="categoria" placeholder="Categoria" value="#{studentBean.selected.studentCertificateReservist.category}" />
 
                             <p:outputLabel for="emissorReservista" value="Orgão Emissor: " />
-                            <p:inputText id="emissorReservista" placeholder="Orgão emissor" value="#{studentBean.student.studentCertificateReservist.stateEmitterCertificateReservist}" />
+                            <p:inputText id="emissorReservista" placeholder="Orgão emissor" value="#{studentBean.selected.studentCertificateReservist.stateEmitterCertificateReservist}" />
 
                             <p:outputLabel for="tituloEleitoral" value="Título Eleitoral:  " />
-                            <p:inputText id="tituloEleitoral" placeholder="Nº título eleitoral" value="#{studentBean.student.studentElectionTitle.numberElectionTitle}" />
+                            <p:inputText id="tituloEleitoral" placeholder="Nº título eleitoral" value="#{studentBean.selected.studentElectionTitle.numberElectionTitle}" />
 
                             <p:outputLabel for="secao" value="Seção: " />
-                            <p:inputText id="secao" placeholder="Nº da Seção" value="#{studentBean.student.studentElectionTitle.section}" />
+                            <p:inputText id="secao" placeholder="Nº da Seção" value="#{studentBean.selected.studentElectionTitle.section}" />
 
                             <p:outputLabel for="zona" value="Zona: " />
-                            <p:inputText id="zona" placeholder="Nº Zona Eleitoral" value="#{studentBean.student.studentElectionTitle.zone}" />
+                            <p:inputText id="zona" placeholder="Nº Zona Eleitoral" value="#{studentBean.selected.studentElectionTitle.zone}" />
 
                             <p:outputLabel for="emissorTitulo" value="Orgão Emissor: " />
-                            <p:inputText id="emissorTitulo" placeholder="Orgão Emissor" value="#{studentBean.student.studentElectionTitle.stateEmitterElectionTitle}" />
+                            <p:inputText id="emissorTitulo" placeholder="Orgão Emissor" value="#{studentBean.selected.studentElectionTitle.stateEmitterElectionTitle}" />
 
                             <p:outputLabel for="nascimento" value="Certidão de Nascimento: " />
-                            <p:inputText id="nascimento" placeholder="Nº Registro de Nascimento" value="#{studentBean.student.studentBirthRecord.registry}" />
+                            <p:inputText id="nascimento" placeholder="Nº Registro de Nascimento" value="#{studentBean.selected.studentBirthRecord.registry}" />
 
                             <p:outputLabel for="folha" value="Folha: " />
-                            <p:inputText id="folha" placeholder="Folha" value="#{studentBean.student.studentBirthRecord.folha}" />
+                            <p:inputText id="folha" placeholder="Folha" value="#{studentBean.selected.studentBirthRecord.folha}" />
 
                             <p:outputLabel for="livro" value="Livro: " />
-                            <p:inputText id="livro" placeholder="Livro" value="#{studentBean.student.studentBirthRecord.livro}" />
+                            <p:inputText id="livro" placeholder="Livro" value="#{studentBean.selected.studentBirthRecord.livro}" />
 
                             <p:outputLabel for="carteiraTrabalho" value="Nº Carteira de Trabalho: " />
-                            <p:inputText id="carteiraTrabalho" placeholder="Nº Carteira de Trabalho" value="#{studentBean.student.studentPortfolioWork.numberPortfolioWork}" />
+                            <p:inputText id="carteiraTrabalho" placeholder="Nº Carteira de Trabalho" value="#{studentBean.selected.studentPortfolioWork.numberPortfolioWork}" />
 
                             <p:outputLabel for="serie" value="Série: " />
-                            <p:inputText id="serie" placeholder="Série" value="#{studentBean.student.studentPortfolioWork.series}" />
+                            <p:inputText id="serie" placeholder="Série" value="#{studentBean.selected.studentPortfolioWork.series}" />
 
                         </h:panelGrid>
                     </p:tab>
@@ -136,25 +136,25 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="rua" value="Rua: " />
-                            <p:inputText id="rua" placeholder="Nome da Rua" value="#{studentBean.student.personAddress.street}" />
+                            <p:inputText id="rua" placeholder="Nome da Rua" value="#{studentBean.selected.personAddress.street}" />
 
                             <p:outputLabel for="numero" value="Número: " />
-                            <p:inputText id="numero" placeholder="Nº da Rua" value="#{studentBean.student.personAddress.houseNumber}" />
+                            <p:inputText id="numero" placeholder="Nº da Rua" value="#{studentBean.selected.personAddress.houseNumber}" />
 
                             <p:outputLabel for="distrito" value="Distrito: " />
-                            <p:inputText id="distrito" placeholder="Distrito" value="#{studentBean.student.personAddress.district}" />
+                            <p:inputText id="distrito" placeholder="Distrito" value="#{studentBean.selected.personAddress.district}" />
 
                             <p:outputLabel for="cep" value="CEP: " />
-                            <p:inputMask id="cep" mask="99999-999" value="#{studentBean.student.personAddress.cep}" />
+                            <p:inputMask id="cep" mask="99999-999" value="#{studentBean.selected.personAddress.cep}" />
 
                             <p:outputLabel for="cidade" value="Cidade: " />
-                            <p:inputText id="cidade" placeholder="Cidade" value="#{studentBean.student.personAddress.city}" />
+                            <p:inputText id="cidade" placeholder="Cidade" value="#{studentBean.selected.personAddress.city}" />
 
                             <p:outputLabel for="estado" value="Estado: " />
-                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{studentBean.student.personAddress.uf}" />
+                            <p:inputText id="estado" placeholder="Unidade da Federação" value="#{studentBean.selected.personAddress.uf}" />
 
                             <p:outputLabel for="pais" value="País: " />
-                            <p:inputText id="pais" placeholder="País" value="#{studentBean.student.personAddress.country}" />
+                            <p:inputText id="pais" placeholder="País" value="#{studentBean.selected.personAddress.country}" />
                         </h:panelGrid>    
                     </p:tab>
 
@@ -163,19 +163,19 @@
                             <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel for="fone1" value="Telefone 1: " />
-                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="#{studentBean.student.personPhoneOne}" />
+                            <p:inputText id="fone1" placeholder="Telefone 1 contato" styleClass="phone" value="#{studentBean.selected.personPhoneOne}" />
 
                             <p:outputLabel for="fone2" value="Telefone 2: " />
-                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="#{studentBean.student.personPhoneTwo}" />
+                            <p:inputText id="fone2" placeholder="Telefone 2 contato" styleClass="phone" value="#{studentBean.selected.personPhoneTwo}" />
                         </h:panelGrid>
                     </p:tab>
                 </p:tabView>
 
                 <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                 action="#{studentBean.addStudent}" update="infoAluno"/>
+                                 action="#{studentBean.selected}" update="infoAluno"/>
 
                 <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
-                                 action="#{studentBean.limpStudent}" update="infoAluno"/>
+                                 action="#{studentBean.selected}" update="infoAluno"/>
             </h:form>    
         </p:fieldset>
     </ui:define>
