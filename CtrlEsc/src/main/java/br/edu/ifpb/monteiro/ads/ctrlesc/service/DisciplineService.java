@@ -11,6 +11,8 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.dao.qualifiers.DisciplineDAO;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
 import br.edu.ifpb.monteiro.ads.ctrlesc.util.jpa.Transactional;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -21,6 +23,8 @@ import javax.inject.Inject;
 @RequestScoped
 public class DisciplineService implements DisciplineServiceIF{
 
+     static final Logger logger = Logger.getGlobal();;
+    
     @Inject @DisciplineDAO
     private DisciplineDaoIF dao;
     
@@ -35,7 +39,7 @@ public class DisciplineService implements DisciplineServiceIF{
        try{
         this.dao.create(entity);
         }catch (Exception e) {
-            System.err.println("Erro no Service: "+e.getMessage()); //Substituir por Logger
+            logger.log(Level.INFO, "Erro no Service: {0}", e.getMessage());
         }
     }
 

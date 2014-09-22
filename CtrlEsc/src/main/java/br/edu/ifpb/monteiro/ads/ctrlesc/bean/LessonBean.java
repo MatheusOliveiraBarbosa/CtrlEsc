@@ -17,6 +17,8 @@ import javax.inject.Inject;
 @RequestScoped
 public class LessonBean extends AbstractBean<Lesson> implements LessonBeanIF{
 
+    
+    
     @Inject
     private LessonServiceIF services;
 
@@ -27,6 +29,7 @@ public class LessonBean extends AbstractBean<Lesson> implements LessonBeanIF{
     
     @Override
     protected ServicesIF getServices() {
+        
         return this.services;
     }
 

@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 /**
@@ -7,7 +8,7 @@ import javax.persistence.Embeddable;
  * @author E.Wellington
  */
 @Embeddable
-public class Address {
+public class Address implements Serializable{
     
     private String street;
 

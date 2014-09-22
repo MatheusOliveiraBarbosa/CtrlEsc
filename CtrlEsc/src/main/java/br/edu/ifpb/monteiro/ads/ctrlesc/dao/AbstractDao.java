@@ -2,33 +2,42 @@ package br.edu.ifpb.monteiro.ads.ctrlesc.dao;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 /**
- * Abstract class for persisting data with the database, which contains methods to persist,
- * delete, update, Search by id, search all, multiple search and counting.
- * 
+ * Abstract class for persisting data with the database, which contains methods
+ * to persist, delete, update, Search by id, search all, multiple search and
+ * counting.
+ *
  * @author Elisângela
  * @param <T>
  */
 @Default
 @Dependent
-public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
+public class AbstractDao<T extends Identifiable> implements AbstractDaoIF {
+
     private Class<T> entityClass;
+    static final Logger logger = Logger.getGlobal();
+    ;
 
     @Inject
     protected EntityManager entityManager;
-    
+
     /**
-     * Method to retrieve the EntityManager 
-     * @return 
+     * Method to retrieve the EntityManager
+     *
+     * @return
      */
-    protected EntityManager getEntityManager(){
+    protected EntityManager getEntityManager() {
         return entityManager;
-    };
+    }
+
+    ;
     
     /**
      * The class constructor receives with Parliament the entity that will be 
@@ -39,30 +48,32 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-    
-    public AbstractDao() { }
-    
-    
-    /**
-     * Persistence method of an entity in the database, return a persisted entity.
-     * @param entity 
-     */
-    @Override
-    public void create(Identifiable entity) {
-         System.out.println("Passei aqui D");  //Substituir por Logger
-        try {
-            getEntityManager().persist(entity);
-        } catch (Exception e) {
-            System.err.println("Erro no DAO: "+e.getMessage()); //Substituir por Logger
-        }
-        
+
+    public AbstractDao() {
     }
 
     /**
-     * Update method of the data of an entity in the database, return a 
+     * Persistence method of an entity in the database, return a persisted
+     * entity.
+     *
+     * @param entity
+     */
+    @Override
+    public void create(Identifiable entity) {
+        logger.info("Passei aqui D");  //Substituir por Logger
+        try {
+            getEntityManager().persist(entity);
+        } catch (Exception e) {
+            logger.log(Level.INFO, "Erro no DAO: {0}", e.getMessage()); //Substituir por Logger
+        }
+
+    }
+
+    /**
+     * Update method of the data of an entity in the database, return a
      * persisted entity updated.
-     * 
-     * @param entity 
+     *
+     * @param entity
      */
     @Override
     public void edit(Identifiable entity) {
@@ -70,9 +81,10 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
     }
 
     /**
-     * Method of removing a database entity receives as parameter the entity 
-     * to be removed.
-     * @param entity 
+     * Method of removing a database entity receives as parameter the entity to
+     * be removed.
+     *
+     * @param entity
      */
     @Override
     public void remove(Identifiable entity) {
@@ -81,18 +93,20 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
 
     /**
      * Method to fetch an entity in the database has an ID parameter.
+     *
      * @param id
-     * @return 
+     * @return
      */
     @Override
     public Identifiable find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-    
+
     /**
-     * Method to fetch all the entities in the database, return a list of 
-     * the entity.
-     * @return 
+     * Method to fetch all the entities in the database, return a list of the
+     * entity.
+     *
+     * @return
      */
     @Override
     public List<Identifiable> findAll() {
@@ -103,8 +117,9 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
 
     /**
      * Search method kin, receiving as parameter an object.
+     *
      * @param range
-     * @return 
+     * @return
      */
     @Override
     public List<Identifiable> findRange(int[] range) {
@@ -119,7 +134,8 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
     /**
      * Method to count the amount of entity, has in return an integer with the
      * amount.
-     * @return 
+     *
+     * @return
      */
     @Override
     public int count() {
@@ -129,5 +145,5 @@ public class AbstractDao<T extends Identifiable> implements AbstractDaoIF{
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

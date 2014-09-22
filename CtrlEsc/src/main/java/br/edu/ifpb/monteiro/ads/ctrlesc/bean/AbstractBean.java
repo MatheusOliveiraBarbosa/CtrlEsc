@@ -9,20 +9,28 @@ import br.edu.ifpb.monteiro.ads.ctrlesc.exception.CtrlEscException;
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.util.jsf.JsfUtil;
+import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author WitaloCarlos
  * @param <T>
  */
-public abstract class AbstractBean<T extends Identifiable> implements AbstractBeanIF<T>  {
+public abstract class AbstractBean<T extends Identifiable> implements AbstractBeanIF<T>, Serializable  {
 
     private List<Identifiable> items = null;
+    static final Logger logger = Logger.getGlobal();;
 
     public AbstractBean() {
+         logger.info("classe instanciada");
     }
+
+    @Override
+    public abstract T getSelected();
 
 
     protected abstract ServicesIF getServices();
@@ -34,21 +42,24 @@ public abstract class AbstractBean<T extends Identifiable> implements AbstractBe
      */
     @Override
     public void create() {
+        logger.info("Create acessado"); 
         try {
-
+            
+            logger.info("Tentando criar"); 
             this.getServices().create(getSelected());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("resources/Bundle").getString("ItemCreated"));
+            logger.info("Criado"); 
             throw new CtrlEscException(ResourceBundle.getBundle("resources/Bundle").getString("ItemNotCreated")); //Verificar se isso realemente é assim ^^
 
         } catch (CtrlEscException e) {
-
+            logger.log(Level.INFO, "Erro Bean: {0}", e.getMessage()); 
             JsfUtil.addErrorMessage(e.getLocalizedMessage());
         }
     }
 
     @Override
     public void update() {
-        try {
+            try {
 
             this.getServices().edit(getSelected());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("resources/Bundle").getString("ItemUpdated"));

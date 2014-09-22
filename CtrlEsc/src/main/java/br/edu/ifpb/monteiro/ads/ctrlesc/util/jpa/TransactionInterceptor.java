@@ -6,6 +6,7 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.util.jpa;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 import javax.annotation.Priority;
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
@@ -13,8 +14,6 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -26,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 public class TransactionInterceptor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static Logger log = LogManager.getLogger(TransactionInterceptor.class);
+     static final Logger logger = Logger.getGlobal();;
 
     private @Inject
     EntityManager manager;
@@ -42,12 +41,12 @@ public class TransactionInterceptor implements Serializable {
                 // (senão, um futuro commit, confirmaria até mesmo operações sem
                 // transação)
                 transaction.begin();
-                log.info("Transação Iniciada");
+                logger.info("Transação Iniciada");
                 transaction.rollback();
-                log.info("Rollback intencional");
+                logger.info("Rollback intencional");
 
                 transaction.begin();
-                log.info("Transação Reiniciada");
+                logger.info("Transação Reiniciada");
 
                 owner = true;
             }
@@ -55,7 +54,7 @@ public class TransactionInterceptor implements Serializable {
             return context.proceed();
         } catch (Exception e) {
             if (transaction != null && owner) {
-                System.out.println("catch Rollback ");
+                logger.info("catch Rollback ");
                 transaction.rollback();
 
             }
@@ -64,7 +63,7 @@ public class TransactionInterceptor implements Serializable {
         } finally {
             if (transaction != null && transaction.isActive() && owner) {
                 transaction.commit();
-                System.out.println("Operação Comitada");
+                logger.info("Operação Comitada");
             }
         }
     }

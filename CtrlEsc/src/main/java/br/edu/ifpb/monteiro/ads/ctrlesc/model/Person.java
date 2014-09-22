@@ -17,7 +17,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  * Entity Person contains atribudos and methods of creating a 
@@ -58,9 +57,9 @@ public abstract class Person implements Identifiable {
     
 //    @Column (name = "person_photo")
 //    @Lob
-    @Transient
-    private byte[] personPhoto;
-    
+//    @Transient
+//    private byte[] personPhoto;
+//    
     @Column (name = "person_nationality",length = 50)
     private String personNationality;
     
@@ -94,7 +93,7 @@ public abstract class Person implements Identifiable {
         
     }
 
-    public Person(Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
+    public Person(Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex,  String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
         this.id = id;
         this.personName = personName;
         this.personCpf = personCpf;
@@ -103,7 +102,6 @@ public abstract class Person implements Identifiable {
         this.personBreed = personBreed;
         this.personRg = personRg;
         this.personSex = personSex;
-        this.personPhoto = personPhoto;
         this.personNationality = personNationality;
         this.personEntryDate = personEntryDate;
         this.personPhoneOne = personPhoneOne;
@@ -171,14 +169,7 @@ public abstract class Person implements Identifiable {
         this.personSex = personSex;
     }
 
-    public byte[] getPersonPhoto() {
-        return personPhoto;
-    }
-
-    public void setPersonPhoto(byte[] personPhoto) {
-        this.personPhoto = personPhoto;
-    }
-
+   
     public String getPersonNationality() {
         return personNationality;
     }

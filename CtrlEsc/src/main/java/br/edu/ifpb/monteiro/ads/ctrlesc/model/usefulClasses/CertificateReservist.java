@@ -1,6 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,7 +9,7 @@ import javax.persistence.Embeddable;
  * @author E.Wellington
  */
 @Embeddable
-public class CertificateReservist {
+public class CertificateReservist implements Serializable{
 
     private Integer numberCertificateReservist;
     

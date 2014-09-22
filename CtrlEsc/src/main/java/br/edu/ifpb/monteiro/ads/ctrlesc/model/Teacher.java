@@ -40,7 +40,7 @@ public class Teacher extends Person {
     }
 
     public Teacher(String teacheRegistration, List<Discipline> teacherListDisciplines, List<StudentClass> teacherListStudentClasses, Long id, String personName, String personCpf, Date personDateBirth, Address personAddress, String personBreed, String personRg, char personSex, byte[] personPhoto, String personNationality, Date personEntryDate, String personPhoneOne, String personPhoneTwo, String personCivilStatus, Login personLogin, String personNameMother, String personNameFather) {
-        super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personPhoto, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
+super(id, personName, personCpf, personDateBirth, personAddress, personBreed, personRg, personSex, personNationality, personEntryDate, personPhoneOne, personPhoneTwo, personCivilStatus, personLogin, personNameMother, personNameFather);
         this.teacherRegistration = teacheRegistration;
         this.teacherListDisciplines = teacherListDisciplines;
         this.teacherListStudentClasses = teacherListStudentClasses;

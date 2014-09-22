@@ -20,7 +20,7 @@
                         <p:growl/>
                         <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
                             <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" />
-                            <h:inputHidden id="id" value="#{lessonBean.selected.id}" />
+                            <p:outputLabel/>
                             <p:outputLabel/>
                             <p:outputLabel/>
                             
@@ -37,8 +37,8 @@
                             
                         </h:panelGrid>
                         
-                        <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                            action="#{lessonBean.selected}" update="activits"/>
+                        <p:commandButton id="btSalvar" value="Salvar" 
+                                         actionListener="#{lessonBean.create}" />
 
                         <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
                             action="#{lessonBean.selected}" update="activits"/>

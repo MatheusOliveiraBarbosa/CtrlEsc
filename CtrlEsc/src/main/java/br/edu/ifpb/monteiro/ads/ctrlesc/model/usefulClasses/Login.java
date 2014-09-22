@@ -1,6 +1,8 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import java.io.Serializable;
+import java.security.Principal;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,10 +10,12 @@ import javax.persistence.Embeddable;
  * 
  * @author E.Wellington
  */
+
 @Embeddable
-public class Login {
+public class Login implements Serializable, Principal{
 
     private String login;
+    
     
     private String password;
 
@@ -39,6 +43,11 @@ public class Login {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

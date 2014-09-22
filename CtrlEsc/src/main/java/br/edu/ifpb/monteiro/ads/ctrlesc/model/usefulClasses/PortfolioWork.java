@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
 
+import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,7 +9,7 @@ import javax.persistence.Embeddable;
  * @author E.Wellington
  */
 @Embeddable
-public class PortfolioWork {
+public class PortfolioWork implements Serializable{
 
     private Integer numberPortfolioWork;
     

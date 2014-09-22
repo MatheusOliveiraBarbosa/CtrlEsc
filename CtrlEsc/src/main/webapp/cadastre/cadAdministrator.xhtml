@@ -13,7 +13,7 @@
     <ui:define name="corpo">
         <p:fieldset legend="Cadastrar Administrador">
 
-            <h:form id="infoTeacher">   
+            <h:form id="infoAdministrator">   
                 <p:tabView id="tabAdministrator">
                     <p:tab title="Informações Pessoais">
                         <p:growl/>
@@ -138,10 +138,10 @@
                 </p:tabView>
 
                 <p:commandButton id="btSalvar" value="Salvar" icon="ui-icon ui-icon-disk" 
-                                 action="#{administratorBean.addAdministrator}" update="infoAdministrator"/>
+                                 action="#{administratorBean.create}" update="infoAdministrator"/>
 
                 <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
-                                 action="#{administratorBean.limpAdministrator}" update="infoAdministrator"/>
+                                 action="#" update="infoAdministrator"/>
 
             </h:form>    
         </p:fieldset>
