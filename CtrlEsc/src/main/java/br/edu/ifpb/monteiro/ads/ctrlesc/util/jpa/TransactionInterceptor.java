@@ -25,7 +25,7 @@ import javax.persistence.EntityTransaction;
 public class TransactionInterceptor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-     static final Logger logger = Logger.getGlobal();;
+    private static final Logger logger = Logger.getGlobal();
 
     private @Inject
     EntityManager manager;

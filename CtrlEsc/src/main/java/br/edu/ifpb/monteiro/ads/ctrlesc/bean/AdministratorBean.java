@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.Administrator;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.entities.Administrator;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.AdministratorServiceIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
 import java.util.logging.Level;

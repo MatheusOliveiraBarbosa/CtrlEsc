@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template/template.xhtml">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    
+    <ui:define name="corpo">
+        <p:fieldset legend="Cadastrar Atividades">
+            
+            <p:tabView id="tabLesson">
+                <p:tab title="Atividades">
+                    <h:form id="activits">   
+                        <p:growl/>
+                        <h:panelGrid columns="2" cellpadding="7" styleClass="panelGrid" id="grid">
+                            <p:outputLabel style="font-size: 12px; color: red; font-weight: bold" />
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            <p:outputLabel/>
+                            
+                            <p:outputLabel for="dataLesson" value="Data Atividade: "/>
+                            <p:calendar id="dataLesson" mask="99/99/9999" value="#{lessonBean.selected.lessonDate}" pattern="dd/MM/yyyy"/> 
+                           
+                            <p:outputLabel for="observation" value="Observações " />
+                            <p:inputTextarea id="observation" value="#{lessonBean.selected.lessonObservation}" 
+                                rows="10" cols="33" autoResize="true" />
+
+                            <p:outputLabel for="presence" value="Presença: " />
+                            <p:inputText id="presence" value="#{lessonBean.selected.lessonPresence}" 
+                                placeholder="Presença" />
+                            
+                        </h:panelGrid>
+                        
+                        <p:commandButton id="btSalvar" value="Salvar" 
+                                         actionListener="#{lessonBean.create}" />
+
+                        <p:commandButton id="btCancelar" value="Cancelar" icon="ui-icon ui-icon-cancel" 
+                            action="#{lessonBean.selected}" update="activits"/>
+                        
+                    </h:form>
+                </p:tab>
+            </p:tabView>    
+            
+            <p:outputLabel/>
+            <p:outputLabel />
+             <h:form id="formTableConsultPresence">
+                
+                <p:dataTable id="tablePresence" var="consultPresence" paginator="true" rows="10" emptyMessage="Nenhum registro encontrado" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}  {PageLinks} 
+                             {NextPageLink}  {LastPageLink}  {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" paginatorAlwaysVisible="false">
+                    <f:facet name="header">Lista de Alunos</f:facet>
+
+                    <p:column headerText="Matrícula" width="20" />
+                    
+                    <p:column headerText="Data" width="20" /> 
+                    
+                    <p:column headerText="Nome" width="60" /> 
+
+                    <p:column headerText="Presença" width="40" />
+                    
+                </p:dataTable>
+            </h:form>
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>

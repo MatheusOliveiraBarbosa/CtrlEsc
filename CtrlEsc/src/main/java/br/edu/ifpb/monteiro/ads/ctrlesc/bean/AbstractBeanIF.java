@@ -6,7 +6,7 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.entities.Identifiable;
 import java.util.List;
 
 /**

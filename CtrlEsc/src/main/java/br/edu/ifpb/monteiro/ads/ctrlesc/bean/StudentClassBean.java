@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.StudentClass;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.entities.StudentClass;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.StudentClassServiceIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
 import java.util.logging.Level;

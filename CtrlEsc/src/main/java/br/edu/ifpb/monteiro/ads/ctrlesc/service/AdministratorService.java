@@ -6,9 +6,9 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.service;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.dao.AdministratorDaoIF;
+import br.edu.ifpb.monteiro.ads.ctrlesc.dao.daos.AdministratorDaoIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.dao.qualifiers.AdministratorDAO;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.Identifiable;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.entities.Identifiable;
 import br.edu.ifpb.monteiro.ads.ctrlesc.util.jpa.Transactional;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;

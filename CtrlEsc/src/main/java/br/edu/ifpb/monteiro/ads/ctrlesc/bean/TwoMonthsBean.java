@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.bean;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.TwoMonths;
+import br.edu.ifpb.monteiro.ads.ctrlesc.model.entities.TwoMonths;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.TwoMonthsServiceIF;
 import br.edu.ifpb.monteiro.ads.ctrlesc.service.ServicesIF;
 import java.util.logging.Level;
