@@ -1,7 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.entities;
 
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.Address;
 import java.util.Date;
 import javax.inject.Inject;
 

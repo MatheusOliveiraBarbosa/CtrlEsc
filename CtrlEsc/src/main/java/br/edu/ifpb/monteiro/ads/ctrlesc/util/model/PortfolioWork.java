@@ -1,4 +1,4 @@
-package br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses;
+package br.edu.ifpb.monteiro.ads.ctrlesc.util.model;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;

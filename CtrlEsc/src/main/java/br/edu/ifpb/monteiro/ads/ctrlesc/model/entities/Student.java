@@ -1,11 +1,11 @@
 package br.edu.ifpb.monteiro.ads.ctrlesc.model.entities;
 
 import br.edu.ifpb.monteiro.ads.ctrlesc.model.security.User;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.Address;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.BirthRecord;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.CertificateReservist;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.ElectionTitle;
-import br.edu.ifpb.monteiro.ads.ctrlesc.model.usefulClasses.PortfolioWork;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.Address;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.BirthRecord;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.CertificateReservist;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.ElectionTitle;
+import br.edu.ifpb.monteiro.ads.ctrlesc.util.model.PortfolioWork;
 import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
